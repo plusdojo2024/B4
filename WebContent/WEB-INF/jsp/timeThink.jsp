@@ -6,7 +6,7 @@
 		<meta charset="UTF-8">
 		<title>時間逆算</title>
 		<link rel="stylesheet" href="css/common.css">
-		<link rel="stylesheet" href="css/TimeThink.css">
+		<link rel="stylesheet" href="css/timeThink.css">
 	</head>
 
 	<body>
@@ -33,10 +33,10 @@
 							<!--ポップアップの中身-->
 							<form action="/B4/TimeThinkServlet" method="post" class="form">
 								<h1>現在住所</h1>
-								<input type="text" name="nowAddress" placeholder="現在の住所" readonly>
+								<input type="text" name="now-address" placeholder="現在の住所" readonly>
 								<h1>変更</h1>
 								<input type="text" name="address" placeholder="新しい住所を入力してください">
-								<input type="submit" name="changeAddress" value="変更">
+								<input type="submit" name="change-address" value="変更">
 							</form>
 
 							<!--ポップアップ閉じる-->
@@ -54,32 +54,32 @@
 					<!--現在予定-->
 					<div>
 						<p>現在の予定</p>
-						<p class="nowPlan">睡眠</p>
-						<p class="planTime">
+						<p class="now-plan">睡眠</p>
+						<p class="plan-time">
 							<span class="startTime">23:50</span>
 							 ~
-							<span class="endTime">6:50</span>
+							<span class="end-time">6:50</span>
 						</p>
 					</div>
 					<hr>
 					<!--次の予定-->
 					<div>
 						<p>次の予定</p>
-						<div class="nextPlanSet">
-						<p class="nextPlan">洗顔</p>
+						<div class="next-plan-set">
+						<p class="next-plan">洗顔</p>
 						<p>
-							<span class="startTime">23:50</span>
+							<span class="start-time">23:50</span>
 							 ~
-							<span class="endTime">6:50</span>
+							<span class="end-time">6:50</span>
 						</p>
 						</div>
 					</div>
 				</div>
 
 				<!--計測ボタン-->
-					<form action="/B4/TimeThinkServlet" method="post" class="timeButton">
-						<input type="submit" name="startButton" value="開始">
-						<input type="submit" name="completeButton" value="完了">
+					<form action="/B4/TimeThinkServlet" method="post" class="time-button">
+						<input type="submit" name="start-button" value="開始">
+						<input type="submit" name="complete-button" value="完了">
 					</form>
 
 			</div>
@@ -87,7 +87,7 @@
 			<!--下半分-->
 			<div>
 				<!--スケジュール-->
-				<div class="planList">
+				<div class="plan-list">
 					<h1>スケジュール</h1>
 					<table>
 						<tr>
@@ -176,9 +176,9 @@
 
 							<!--入力フォーム-->
 							<form action="/B4/TimeThinkServlet" method="post" class="form">
-								<input type="text" name="taskName" placeholder="新しいタスク">
+								<input type="text" name="task-name" placeholder="新しいタスク">
 								<input type="text" name="time" placeholder="所要時間">
-								<input type="submit" name="taskEntry" value="追加">
+								<input type="submit" name="task-entry" value="追加">
 							</form>
 						</div>
 

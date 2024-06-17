@@ -62,15 +62,15 @@ p{
 }
 
 /*hero*/
-.nowPlan{
+.now-plan{
 	color: red;
 	text-align: center;
 	font-size: 2rem;
 }
-.planTime{
+.plan-time{
 	text-align: center;
 }
-.nextPlanSet{
+.next-plan-set{
 	display: flex;
 	justify-content: center;
 	gap: 3rem;
@@ -78,13 +78,13 @@ p{
 }
 
 /*計測ボタン*/
-.timeButton{
+.time-button{
 	display: flex;
 	justify-content: center;
 	gap: 3rem;
 	margin-top: 1rem;
 }
-.timeButton input{
+.time-button input{
 	padding: 1.2rem 3rem 1.2rem 3rem;
 	border-radius: 4px;
 	color: #fff;
