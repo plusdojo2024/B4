@@ -7,6 +7,7 @@
 <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width">
 <title>予算逆算 | ずぼら塾</title>
+<link rel="stylesheet" href="css/moneyThink.css">
 </head>
 <body onload="displayLineChart();">
   <div class="top">
