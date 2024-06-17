@@ -20,21 +20,24 @@
 
 				<!--入力フォーム-->
 				<form action="/B4/TimeThinkServlet" method="post" class="form">
-					<input type="time" name="arrival">に
+					<input type="time" name="arrival">
+					<span>に</span>
 					<input type="text" name="destination" placeholder="目的地">
 				</form>
 
 				<!-- 住所のポップアップ -->
+				 <div class="popup-all">
 					<input type="checkbox" id="address-popup" class="popup">
 					<label class="popup-open" for="address-popup">＜住所</label>
+
 					<div class="popup-overlay">
 						<div class="popup-window">
 
 							<!--ポップアップの中身-->
-							<form action="/B4/TimeThinkServlet" method="post" class="form">
-								<h1>現在住所</h1>
+							<form action="/B4/TimeThinkServlet" method="post" class="form green">
+								<h1 class="green">現在住所</h1>
 								<input type="text" name="now-address" placeholder="現在の住所" readonly>
-								<h1>変更</h1>
+								<h1 class="green">変更</h1>
 								<input type="text" name="address" placeholder="新しい住所を入力してください">
 								<input type="submit" name="change-address" value="変更">
 							</form>
@@ -48,14 +51,15 @@
 							</label>
 						</div>
 					</div>
+				</div><!--変更点　ポップアップ閉じる-->
 
 				<!--hero-->
 				<div class="hero">
 					<!--現在予定-->
-					<div>
+					<div class="orange hero-in">
 						<p>現在の予定</p>
 						<p class="now-plan">睡眠</p>
-						<p class="plan-time">
+						<p class="plan-time orange">
 							<span class="startTime">23:50</span>
 							 ~
 							<span class="end-time">6:50</span>
@@ -63,7 +67,7 @@
 					</div>
 					<hr>
 					<!--次の予定-->
-					<div>
+					<div  class="green hero-in">
 						<p>次の予定</p>
 						<div class="next-plan-set">
 						<p class="next-plan">洗顔</p>
@@ -87,95 +91,87 @@
 			<!--下半分-->
 			<div>
 				<!--スケジュール-->
-				<div class="plan-list">
-					<h1>スケジュール</h1>
+				<h1  class="green">スケジュール</h1>
+				<div class="plan-list two-columns">
 					<table>
 						<tr>
-							<td>家を出る時間</td>
+							<th>家を出る時間</th>
 							<td>8:00</td>
 						</tr>
 						<tr>
-							<td>起床時間</td>
+							<th>起床時間</th>
 							<td>6:50</td>
 						</tr>
 						<tr>
-							<td>寝る時間</td>
+							<th>寝る時間</th>
 							<td>23:50</td>
 						</tr>
 					</table>
 				</div>
 
 				<!--タスクのポップアップ-->
-				<!--どうやって上のとは別に表示するかあんまり理解できてない-->
-				<input type="checkbox" id="task-popup" class="popup">
+				<div class="popup-all">
+				<input type="checkbox" id="task-popup" class="popup orange">
 				<label class="popup-open" for="task-popup">＜タスク</label>
 				<div class="popup-overlay">
 					<div class="popup-window">
 
 						<!--ポップアップの中身-->
 						<!--予定タスク-->
-						<div>
-							<div>
+						<div class="common-list orange">
 								<h1>予定タスク</h1>
 								<p>所要時間</p>
-							</div>
 							<table>
 								<tr>
+									<th>
+										タスク名　${taskName}
+									</th>
 									<td>
-									${taskName}
-									</td>
-									<td>
-									${time}
+										時間　${time}
 									</td>
 									<td><input type="submit" value="×"></td>
 								</tr>
 								<tr>
+									<th>
+										タスク名　${taskName}
+									</th>
 									<td>
-										${taskName}
-										</td>
-										<td>
-										${time}
-										</td>
-										<td><input type="submit" value="×"></td>
+										時間　${time}
+									</td>
+									<td><input type="submit" value="×"></td>
 								</tr>
 							</table>
 						</div>
 						<hr>
 						<!--myタスク-->
-						<div>
-							<div>
+						<div class="common-list orange">
 								<h1>myタスク</h1>
 								<p>所要時間</p>
-							</div>
-							<form action="/B4/TimeThinkServlet" method="post" class="form">
+							<form action="/B4/TimeThinkServlet" method="post">
 							<table>
 								<tr>
+									<th>
+									タスク名
+									</th>
 									<td>
-									${taskName}
+									時間
 									</td>
-									<td>
-									${time}
-									</td>
-									<td>
-										<input type="submit" value="追加">
-										<input type="submit" value="×"></td>
+									<td><input type="submit" value="×"></td>
 								</tr>
 								<tr>
+									<th>
+										タスク名　${taskName}
+									</th>
 									<td>
-										${taskName}
-										</td>
-										<td>
-										${time}
-										</td>
-										<td>
-											<input type="submit" value="追加">
-											<input type="submit" value="×"></td>
+										時間　${time}
+									</td>
+									<td><input type="submit" value="×"></td>
 								</tr>
 							</table>
 							</form>
 
 							<!--入力フォーム-->
-							<form action="/B4/TimeThinkServlet" method="post" class="form">
+							<form action="/B4/TimeThinkServlet" method="post" class="form orange">
 								<input type="text" name="task-name" placeholder="新しいタスク">
 								<input type="text" name="time" placeholder="所要時間">
 								<input type="submit" name="task-entry" value="追加">
@@ -191,9 +187,10 @@
 						</label>
 					</div>
 				</div>
+				</div>
 
 				<!--コメント-->
-				<h1>コメント</h1>
+				<h1 class="green">コメント</h1>
 				<div class="comment">
 					<p>今回の遅刻で、<span>1000円</span>給料が減少</p>
 					<p>更にこれを続けると、<span>10000円</span>の減少が・・・</p>
