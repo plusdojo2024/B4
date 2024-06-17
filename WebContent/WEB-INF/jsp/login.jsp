@@ -7,7 +7,7 @@
 <title>login</title>
 <!--==============���C�A�E�g�𐧌䂷��Ǝ���CSS��ǂݍ���===============-->
 
-<link rel="stylesheet" type="text/css" href="/simpleBC/css/login.css">
+<link rel="stylesheet" type="text/css" href="/B4/css/login.css">
 <body>
 
 
@@ -52,7 +52,7 @@
   </div>
 </div>
 
-<script src="/simpleBC/js/login.js"></script>
+<script src="/B4/js/login.js"></script>
 </body>
 </html>
 
