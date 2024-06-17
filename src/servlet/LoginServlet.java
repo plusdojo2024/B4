@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import dao.UsersDao;
-import model.LoginUser;
 import model.Users;
 
 /**
@@ -43,42 +43,55 @@ public class LoginServlet extends HttpServlet {
 		String lpw = request.getParameter("lpw");
 		UsersDao iDao = new UsersDao();
 
-        if (sid != null && !sid.isEmpty()) {
-        	if (iDao.isLoginOK(new Users(0,lid, lpw,"","","",0,0))) {	// ログイン成功
+        if (lid != null && !lid.isEmpty()) {
+        	Users us = new Users(0,lid, lpw,"","",0,LocalDateTime.now(),LocalDateTime.now());
+        	if (iDao.isLoginOK(us)) {	// ログイン成功
     			// セッションスコープにIDを格納する
     			HttpSession session = request.getSession();
-    			session.setAttribute("id", new LoginUser(id));
+    			session.setAttribute("id", us);
 
     			// メニューサーブレットにリダイレクトする
-    			response.sendRedirect("/simpleBC/InHomeServlet");
+    			response.sendRedirect("/simpleBC/StatusServlet");
     		}
     		else {									// ログイン失敗
     			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
-    			request.setAttribute("result",
-    			new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/simpleBC/HomeServlet"));
+    			//request.setAttribute("result",
+    			//new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/simpleBC/HomeServlet"));
 
     			// 結果ページにフォワードする
-    			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
-    			dispatcher.forward(request, response);
+    			//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+    			//dispatcher.forward(request, response);
+
     		}
         }
-		// ログイン処理を行う
-		if (iDao.isLoginOK(new Users(0,id, pw))) {	// ログイン成功
-			// セッションスコープにIDを格納する
-			HttpSession session = request.getSession();
-			session.setAttribute("id", new LoginUser(id));
 
-			// メニューサーブレットにリダイレクトする
-			response.sendRedirect("/simpleBC/InHomeServlet");
+        if(sid != null && !sid.isEmpty()) {
+        	Users us = new Users(0,sid,spw,"","",0,LocalDateTime.now(),LocalDateTime.now());
+        if(!spw.equals(spw2)) {
+			//request.setAttribute("result",
+			//new Result("新規登録に失敗しました", "IDが重複しています。または、パスワードが同一ではありません。", "/simpleBC/LoginServlet"));
+
+
+		}else if (iDao.sign(us)) {	// ログイン成功
+			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
+			//request.setAttribute("result",
+			//new Result("新規登録に成功しました", "ログインページに戻ってください", "/simpleBC/LoginServlet"));
+
+//			// 結果ページにフォワードする
+//			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+//			dispatcher.forward(request, response);
 		}
 		else {									// ログイン失敗
-			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
-			request.setAttribute("result",
-			new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/simpleBC/HomeServlet"));
+			//request.setAttribute("result",
+			//new Result("新規登録に失敗しました", "IDが重複しています。または、パスワードが同一ではありません。", "/simpleBC/LoginServlet"));
 
-			// 結果ページにフォワードする
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
-			dispatcher.forward(request, response);
+//			// 結果ページにフォワードする
+//			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
+//			dispatcher.forward(request, response);
 		}
+		// 結果ページにフォワードする
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+		dispatcher.forward(request, response);
+        }
 	}
 }

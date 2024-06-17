@@ -22,10 +22,10 @@ public class UsersDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B4", "sa", "");
 
 			// SELECT文を準備する
-			String sql = "SELECT COUNT(*) FROM Idpw WHERE id = ? AND pw = ?";
+			String sql = "SELECT COUNT(*) FROM Users WHERE id = ? AND pw = ?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
-			pStmt.setString(1, idpw.getId());
-			pStmt.setString(2,idpw.getPw());
+			pStmt.setString(1, idpw.getUser_id());
+			pStmt.setString(2,idpw.getPassword());
 
 			// SELECT文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
@@ -75,14 +75,15 @@ public class UsersDao {
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
 			String sql = "SELECT id FROM idpw WHERE id = ?";
 			PreparedStatement preparedStatement = conn.prepareStatement(sql);
-			preparedStatement.setString(1, idpw.getId());
+			preparedStatement.setString(1, idpw.getUser_id());
 			ResultSet resultSet = preparedStatement.executeQuery();
 			// IDが存在しない場合は挿入する
 			if (!resultSet.next()) {
 			    // IDが存在しないので挿入操作を行う
-			    String insertSql = "INSERT INTO idpw VALUES (?, ?)";
+			    String insertSql = "INSERT INTO Users VALUES (NULL,?,?,NULL,NULL,NULL,NULL,NULL)";
 			    PreparedStatement insertStatement = conn.prepareStatement(insertSql);
-			    insertStatement.setString(1, idpw.getId());
+			    insertStatement.setString(1, idpw.getUser_id());
+			    insertStatement.setString(2, idpw.getPassword());
 
 				if (insertStatement.executeUpdate() == 1) {
 					result = true;
