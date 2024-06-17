@@ -12,6 +12,7 @@
 
 
 <div class="form-structor">
+<!--登録ここから -->
   <div class="signup slide-up">
     <h2 class="form-title" id="signup">登録</h2>
     <div class="form-holder">
@@ -20,22 +21,24 @@
       </div>
       <div class=password>
       <input name="spw"  type="password" class="input pas" placeholder="パスワード" required>
-      <img src="/simpleBC/img/eye-icon.png" class="eye-icon" alt="Show Password">
+      <img src="/B4/img/eye-icon.png" class="eye-icon" alt="Show Password">
 		</div>
 		<div class="password">
       <input name="spw2" type="password" class="input pas" placeholder="パスワード（確認用）" required>
-      <img src="/simpleBC/img/eye-icon.png" class="eye-icon" alt="Show Password">
+      <img src="/B4/img/eye-icon.png" class="eye-icon" alt="Show Password">
 	</div>
     </div>
-    <form action="/B4/loginServlet" method="post">
+    <form action="/B4/LoginServlet" method="post">
     <button class="submit-btn">登録</button>
     </form>
   </div>
+<!--登録ここまで -->
 
   <h1 id="title">ずぼら塾</h1>
 
+<!--ログインここから -->
   <div class="login slide-up">
-  <img src="/simpleBC/img/hito.png" class="hito" alt="Show Password">
+  <img src="/B4/img/hito.png" class="hito" alt="Show Password">
     <div class="center">
       <h2 class="form-title" id="login">ログイン</h2>
       <div class="form-holder">
@@ -44,14 +47,15 @@
         </div>
         <div class="password">
         <input name="lpw" type="password" class="input pas" placeholder="パスワード" required>
-        <img src="/simpleBC/img/eye-icon.png" class="eye-icon" alt="Show Password">
+        <img src="/B4/img/eye-icon.png" class="eye-icon" alt="Show Password">
         </div>
       </div>
-      <form action="/B4/loginServlet" method="post">
+      <form action="/B4/LoginServlet" method="post">
       	<button type="submit" class="submit-btn">ログイン</button>
       </form>
     </div>
   </div>
+  <!--ログインここまで -->
 </div>
 
 <script src="/B4/js/login.js"></script>
