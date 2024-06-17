@@ -156,7 +156,7 @@ th{
 	margin: 0;
 }
 
-/*plan-list　※カラム数と右寄せは個別に変える必要あり*/
+/*plan-list*/
 .plan-list{
 	color: var(--dark-green);
 	margin: 1rem 0.3rem 1rem 0.3rem;
@@ -177,6 +177,7 @@ th{
 	border-bottom: none; /*最後の線消す*/
 }
 
+/*2列のリスト*/
 .plan-list.two-columns table tr {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -184,6 +185,8 @@ th{
 .plan-list.two-columns tr td:nth-child(2) {
 	text-align: right;/*2列目を右寄せにする。 */
 }
+
+/*3列のリスト*/
 .plan-list.three-columns table tr {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr;
