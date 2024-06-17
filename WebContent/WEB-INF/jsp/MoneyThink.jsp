@@ -7,57 +7,6 @@
 <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width">
 <title>予算逆算 | ずぼら塾</title>
-<style>
-#popup {
-  display: none; /* label でコントロールするので input は非表示に */
-}
-
-.popUp {
-  cursor: pointer; /* マウスオーバーでカーソルの形状を変えることで、クリックできる要素だとわかりやすいように */
-}
-
-.popup-overlay {
-  display: none; /* input にチェックが入るまでは非表示に */
-}
-
-#popup:checked ~ .popup-overlay {
-  display: block;
-  z-index: 99999;
-  background-color: #00000070;
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  top: 0;
-  left: 0;
-}
-
-.popup-window {
-  width: 90vw;
-  max-width: 560px;
-  padding: 20px;
-  background-color: #ffffff;
-  border-radius: 6px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.popup-text {
-  margin: 0;
-}
-
-.popup-text:not(:last-of-type) {
-  margin-bottom: 1em
-}
-
-.popup-close {
-  cursor: pointer;
-  position: absolute;
-  top: -26px;
-  right: 0;
-}
-</style>
 </head>
 <body onload="displayLineChart();">
   <div class="top">
@@ -80,27 +29,44 @@
       </tr></table></p>
 
 <input type="checkbox" id="popup">
-<label class="popUp" for="popup">詳細</label>
+<label class="popUp" for="popup">＜詳細</label>
 <div class="popup-overlay">
     <div class="popup-window">
         <p class="popup-text">
         <h1>手取り</h1>
         <input type="text" name="income">円
         <hr>
-        <div class="total_costs">固定費合計61,490<!-- ここに固定費合計 -->円</div>
-        <h1 style="display:inline">固定費</h1> <h2 style="display:inline">金額<h2>
-        <!-- ここに固定費別のもの-->
-        <ul>
-          <li>家賃 50000円</li>
-          <li>電気 5000円</li>
-          <li>水道代 2000円</li>
-          <li>ガス代 3000円</li>
-          <li>ネトフリ 1490円</li>
-        </ul>
-        <input type="text" name="form" placeholder="用途">
-        <input type="text" name="form" placeholder="金額">
-        <label class="formButton">
-          <input type="submit" value="追加">
+        <div>
+							<div>
+								<h1>myタスク</h1>
+								<p>所要時間</p>
+							</div>
+							<form action="/B4/TimeThinkServlet" method="post" class="form">
+							<table>
+								<tr>
+									<td>
+									${taskName}
+									</td>
+									<td>
+									${time}
+									</td>
+									<td>
+										<input type="submit" value="追加">
+										<input type="submit" value="×"></td>
+								</tr>
+								<tr>
+									<td>
+										${taskName}
+										</td>
+										<td>
+										${time}
+										</td>
+										<td>
+											<input type="submit" value="追加">
+											<input type="submit" value="×"></td>
+								</tr>
+							</table>
+							</form>
         </label>
         </p>
         <label class="popup-close" for="popup">
@@ -112,7 +78,7 @@
     </div>
 </div>
       <p>支出<input type="text" name="form">
-         <label class="formButton">
+         <label class="form-button">
            <input type="submit" value="追加">
          </label></p>
       <p>使用金額20,000<!-- ここに使用金額 -->円</p>
