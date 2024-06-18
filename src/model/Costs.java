@@ -1,5 +1,5 @@
 package model;
-
+// test
 import java.io.Serializable;
 
 public class Costs implements Serializable{
