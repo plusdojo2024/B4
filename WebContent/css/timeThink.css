@@ -39,3 +39,28 @@
 	font-size: large;
 }
 
+/*formの幅変更*/
+.form{
+	width: 100%;
+}
+.form input{
+	margin: 0.3rem;
+}
+.form .new-task{
+	width: 40%;
+	margin-left: 1rem;
+}
+.form .time{
+	width: 30%;
+}
+.form .arrival{
+	margin-left: 1rem;
+	width:15%;
+}
+.form .destination{
+	width: 65%;
+}
+
+.form .address{
+	width:65%;
+}

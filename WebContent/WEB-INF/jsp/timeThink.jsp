@@ -20,9 +20,9 @@
 
 				<!--入力フォーム-->
 				<form action="/B4/TimeThinkServlet" method="post" class="form">
-					<input type="time" name="arrival">
+					<input type="time" name="arrival" class="arrival">
 					<span>に</span>
-					<input type="text" name="destination" placeholder="目的地">
+					<input type="text" name="destination" placeholder="目的地" class="destination">
 				</form>
 
 				<!-- 住所のポップアップ -->
@@ -36,9 +36,9 @@
 							<!--ポップアップの中身-->
 							<form action="/B4/TimeThinkServlet" method="post" class="form green">
 								<h1 class="green">現在住所</h1>
-								<input type="text" name="now-address" placeholder="現在の住所" readonly>
+								<input type="text" name="now-address" placeholder="現在の住所" readonly class="address">
 								<h1 class="green">変更</h1>
-								<input type="text" name="address" placeholder="新しい住所を入力してください">
+								<input type="text" name="address" placeholder="新しい住所を入力してください" class="address">
 								<input type="submit" name="change-address" value="変更">
 							</form>
 
@@ -124,19 +124,19 @@
 							<table>
 								<tr>
 									<th>
-										タスク名　${taskName}
+										${taskName}
 									</th>
 									<td>
-										時間　${time}
+										${time}
 									</td>
 									<td><input type="submit" value="×"></td>
 								</tr>
 								<tr>
 									<th>
-										タスク名　${taskName}
+										${taskName}
 									</th>
 									<td>
-										時間　${time}
+										${time}
 									</td>
 									<td><input type="submit" value="×"></td>
 								</tr>
@@ -151,19 +151,19 @@
 							<table>
 								<tr>
 									<th>
-									タスク名
+									${taskName}
 									</th>
 									<td>
-									時間
+									${time}
 									</td>
 									<td><input type="submit" value="×"></td>
 								</tr>
 								<tr>
 									<th>
-										タスク名　${taskName}
+										${taskName}
 									</th>
 									<td>
-										時間　${time}
+										${time}
 									</td>
 									<td><input type="submit" value="×"></td>
 								</tr>
@@ -172,8 +172,10 @@
 
 							<!--入力フォーム-->
 							<form action="/B4/TimeThinkServlet" method="post" class="form orange">
-								<input type="text" name="task-name" placeholder="新しいタスク">
-								<input type="text" name="time" placeholder="所要時間">
+								<input type="text" name="task-name" placeholder="新しいタスク" class="new-task">
+								<span>
+								<input type="text" name="time" placeholder="所要時間" class="time">
+								分</span>
 								<input type="submit" name="task-entry" value="追加">
 							</form>
 						</div>
