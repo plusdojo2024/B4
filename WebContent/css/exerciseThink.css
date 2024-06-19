@@ -1,1 +1,28 @@
 @charset "UTF-8";
+
+/* ポップアップ（現在体重） */
+/* ラベルの大きさ　h1と合わせる */
+.popup-text {
+    font-size: 1.3rem;
+	font-weight: bold;    
+}
+
+/* タイマー */
+/* タイマー全体 */
+.timer {
+    color: #fff;
+	background-color: #EF9440;
+    font-family: arial, sans-serif;
+	max-width: 600px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+/* フォームの黄緑 */
+.form {
+	margin: 1rem 0 1rem 0;
+	padding: 0.3rem;
+	border-radius: 0.3rem;
+	background-color: var(--light-green);
+	border: none;
+}
