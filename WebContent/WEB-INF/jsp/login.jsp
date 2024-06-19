@@ -15,6 +15,7 @@
 <!--登録ここから -->
   <div class="signup slide-up">
     <h2 class="form-title" id="signup">登録</h2>
+    <form action="/B4/LoginServlet" method="post">
     <div class="form-holder">
     <div class = "password">
       <input name="sid" type="text" class="input" placeholder="ユーザーID" required>
@@ -28,7 +29,6 @@
       <img src="/B4/img/eye-icon.png" class="eye-icon" alt="Show Password">
 	</div>
     </div>
-    <form action="/B4/LoginServlet" method="post">
     <button class="submit-btn">登録</button>
     </form>
   </div>
@@ -41,6 +41,7 @@
   <img src="/B4/img/hito.png" class="hito" alt="Show Password">
     <div class="center">
       <h2 class="form-title" id="login">ログイン</h2>
+      <form action="/B4/LoginServlet" method="post">
       <div class="form-holder">
       <div class="password">
         <input name="lid" type="text" class="input" placeholder="ユーザーID" required>
@@ -50,7 +51,6 @@
         <img src="/B4/img/eye-icon.png" class="eye-icon" alt="Show Password">
         </div>
       </div>
-      <form action="/B4/LoginServlet" method="post">
       	<button type="submit" class="submit-btn">ログイン</button>
       </form>
     </div>
