@@ -33,11 +33,12 @@
     <div class="hero">
     	<div class="hero-in orange">
         	<h1>
-                必要時間 
+                必要時間
                 <span class="hero-exercise">歩き${exercise_name}</span>
                 <span class="hero-time">１５分 ${time_by_exercise}</span>
-            </h1> 
+            </h1>
         </div>
+        <hr>
         <div class="hero-in orange">
         	<h1>一日 3${momentum}Ex 必要</h1>         <!-- データで変化にあとで変える -->
          	<p>本日の運動量 1${today_exercise}Ex</p>       <!-- データで変化にあとで変える -->
@@ -70,7 +71,7 @@
                                 </svg>
                             </label>
                     </div>
-                </div>     
+                </div>
     </div>
 
      <!--行う運動の種類を選択  -->
@@ -80,19 +81,23 @@
             <option value="running">ランニング</option>
             <option value="workout">筋トレ</option>
         </select>
+   
 
     <!-- タイマーを表示 -->
         <div class="timer">
         <!-- 計測時間を表示 -->
-            <div id="time">00:00.000</div>
+            <div id="time">00:00.00</div>
             <!-- 開始・一時停止・完了ボタン -->
             <div>
-                <button id="start" onclick="start()">開始</button>
-                <button id="stop" onclick="stop()">一時停止</button>
-                <button type="submit" id="reset" onclick="reset()">完了</button>
+                <button type="button" id="start" onclick="start()">開始</button>
+                <button type="button" id="stop" onclick="stop()" disabled>一時停止</button>
+                <button type="submit" id="reset"  orm="button"f onclick="reset()" disabled>完了</button>
             </div>
         </div>
-     </form>
+    </form>
+    <!-- <form id="button"></form> -->
+
+   
 
 
     <hr>
@@ -133,8 +138,8 @@
 
   </main>
 
-  <script src="/B4/js/exerciseThink.js"></script>
-  <script src="/B4/js/graph.js"></script>
+  <script src="js/exerciseThink.js"></script>
+  <!-- <script src="js/graph.js"></script> -->
 
 
 </body>

@@ -12,18 +12,17 @@ var startTime;          // 開始時間
 var elapsedTime = 0;    // 経過時間
 var holdTime = 0;       // 一時停止用に時間を保持
 
-function clock() {
-    startButton = document.getElementById("start");
-    stopButton = document.getElementById("stop");
-    resetButton = document.getElementById("reset");
-    showTime = document.getElementById("time");
-  }
-
+startButton = document.getElementById("start");
+stopButton = document.getElementById("stop");
+resetButton = document.getElementById("reset");
+showTime = document.getElementById("time");
+  
+document.addEventListener(startButton,'click',start());
   // スタートボタン押下時
 function start(){
     // 開始時間を現在の時刻に設定
     startTime = Date.now();
-
+    console.log(startTime);
     // 時間計測
     measureTime();
 
@@ -53,7 +52,7 @@ function reset(){
     // 変数、表示を初期化
     elapsedTime = 0;
     holdTime = 0;
-    showTime.textContent = "00:00.000";
+    showTime.textContent = "00:00.00";
 
     startButton.disabled = false;
     stopButton.disabled = true;
