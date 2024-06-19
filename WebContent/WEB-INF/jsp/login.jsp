@@ -9,8 +9,6 @@
 
 <link rel="stylesheet" type="text/css" href="/B4/css/login.css">
 <body>
-
-
 <div class="form-structor">
 <!--登録ここから -->
   <div class="signup slide-up">

@@ -1,4 +1,10 @@
 console.clear();
+window.onload = function() {
+    var messageElement = '<%= request.getAttribute("message") %>';;
+    if (messageElement && messageElement.textContent.trim().length > 0) {
+        alert(messageElement.textContent.trim());
+    }
+}
 
 const loginBtn = document.getElementById('login');
 const signupBtn = document.getElementById('signup');

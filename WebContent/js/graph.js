@@ -1,5 +1,12 @@
+//--アラート機能
+window.onload = function() {
+    var messageElement = '<%= request.getAttribute("message") %>';;
+    if (messageElement && messageElement.textContent.trim().length > 0) {
+        alert(messageElement.textContent.trim());
+    }
+}
 
-  //----運動逆算
+//----運動逆算
   const day = document.getElementById('dayChart').getContext('2d');
   const week = document.getElementById('weekChart').getContext('2d');
   const month = document.getElementById('monthChart').getContext('2d');

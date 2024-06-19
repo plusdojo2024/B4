@@ -10,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.Alert;
 import dao.UsersDao;
 import model.Users;
-
 /**
  * Servlet implementation class LoginServlet
  */
@@ -48,25 +48,24 @@ public class LoginServlet extends HttpServlet {
     			// セッションスコープにIDを格納する
     			HttpSession session = request.getSession();
     			session.setAttribute("id", us);
-
     			// メニューサーブレットにリダイレクトする
     			response.sendRedirect("/simpleBC/StatusServlet");
     		}
     		else {									// ログイン失敗
-
+    			request.setAttribute("message", Alert.loginError());
     		}
         }
         if(sid != null && !sid.isEmpty()) {
         	Users us = new Users(0,sid,spw,"","",0,"","");
         	if(!spw.equals(spw2)) {//重複
-
+        		request.setAttribute("message", Alert.signError());
         	}else if (iDao.sign(us)) {	// 登録成功
-        		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
-        		dispatcher.forward(request, response);
+        		request.setAttribute("message", Alert.success());
         	}else {									// 登録失敗
-        		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
-        		dispatcher.forward(request, response);
+        		request.setAttribute("message", Alert.signError());
         	}
         }
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
+		dispatcher.forward(request, response);
 	}
 }
