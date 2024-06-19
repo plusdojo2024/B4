@@ -1,0 +1,73 @@
+@charset "UTF-8";
+h1{
+  font-size:100%;
+  color: #008000;
+}
+
+h2{
+  font-size:100%;
+  color: #FD7E00;
+}
+
+ul{
+  padding-left:0;
+}
+
+li{
+  list-style:none;
+}
+
+.txt {
+  margin-top: 1em;
+  padding-bottom: 0.5em;
+}
+.txt01 {
+  border-bottom: 2px dashed #FD7E00;
+}
+
+.text {
+  /*真ん中の要素*/
+  background: orange;
+  padding: 10px;
+  margin: 10px;
+}
+
+.box {
+  margin: 10px;
+  width: 100px;
+  height: 100px;
+  background-color: #000;
+}
+.display-flex {
+  display: flex;
+}
+
+.child {
+  float: left;
+  width: 33.33%; /* 幅を均等に設定 */
+  /* 必要なマージンやパディングの調整 */
+}
+
+.clearfix::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.orenzi {
+  color: white;/*文字色*/
+  padding: 0.5em;/*文字周りの余白*/
+  display: inline-block;/*おまじない*/
+  line-height: 1.3;/*行高*/
+  background: #EF9440;/*背景色*/
+  vertical-align: middle;
+  border-radius: 25px;/*左側の角を丸く*/
+}
+
+.display-flex{
+  margin-bottom: 10px;
+}
+
+.iro{
+  padding: 10px 20px;
+}
