@@ -6,17 +6,21 @@ public class FixedTypes implements Serializable {
 	private int id;
 	private String fixed;
 	private String created_at;
-	private String update_at;
+	private String updated_at;
 
-	public FixedTypes() {
-	}
+
 	public FixedTypes (int number, String fixed,
-			String created_at, String update_at) {
-		super();
+			String created_at, String updated_at) {
 		this.id = number;
 		this.fixed = fixed;
 		this.created_at = created_at;
-		this.update_at = update_at;
+		this.updated_at = updated_at;
+	}
+	public FixedTypes() {
+		this.id = 0;
+		this.fixed = null;
+		this.created_at = null;
+		this.updated_at = null;
 	}
 	public int getId() {
 		return id;
@@ -36,10 +40,10 @@ public class FixedTypes implements Serializable {
 	public void setCreated_at(String created_at) {
 		this.created_at = created_at;
 	}
-	public String getUpdate_at() {
-		return update_at;
+	public String getUpdated_at() {
+		return updated_at;
 	}
-	public void setUpdate_at(String update_at) {
-		this.update_at = update_at;
+	public void setUpdated_at(String updated_at) {
+		this.updated_at = updated_at;
 	}
 }

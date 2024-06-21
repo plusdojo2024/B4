@@ -7,19 +7,24 @@ public class Incomes implements Serializable {
 	private String user_id;
 	private int income;
 	private String created_at;
-	private String update_at;
+	private String updated_at;
 
-	public Incomes() {
-	}
 	public Incomes(int number, String user_id, int income,
-			String created_at, String update_at) {
-		super();
+			String created_at, String updated_at) {
 		this.id = number;
 		this.user_id = user_id;
 		this.income = income;
 		this.created_at = created_at;
-		this.update_at = update_at;
+		this.updated_at = updated_at;
 	}
+	public Incomes() {
+		this.id = 0;
+		this.user_id = "";
+		this.income = 0;
+		this.created_at = null;
+		this.updated_at = null;
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -44,11 +49,11 @@ public class Incomes implements Serializable {
 	public void setCreated_at(String created_at) {
 		this.created_at = created_at;
 	}
-	public String getUpdate_at() {
-		return update_at;
+	public String getUpdated_at() {
+		return updated_at;
 	}
-	public void setUpdate_at(String update_at) {
-		this.update_at = update_at;
+	public void setUpdated_at(String updated_at) {
+		this.updated_at = updated_at;
 	}
 
 

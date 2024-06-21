@@ -8,20 +8,25 @@ public class Costs implements Serializable{
 	private int fixed_id;
 	private int fixed_money;
 	private String created_at;
-	private String update_at;
+	private String updated_at;
 
-	public Costs() {
 
-	}
 	public Costs(int number,String user_id, int fixed_id, int fixed_money,
-			String created_at, String update_at) {
-		super();
+			String created_at, String updated_at) {
 		this.id = number;
 		this.user_id = user_id;
 		this.fixed_id = fixed_id;
 		this.fixed_money = fixed_money;
 		this.created_at = created_at;
-		this.update_at = update_at;
+		this.updated_at = updated_at;
+	}
+	public Costs() {
+		this.id = 0;
+		this.user_id = "";
+		this.fixed_id = 0;
+		this.fixed_money = 0;
+		this.created_at = null;
+		this.updated_at = null;
 	}
 	public int getId() {
 		return id;
@@ -53,10 +58,10 @@ public class Costs implements Serializable{
 	public void setCreated_at(String created_at) {
 		this.created_at = created_at;
 	}
-	public String getUpdate_at() {
-		return update_at;
+	public String getUpdated_at() {
+		return updated_at;
 	}
-	public void setUpdate_at(String update_at) {
-		this.update_at = update_at;
+	public void setUpdated_at(String updated_at) {
+		this.updated_at = updated_at;
 	}
 }

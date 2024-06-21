@@ -9,9 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.TargetSavingDao;
 import model.TargetSavings;
+import model.Users;
 
 /**
  * Servlet implementation class MoneyThinkServlet
@@ -32,21 +34,37 @@ public class MoneyThinkServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	 protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// リクエストパラメータを取得する
-				request.setCharacterEncoding("UTF-8");
-				String user_id = request.getParameter("user_id");
-				Double target_saving = Double.valueOf(request.getParameter("target_saving")) ;
-				String saving_period_str = request.getParameter("saving_period");
-				Date saving_period = Date.valueOf(saving_period_str);
+		HttpSession session = request.getSession();
+		request.setCharacterEncoding("UTF-8");
+		Users user = (Users)session.getAttribute("id");
+		String user_id = user.getUser_id();
+		Double target_saving = Double.valueOf(request.getParameter("target_saving")) ;
+		String saving_period_str = request.getParameter("saving_period");
+		Date saving_period = Date.valueOf(saving_period_str);
+		String lenght=request.getParameter("length");
+		// 登録処理を行う
+		TargetSavingDao TSDao = new TargetSavingDao();
+		if (TSDao.insert(new TargetSavings(0,user_id,target_saving,saving_period,true,"",
+				""))) {	// 登録成功
+			//リクエストスコープ「current」にtarget_saving,lengthを格納する
 
-				// 登録処理を行う
-				TargetSavingDao TSDao = new TargetSavingDao();
-				if (TSDao.insert(new TargetSavings(0,user_id,target_saving,saving_period,true,"",
-						""))) {	// 登録成功
-				}
-				else {												// 登録失敗
-				}
+
+
+			//moneyThink.jspを開く
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/moneyThink.jsp");
+			dispatcher.forward(request, response);
+
+
+		}
+		else {												// 登録失敗
+		}
+
+
+
+
 	}
+
 
 }

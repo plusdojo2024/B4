@@ -7,18 +7,23 @@ public class CurrentSavings implements Serializable{
 	private String user_id;
 	private int current_saving;
 	private String created_at;
-	private String update_at;
+	private String updated_at;
 
-	public CurrentSavings() {
-	}
+
 	public CurrentSavings (int number, String user_id, int current_saving,
-			String created_at, String update_at) {
-		super();
+			String created_at, String updated_at) {
 		this.id = number;
 		this.user_id = user_id;
 		this.current_saving = current_saving;
 		this.created_at = created_at;
-		this.update_at = update_at;
+		this.updated_at = updated_at;
+	}
+	public CurrentSavings() {
+		this.id = 0;
+		this.user_id = "";
+		this.current_saving = 0;
+		this.created_at = null;
+		this.updated_at = null;
 	}
 	public int getId() {
 		return id;
@@ -44,10 +49,10 @@ public class CurrentSavings implements Serializable{
 	public void setCreated_at(String created_at) {
 		this.created_at = created_at;
 	}
-	public String getUpdate_at() {
-		return update_at;
+	public String getUpdated_at() {
+		return updated_at;
 	}
-	public void setUpdate_at(String update_at) {
-		this.update_at = update_at;
+	public void setUpdated_at(String updated_at) {
+		this.updated_at = updated_at;
 	}
 }

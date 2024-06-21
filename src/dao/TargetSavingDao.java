@@ -31,7 +31,7 @@ public class TargetSavingDao {
 			else {
 				pStmt.setString(1, "（未設定）");
 			}
-			    pStmt.setDouble(2, ts.getTarget_saving());
+			pStmt.setDouble(2, ts.getTarget_saving());
 
 			if (ts.getSaving_period() != null && !ts.getSaving_period().equals("")) {
 				pStmt.setDate(3, ts.getSaving_period());
