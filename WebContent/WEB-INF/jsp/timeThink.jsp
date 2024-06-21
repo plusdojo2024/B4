@@ -121,41 +121,51 @@
 								<h1>予定タスク</h1>
 								<p>所要時間</p>
 								<table>
-								<c:forEach var="t" items="${task}" >
 								<tr>
- 									<td>${t.user_id}" </td>
-									<td>${t.time}</td>
-									<td><input type="submit" value="×"></td>
+ 									<td>a</td>
+									<td>a</td>
+									<td><input type="submit"   value="×"></td>
 								</tr>
-								</c:forEach>
 							</table>
 						</div>
 						<hr>
 						<!--myタスク-->
 						<div class="common-list orange">
-								<h1>myタスク</h1>
+								<h1>マイタスク</h1>
 								<p>所要時間</p>
 							<form action="/B4/TimeThinkServlet" method="post">
 							<table>
-								<c:forEach var="t" items="${task}" >
+								<c:forEach var="t" items="${myTask}" >
 								<tr>
-									<td>${t.user_id}</td>
-									<td>${t.time}</td>
-									<td><input type="submit" value="×"></td>
+									<td><input type="text" name="task-id" value="${t.task_id}" readonly class="tasl_id">
+									<td><input type="text" name="task" value="${t.task}" readonly> </td>
+									<td><input type="text" name="time" value="${t.time}" readonly></td>
+									<td><input type="submit" name="submit" value="×"></td>
 								</tr>
 								</c:forEach>
 							</table>
 							</form>
+						</div>
 
 							<!--入力フォーム-->
-							<form action="/B4/TimeThinkServlet" method="post" class="form orange">
-								<input type="text" name="task-name" placeholder="新しいタスク" class="new-task">
-								<span>
-								<input type="text" name="time" placeholder="所要時間" class="time">
-								分</span>
-								<input type="submit" name="task-entry" value="追加">
-							</form>
-						</div>
+							<div>
+								<form action="/B4/TimeThinkServlet" method="post" class="form orange">
+	 							<select name="task-id">
+									<c:forEach var="tt" items="${taskTypes}" >
+										<option value="${tt.id}">${tt.id} , ${tt.task}</option>
+									</c:forEach>
+								</select>
+									<span>
+									<input type="text" name="time" placeholder="所要時間" class="time">
+									分</span>
+									<input type="submit" name="submit" value="マイタスクに追加">
+								</form>
+
+								<form action="/B4/TimeThinkServlet" method="post" class="form orange">
+									<input type="text" name="task-name" placeholder="新しいタスク" class="new-task">
+									<input type="submit" name="submit" value="タスク追加">
+								</form>
+							</div>
 
 						<!--ポップアップ閉じる-->
 						<label class="popup-close" for="task-popup">
@@ -165,8 +175,9 @@
 							</svg>
 						</label>
 					</div>
+					</div>
 				</div>
-				</div>
+
 
 				<!--コメント-->
 				<h1 class="green">コメント</h1>
