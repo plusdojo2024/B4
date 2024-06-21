@@ -1,16 +1,16 @@
 package model;
 
 import java.io.Serializable;
-
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 public class AmountUseds implements Serializable {
 	private int id;
 	private String user_id;
-	private int amount_used;
+	private Integer amount_used;
 	private String created_at;
 	private String updated_at;
-
 	public AmountUseds (int number, String user_id, int amount_used,
-			String created_at, String updated_at) {
+		String created_at, String updated_at) {
 		this.id = number;
 		this.user_id = user_id;
 		this.amount_used = amount_used;
@@ -24,6 +24,25 @@ public class AmountUseds implements Serializable {
 		this.created_at = null;
 		this.updated_at = null;
 	}
+
+    // タイムスタンプを解析するフォーマットを指定
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
+    // LocalDateTimeオブジェクトに変換
+    LocalDateTime dateTime = LocalDateTime.parse(updated_at, formatter);
+
+	public int getYear() {
+		return  dateTime.getYear();
+	}
+	public int getMonth() {
+		return dateTime.getMonthValue();
+	}
+	public int getDay() {
+		return dateTime.getDayOfMonth();
+	}
+	public int getTime() {
+		return dateTime.getHour();
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -36,10 +55,10 @@ public class AmountUseds implements Serializable {
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
-	public int getAmount_used() {
+	public Integer getAmount_used() {
 		return amount_used;
 	}
-	public void setAmount_used(int amount_used) {
+	public void setAmount_used(Integer amount_used) {
 		this.amount_used = amount_used;
 	}
 	public String getCreated_at() {
