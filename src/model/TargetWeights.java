@@ -1,12 +1,13 @@
 package model;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class TargetWeights implements Serializable  {
 	private int id;
 	private String user_id;
 	private double target_weight;  // 目標体重
-	private String exercise_period;
+	private Date exercise_period;
 	private boolean now;
 	private String created_at;
 	private String updated_at;
@@ -17,7 +18,7 @@ public class TargetWeights implements Serializable  {
 	}
 
 	// 引数があるコンストラクタ
-	public TargetWeights(int id, String user_id, double target_weight, String exercise_period, boolean now,
+	public TargetWeights(int id, String user_id, double target_weight, Date exercise_period, boolean now,
 			String created_at, String updated_at) {
 		super();
 		this.id = id;
@@ -53,11 +54,11 @@ public class TargetWeights implements Serializable  {
 		this.target_weight = target_weight;
 	}
 
-	public String getExercise_period() {
+	public Date getExercise_period() {
 		return exercise_period;
 	}
 
-	public void setExercise_period(String exercise_period) {
+	public void setExercise_period(Date exercise_period) {
 		this.exercise_period = exercise_period;
 	}
 
@@ -84,5 +85,5 @@ public class TargetWeights implements Serializable  {
 	public void setUpdated_at(String updated_at) {
 		this.updated_at = updated_at;
 	}
-
 }
+

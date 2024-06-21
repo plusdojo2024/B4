@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 // タイマー
 var startButton;    // startボタン
@@ -16,23 +16,22 @@ startButton = document.getElementById("start");
 stopButton = document.getElementById("stop");
 resetButton = document.getElementById("reset");
 showTime = document.getElementById("time");
-  
-document.addEventListener(startButton,'click',start());
-  // スタートボタン押下時
-function start(){
+
+
+startButton.addEventListener('click',function(){
     // 開始時間を現在の時刻に設定
     startTime = Date.now();
-    console.log(startTime);
+
     // 時間計測
     measureTime();
 
     startButton.disabled = true;
     stopButton.disabled = false;
     resetButton.disabled = false;
-}
+    }
+,false);
 
-// ストップボタン押下時
-function stop(){
+stopButton.addEventListener('click',function(){
     // タイマー停止
     clearInterval(timer);
 
@@ -42,22 +41,60 @@ function stop(){
     startButton.disabled = false;
     stopButton.disabled = true;
     resetButton.disabled = false;
-}
+
+    }
+,false);
+
+
+
+// ストップボタン押下時
+//function stop(){
+    // タイマー停止
+  //  clearInterval(timer);
+
+    // 停止時間を保持
+    //holdTime += Date.now() - startTime;
+
+    //startButton.disabled = false;
+    //stopButton.disabled = true;
+    //resetButton.disabled = false;
+//}
 
 // リセットボタン押下時
-function reset(){
+//function reset(){
+    // タイマー停止
+  //  clearInterval(timer);
+
+    // 変数、表示を初期化
+    //elapsedTime = 0;
+    //holdTime = 0;
+    //showTime.textContent = "00:00.00";
+
+    //startButton.disabled = false;
+    //stopButton.disabled = true;
+    //resetButton.disabled = true;
+//}
+
+resetButton.addEventListener('click', function () {
     // タイマー停止
     clearInterval(timer);
 
+    // 送信処理（時間を送信するなど）
+        // 停止時間を保持
+    holdTime += Date.now() - startTime;
+
+
+    // ここに追加のコードを書く
+
     // 変数、表示を初期化
     elapsedTime = 0;
-    holdTime = 0;
     showTime.textContent = "00:00.00";
 
     startButton.disabled = false;
     stopButton.disabled = true;
     resetButton.disabled = true;
-}
+}, false);
+
 
 // 時間を計測（再帰関数）
 function measureTime() {
@@ -66,7 +103,7 @@ function measureTime() {
         // 経過時間を設定し、画面へ表示
         elapsedTime = Date.now() - startTime + holdTime;
         showTime.textContent = new Date(elapsedTime).toISOString().slice(14, 23);
-        
+
         // 関数を呼び出し、時間計測を継続する
         measureTime();
     }, 10);

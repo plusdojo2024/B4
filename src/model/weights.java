@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-public class weights implements Serializable{
+public class Weights implements Serializable {
 	private int id;
 	private String user_id;
 	private double weight; // 現在体重
@@ -10,11 +10,12 @@ public class weights implements Serializable{
 	private String updated_at;
 
 	// 引数がないコンストラクタ
-	public  weights() {
+	public  Weights() {
 
 	}
 
-	public weights(int id, String user_id, double weight, String created_at, String updated_at) {
+	// 引数があるコンストラクタ
+	public Weights(int id, String user_id, double weight, String created_at, String updated_at) {
 		super();
 		this.id = id;
 		this.user_id = user_id;

@@ -16,6 +16,7 @@ public class DiseaseList implements Serializable {
 	}
 
 	// 引数があるコンストラクタ
+
 	public DiseaseList(int id, String disease, int disease_money, int standard, String created_at, String updated_at) {
 		super();
 		this.id = id;
@@ -73,6 +74,5 @@ public class DiseaseList implements Serializable {
 	public void setUpdated_at(String updated_at) {
 		this.updated_at = updated_at;
 	}
-
-
 }
+

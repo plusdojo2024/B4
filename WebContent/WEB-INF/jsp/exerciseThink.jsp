@@ -77,11 +77,11 @@
      <!--行う運動の種類を選択  -->
      <form method="post" action="/B4/ExerciseThinkServlet">
         <select name="exercise_pulldown" class="pulldown form" >
-            <option value="walking">歩き</option>
-            <option value="running">ランニング</option>
-            <option value="workout">筋トレ</option>
+            <option value="met1">歩き</option>
+            <option value="met2">ランニング</option>
+            <option value="met3">筋トレ</option>
         </select>
-   
+
 
     <!-- タイマーを表示 -->
         <div class="timer">
@@ -89,15 +89,17 @@
             <div id="time">00:00.00</div>
             <!-- 開始・一時停止・完了ボタン -->
             <div>
-                <button type="button" id="start" onclick="start()">開始</button>
-                <button type="button" id="stop" onclick="stop()" disabled>一時停止</button>
-                <button type="submit" id="reset"  orm="button"f onclick="reset()" disabled>完了</button>
+                <button type="button" id="start" >開始</button>
+                <button type="button" id="stop"  disabled>一時停止</button>
+           <!--     <button type="submit" value=<%= holdTime %> id="reset" disabled>完了</button> -->
+
             </div>
         </div>
     </form>
-    <!-- <form id="button"></form> -->
 
-   
+
+
+
 
 
     <hr>
