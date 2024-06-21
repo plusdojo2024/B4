@@ -17,7 +17,6 @@
 		<main>
 			<!--上半分-->
 			<div>
-
 				<!--入力フォーム-->
 				<form action="/B4/TimeThinkServlet" method="post" class="form">
 					<input type="time" name="arrival" class="arrival">
@@ -121,25 +120,14 @@
 						<div class="common-list orange">
 								<h1>予定タスク</h1>
 								<p>所要時間</p>
-							<table>
+								<table>
+								<c:forEach var="t" items="${task}" >
 								<tr>
-									<th>
-										${taskName}
-									</th>
-									<td>
-										${time}
-									</td>
+ 									<td>${t.user_id}" </td>
+									<td>${t.time}</td>
 									<td><input type="submit" value="×"></td>
 								</tr>
-								<tr>
-									<th>
-										${taskName}
-									</th>
-									<td>
-										${time}
-									</td>
-									<td><input type="submit" value="×"></td>
-								</tr>
+								</c:forEach>
 							</table>
 						</div>
 						<hr>
@@ -149,24 +137,13 @@
 								<p>所要時間</p>
 							<form action="/B4/TimeThinkServlet" method="post">
 							<table>
+								<c:forEach var="t" items="${task}" >
 								<tr>
-									<th>
-									${taskName}
-									</th>
-									<td>
-									${time}
-									</td>
+									<td>${t.user_id}</td>
+									<td>${t.time}</td>
 									<td><input type="submit" value="×"></td>
 								</tr>
-								<tr>
-									<th>
-										${taskName}
-									</th>
-									<td>
-										${time}
-									</td>
-									<td><input type="submit" value="×"></td>
-								</tr>
+								</c:forEach>
 							</table>
 							</form>
 
