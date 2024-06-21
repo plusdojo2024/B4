@@ -62,7 +62,7 @@ public class GraphDAO {
 			}
 		}
 	}
-}
+
 
 public List<Momentums> yearList(List<Momentums> momentAllList) {
 int count = 0;
