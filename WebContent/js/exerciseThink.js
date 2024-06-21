@@ -16,6 +16,7 @@ startButton = document.getElementById("start");
 stopButton = document.getElementById("stop");
 resetButton = document.getElementById("reset");
 showTime = document.getElementById("time");
+submitButton = document.getElementById("submit");
 
 
 startButton.addEventListener('click',function(){
@@ -28,6 +29,7 @@ startButton.addEventListener('click',function(){
     startButton.disabled = true;
     stopButton.disabled = false;
     resetButton.disabled = false;
+    submitButton.disabled = false;
     }
 ,false);
 
@@ -41,7 +43,7 @@ stopButton.addEventListener('click',function(){
     startButton.disabled = false;
     stopButton.disabled = true;
     resetButton.disabled = false;
-
+    submitButton.disabled = false;
     }
 ,false);
 
@@ -93,6 +95,7 @@ resetButton.addEventListener('click', function () {
     startButton.disabled = false;
     stopButton.disabled = true;
     resetButton.disabled = true;
+    submitButton.disabled = true;
 }, false);
 
 
@@ -103,6 +106,10 @@ function measureTime() {
         // 経過時間を設定し、画面へ表示
         elapsedTime = Date.now() - startTime + holdTime;
         showTime.textContent = new Date(elapsedTime).toISOString().slice(14, 23);
+
+		//idが「laptime」の要素のvalueに計測時間をいれる
+		let laptime = document.getElementById("laptime");
+		laptime.value=elapsedTime;
 
         // 関数を呼び出し、時間計測を継続する
         measureTime();

@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.sql.Date;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,11 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import dao.TargetWeightsDao;
-import model.TargetWeights;
-import model.Users;
 
 /**
  * Servlet implementation class ExerciseThinkServlet
@@ -51,9 +45,13 @@ public class ExerciseThinkServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		//String user_id = request.getParameter("user_id");
 		// 目標体重
-		Double target_weight = Double.valueOf(request.getParameter("target_weight")) ;
-		String exercise_period_str = request.getParameter("exercise_period");
-		Date exercise_period = Date.valueOf(exercise_period_str);
+
+//		Double target_weight = Double.valueOf(request.getParameter("target_weight")) ;
+//		String exercise_period_str = request.getParameter("exercise_period");
+//		Date exercise_period = Date.valueOf(exercise_period_str);
+
+		String laptime = request.getParameter("laptime");
+
 		// 現在体重
 	//	Double weight = Double.valueOf(request.getParameter("weight"));
 		// 運動経過時間、運動の種類
@@ -65,17 +63,17 @@ public class ExerciseThinkServlet extends HttpServlet {
 
 
 		//セッションスコープのデータを取得する
-		HttpSession session = request.getSession();
-		Users user = (Users)session.getAttribute("id");
-		String user_id = user.getUser_id();
-
-		// 登録処理を行う
-		TargetWeightsDao TWDao = new TargetWeightsDao();
-		if (TWDao.insert(new TargetWeights(0,user_id,target_weight,exercise_period,true,"",
-				""))) {	// 登録成功
-		}
-		else {				// 登録失敗
-		}
+//		HttpSession session = request.getSession();
+//		Users user = (Users)session.getAttribute("id");
+//		String user_id = user.getUser_id();
+//
+//		// 登録処理を行う
+//		TargetWeightsDao TWDao = new TargetWeightsDao();
+//		if (TWDao.insert(new TargetWeights(0,user_id,target_weight,exercise_period,true,"",
+//				""))) {	// 登録成功
+//		}
+//		else {				// 登録失敗
+//		}
 
 
 

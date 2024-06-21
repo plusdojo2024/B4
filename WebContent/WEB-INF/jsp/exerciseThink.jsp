@@ -91,8 +91,11 @@
             <div>
                 <button type="button" id="start" >開始</button>
                 <button type="button" id="stop"  disabled>一時停止</button>
-           <!--     <button type="submit" value=<%= holdTime %> id="reset" disabled>完了</button> -->
 
+
+				<button type="button" id="reset"  disabled>リセット</button>
+				<input type="submit" id="submit" disabled value="送信">
+				<input type="hidden" id="laptime" name="laptime" value="">
             </div>
         </div>
     </form>
