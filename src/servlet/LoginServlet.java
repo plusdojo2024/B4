@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,9 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import dao.Alert;
 import dao.UsersDao;
 import model.Users;
-
 /**
  * Servlet implementation class LoginServlet
  */
@@ -44,54 +43,29 @@ public class LoginServlet extends HttpServlet {
 		UsersDao iDao = new UsersDao();
 
         if (lid != null && !lid.isEmpty()) {
-        	Users us = new Users(0,lid, lpw,"","",0,LocalDateTime.now(),LocalDateTime.now());
+        	Users us = new Users(0,lid, lpw,"","",0,"","");
         	if (iDao.isLoginOK(us)) {	// ログイン成功
     			// セッションスコープにIDを格納する
     			HttpSession session = request.getSession();
     			session.setAttribute("id", us);
-
     			// メニューサーブレットにリダイレクトする
     			response.sendRedirect("/simpleBC/StatusServlet");
     		}
     		else {									// ログイン失敗
-    			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
-    			//request.setAttribute("result",
-    			//new Result("ログイン失敗！", "IDまたはPWに間違いがあります。", "/simpleBC/HomeServlet"));
-
-    			// 結果ページにフォワードする
-    			//RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
-    			//dispatcher.forward(request, response);
-
+    			request.setAttribute("message", Alert.loginError());
     		}
         }
-
         if(sid != null && !sid.isEmpty()) {
-        	Users us = new Users(0,sid,spw,"","",0,LocalDateTime.now(),LocalDateTime.now());
-        if(!spw.equals(spw2)) {
-			//request.setAttribute("result",
-			//new Result("新規登録に失敗しました", "IDが重複しています。または、パスワードが同一ではありません。", "/simpleBC/LoginServlet"));
-
-
-		}else if (iDao.sign(us)) {	// ログイン成功
-			// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
-			//request.setAttribute("result",
-			//new Result("新規登録に成功しました", "ログインページに戻ってください", "/simpleBC/LoginServlet"));
-
-//			// 結果ページにフォワードする
-//			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
-//			dispatcher.forward(request, response);
-		}
-		else {									// ログイン失敗
-			//request.setAttribute("result",
-			//new Result("新規登録に失敗しました", "IDが重複しています。または、パスワードが同一ではありません。", "/simpleBC/LoginServlet"));
-
-//			// 結果ページにフォワードする
-//			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/result.jsp");
-//			dispatcher.forward(request, response);
-		}
-		// 結果ページにフォワードする
+        	Users us = new Users(0,sid,spw,"","",0,"","");
+        	if(!spw.equals(spw2)) {//重複
+        		request.setAttribute("message", Alert.signError());
+        	}else if (iDao.sign(us)) {	// 登録成功
+        		request.setAttribute("message", Alert.success());
+        	}else {									// 登録失敗
+        		request.setAttribute("message", Alert.signError());
+        	}
+        }
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/login.jsp");
 		dispatcher.forward(request, response);
-        }
 	}
 }

@@ -73,7 +73,7 @@ public class UsersDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B4", "sa", "");
 
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-			String sql = "SELECT id FROM idpw WHERE id = ?";
+			String sql = "SELECT user_id FROM Users WHERE user_id = ?";
 			PreparedStatement preparedStatement = conn.prepareStatement(sql);
 			preparedStatement.setString(1, idpw.getUser_id());
 			ResultSet resultSet = preparedStatement.executeQuery();
