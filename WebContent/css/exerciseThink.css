@@ -4,7 +4,7 @@
 /* ラベルの大きさ　h1と合わせる */
 .popup-text {
     font-size: 1.3rem;
-	font-weight: bold;    
+	font-weight: bold;
 }
 
 /* タイマー */
@@ -25,4 +25,12 @@
 	border-radius: 0.3rem;
 	background-color: var(--light-green);
 	border: none;
+}
+
+.weight{
+	text-align: center;
+	 border-color: #FFB13C;
+	  outline: none;
+	font-size: 1.3rem;
+	border-radius: 0.3rem;
 }

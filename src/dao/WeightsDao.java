@@ -5,17 +5,15 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 import model.Weights;
 
 public class WeightsDao {
 
-	// データを持ってきて、リストで返す
-	public List<Weights> select(Weights kg) {
+	// user_idを受け取り、最新の現在体重で返す
+	public Double select(String user_id) {
 		Connection conn = null;
-		List<Weights> kgList = new ArrayList<Weights>();
+		double weight=0.0;
 
 		try {
 			// JDBCドライバを読み込む
@@ -25,30 +23,29 @@ public class WeightsDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B4", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM Weights ORDER BY user_id,updated_at"; //?ユーザごとの最新の体重をもってくる
+			String sql = "SELECT weight  FROM WEIGHTS where user_id='?' order by created_at limit 1;"; //ユーザごとの最新の体重をもってくる
 			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, user_id);
+
+
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
-			// 結果表をコレクションにコピーする
-			while (rs.next()) {
+			// 結果(1行)をコピーする
+			rs.next();
 
-				Weights record = new Weights(
-				rs.getInt("id"),
-				rs.getString("user_id"),
-				rs.getDouble("weight"),
-				rs.getString("created_at"),
-				rs.getString("updated_at")
-				);
-				kgList.add(record);
+			//SQLの結果のWEIGHT列のデータを変数weightに代入
+			weight = rs.getDouble("weight");
+
+
+
 			}
-		}
 		catch (SQLException e) {
 			e.printStackTrace();
-			kgList = null;
+			weight = 0;
 		}
 		catch (ClassNotFoundException e) {
 			e.printStackTrace();
-			kgList = null;
+			weight = 0;
 		}
 		finally {
 			// データベースを切断
@@ -58,13 +55,13 @@ public class WeightsDao {
 				}
 				catch (SQLException e) {
 					e.printStackTrace();
-					kgList = null;
+					weight = 0;
 				}
 			}
 		}
 
 		// 結果を返す
-		return kgList;
+		return weight;
 	}
 
 

@@ -6,7 +6,7 @@ public class DiseaseList implements Serializable {
 	private int id;
 	private String disease;  // 病気名
 	private int disease_money;
-	private int standard;
+	private double standard;
 	private String created_at;
 	private String updated_at;
 
@@ -17,7 +17,7 @@ public class DiseaseList implements Serializable {
 
 	// 引数があるコンストラクタ
 
-	public DiseaseList(int id, String disease, int disease_money, int standard, String created_at, String updated_at) {
+	public DiseaseList(int id, String disease, int disease_money, double standard, String created_at, String updated_at) {
 		super();
 		this.id = id;
 		this.disease = disease;
@@ -51,11 +51,11 @@ public class DiseaseList implements Serializable {
 		this.disease_money = disease_money;
 	}
 
-	public int getStandard() {
+	public double getStandard() {
 		return standard;
 	}
 
-	public void setStandard(int standard) {
+	public void setStandard(double standard) {
 		this.standard = standard;
 	}
 

@@ -14,19 +14,29 @@
 </head>
 
 <body>
+	<header>
+			<!--ヘッダー読み込み-->
+	</header>
+
   <main class="wrapper">
 
      <!--目標を入力する  -->
     <form method="post" action="/B4/ExerciseThinkServlet">
-        <input type="text" name="keyword" value="何" class="form">
-        <select name="period" class="form">
-            <option value="1">ヵ月</option>
-            <option value="2">週</option>
-            <option value="3">日</option>
-        </select>
-        <span class="green">後に</span>
-        <input type="text" name="target" value="何" class="form">
-        <span class="green">kg痩せる</span>
+    	<p>
+	        <input type="number" name="length" id="number1" placeholder="" value="${weight.length }" class="form">
+	        <select name="form" class="form" id="YearOrMonthOrWeek">
+	        	<option value="365">年</option>
+	            <option value="30">ヵ月</option>
+	            <option value="7">週</option>
+
+	        </select>
+	        <span class="green">後に</span>
+	        <input type="text" name="target_weight" class="form" placeholder="">
+	        <span class="green">kg痩せる</span>
+	        <input type="hidden" id="finaldate" name="weight_period" value="${current.target_weight}">
+				 <input type="submit" value="登録"
+				 Style="background-color: var(- -dark-green); margin-left: 0.5rem; width: 3rem;">
+		</p>
     </form>
 
     <!-- 必要運動量や運動結果を表示 hero-->
@@ -55,10 +65,10 @@
                     <div class="popup-window">
                         <form method="post" action="/B4/ExerciseThinkServlet">
                             <label class="popup-text orange" for="kg">現在体重</label><br>
-                            <input type="text" name="now_weight" value="${weight}" id="kg" class="form orange" placeholder="現在の体重" readonly><br> <!--既存の体重 -->
+                            <input type="text" name="now_weight" value="${weight}" id="kg" class=" weight"  readonly><br> <!--既存の体重 -->
 
                             <label class="popup-text orange" for="change">変更 </label><br>
-                            <input type="text" name="now_weight" id="change"  class="form orange" >
+                            <input type="text" name="now_weight" id="change"  class=" weight" >
                             <span class="orange">kg</span>
 
                             <button type="submit" name="submit" class="form-button">変更</button>
@@ -94,15 +104,11 @@
 
 
 				<button type="button" id="reset"  disabled>リセット</button>
-				<input type="submit" id="submit" disabled value="送信">
+				<input type="submit" id="submit" disabled value="登録">
 				<input type="hidden" id="laptime" name="laptime" value="">
             </div>
         </div>
     </form>
-
-
-
-
 
 
     <hr>
@@ -116,7 +122,10 @@
             <option value="3">日（時間）</option>
         </select>
     </form>
-    <canvas class="graph"></canvas>
+
+    <div class="box graph">
+		<canvas id="lineChart" height="450" width="800"></canvas>
+	</div>
 
 
     <!-- 病気リストを表示 tdの部分を変化させる-->
@@ -124,17 +133,17 @@
     <div class="plan-list three-columns green">
         <table>
             <tr>
+                <th>心血管疾患</th>
+                <td>50％ ${risk}</td>
+                <td>-456万円 ${disease_money}</td>
+            </tr>
+            <tr>
                 <th>糖尿病</th>
                 <td>50％ ${risk}</td>
                 <td>-456万円 ${disease_money}</td>
             </tr>
             <tr>
-                <th>病</th>
-                <td>50％ ${risk}</td>
-                <td>-456万円 ${disease_money}</td>
-            </tr>
-            <tr>
-                <th>病</th>
+                <th>高血圧</th>
                 <td>50％ ${risk}</td>
                 <td>-456万円 ${disease_money}</td>
             </tr>
@@ -142,6 +151,11 @@
     </div>
 
   </main>
+
+  <footer>
+			<!--フッター読み込み-->
+  </footer>
+
 
   <script src="js/exerciseThink.js"></script>
   <!-- <script src="js/graph.js"></script> -->

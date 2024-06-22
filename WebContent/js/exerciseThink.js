@@ -1,6 +1,21 @@
 /**
  *
  */
+ // 目標期間を送る
+         function calculateDays() {
+            var num1 = parseFloat(document.getElementById('number1').value);
+            // 数値入力
+            var YearOrMonth = parseFloat(document.getElementById('YearOrMonthOrWeek').value);
+            // 月（30日）か年（365日）の選択された方
+            var product = num1 * YearOrMonth;
+            // 上記をかけて、期間（日数）を出す。
+            var dt = new Date();
+            dt.setDate(dt.getDate() + product);
+            // 今日の日付に足して、最終日を割り出し。
+            document.getElementById('finalDate').value = dt.toISOString().split('T')[0];
+            // 最終日を表示
+        }
+
 // タイマー
 var startButton;    // startボタン
 var stopButton;     // stopボタン
@@ -47,43 +62,12 @@ stopButton.addEventListener('click',function(){
     }
 ,false);
 
-
-
-// ストップボタン押下時
-//function stop(){
-    // タイマー停止
-  //  clearInterval(timer);
-
-    // 停止時間を保持
-    //holdTime += Date.now() - startTime;
-
-    //startButton.disabled = false;
-    //stopButton.disabled = true;
-    //resetButton.disabled = false;
-//}
-
-// リセットボタン押下時
-//function reset(){
-    // タイマー停止
-  //  clearInterval(timer);
-
-    // 変数、表示を初期化
-    //elapsedTime = 0;
-    //holdTime = 0;
-    //showTime.textContent = "00:00.00";
-
-    //startButton.disabled = false;
-    //stopButton.disabled = true;
-    //resetButton.disabled = true;
-//}
-
 resetButton.addEventListener('click', function () {
     // タイマー停止
     clearInterval(timer);
 
     // 送信処理（時間を送信するなど）
-        // 停止時間を保持
-    holdTime += Date.now() - startTime;
+
 
 
     // ここに追加のコードを書く
@@ -91,11 +75,11 @@ resetButton.addEventListener('click', function () {
     // 変数、表示を初期化
     elapsedTime = 0;
     showTime.textContent = "00:00.00";
-
+	holdTime =0;
     startButton.disabled = false;
     stopButton.disabled = true;
     resetButton.disabled = true;
-    submitButton.disabled = true;
+    submitButton.disabled = false;
 }, false);
 
 
