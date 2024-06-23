@@ -115,9 +115,8 @@
 	</form>
 	<form action="/B4/MoneyThinkServlet" method="get" class="green">
 		<p class="used-money">
-			使用金額20,000 ${amount_used}
+			<!--  使用金額20,000--> ${amount_used}円
 			<!-- ここに使用金額 -->
-			円
 		</p>
 	</form>
 </div>
@@ -135,19 +134,14 @@
 	<div class="box">
 		<canvas id="lineChart" height="450" width="800"></canvas>
 	</div>
-	<div class="investment">
+	<div class="investment" style="display:inline;">
 		<!-- display inlineする -->
 		<canvas id="lineChart2" height="300" width="400"></canvas>
 		<div class="right-text">
-			<p>
-				30年後までに
-				<!-- 月に引かれる金＊12＊30 -->
-				円
-			</p>
+			<p>30年後までに<!-- 月に引かれる金＊12＊30 -->円</p>
 			<p>貯金しないと貯金出来て、</p>
 			<p>投資に回す人と比べると</p>
-			<!--設定金額テーブルの金額＊12＊1.05＊30ー設定金額の元本（設定金額＊12＊30)-->
-			<p>万円の損</p>
+			<p class="red-comment"><!--設定金額テーブルの金額＊12＊1.05＊30ー設定金額の元本（設定金額＊12＊30)-->万円の損</p>
 		</div>
 	</div>
 </div>
