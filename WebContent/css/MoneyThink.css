@@ -30,3 +30,13 @@
 .regist-botton{
 	background-color: green;
 }
+.right-text {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    text-align: right;
+    background-color: rgba(255, 255, 255, 0.8); /* 背景色を少し透明にして読みやすくする */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

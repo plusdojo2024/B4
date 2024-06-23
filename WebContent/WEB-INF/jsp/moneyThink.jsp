@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -13,16 +15,16 @@
 <div class="top">
 	<form action="/B4/MoneyThinkServlet" method="post" class="form">
 		<p>
-			<input type="number" name="length" id="number1" placeholder="" value ="${current.length }">
-			<select name="form" class="green" id="YearOrMonth">
+			<input type="number" name="length" id="number1" placeholder=""
+				value="${current.length }"> <select name="form"
+				class="green" id="YearOrMonth">
 				<option value="365">年</option>
 				<option value="30">カ月</option>
-			</select>
-			<input type="text" name="target_saving" class="green" placeholder="">
-			<span class="green">円貯める</span>
-			<input type="hidden" id="finaldate" name="saving_period" value="${current.target_saving }">
-			 <input type="submit" value="登録"
-			 Style="background-color: var(- -dark-green); margin-left: 0.5rem; width: 3rem;">
+			</select> <input type="text" name="target_saving" class="green" placeholder="">
+			<span class="green">円貯める</span> <input type="hidden" id="finaldate"
+				name="saving_period" value="${current.target_saving }"> <input
+				type="submit" value="登録"
+				Style="background-color: var(- -dark-green); margin-left: 0.5rem; width: 3rem;">
 		</p>
 	</form>
 	<div class="hero">
@@ -57,12 +59,12 @@
 			<div class="popup-window">
 				<h1>手取り</h1>
 				<form action="/B4/MoneyThinkServlet" method="post" class="orange">
-					<input type="text" name="income">円
+					<input type="text" name="income" value="${income}">円
 				</form>
 				<hr>
 				<div class="common-list green">
 					<div class="total-cost">
-						固定費合計
+						固定費合計 1,000,000
 						<!-- ここに固定費の合計を記入 -->
 						円
 					</div>
@@ -71,13 +73,13 @@
 					<form action="/B4/MoneyThinkServlet" method="post">
 						<table>
 							<tr>
-								<th>用途</th>
-								<td>金額</td>
+								<th>家賃<!-- 用途 --></th>
+								<td>70,000</td>
 								<td><input type="submit" value="×"></td>
 							</tr>
 							<tr>
-								<th>用途 ${moneyName}</th>
-								<td>金額 ${money}</td>
+								<th>水道光熱費 ${moneyName}</th>
+								<td>30,000${money}</td>
 								<td><input type="submit" value="×"></td>
 							</tr>
 						</table>
@@ -106,14 +108,14 @@
 	<form action="/B4/MoneyThinkServlet" method="post" class="form green"
 		style="text-align: center; height:">
 		<p>
-			支出<input type="text" name="form" style="width: 20rem; height: 2rem;">
+			支出<input type="text" name="amount_used" style="width: 20rem; height: 2rem;">
 			<span class="add-botton"><input type="submit" value="追加"
 				style="width: 4rem"></span>
 		</p>
 	</form>
 	<form action="/B4/MoneyThinkServlet" method="get" class="green">
 		<p class="used-money">
-			使用金額20,000
+			使用金額20,000 ${amount_used}
 			<!-- ここに使用金額 -->
 			円
 		</p>
@@ -136,31 +138,39 @@
 	<div class="investment">
 		<!-- display inlineする -->
 		<canvas id="lineChart2" height="300" width="400"></canvas>
-		<span class="inv-comment"><p class="inv-comment">
+		<div class="right-text">
+			<p>
 				30年後までに
 				<!-- 月に引かれる金＊12＊30 -->
 				円
 			</p>
-			<p class="inv-comment">貯金しないと貯金出来て、</p>
-			<p class="inv-comment">投資に回す人と比べると</p> <!--設定金額テーブルの金額＊12＊1.05＊30ー設定金額の元本（設定金額＊12＊30)-->
-			<p class="inv-comment">万円の損</p> </span>
+			<p>貯金しないと貯金出来て、</p>
+			<p>投資に回す人と比べると</p>
+			<!--設定金額テーブルの金額＊12＊1.05＊30ー設定金額の元本（設定金額＊12＊30)-->
+			<p>万円の損</p>
+		</div>
 	</div>
 </div>
 <script>
-        function calculateDays() {
-            var num1 = parseFloat(document.getElementById('number1').value);
-            // 数値入力
-            var YearOrMonth = parseFloat(document.getElementById('YearOrMonth').value);
-            // 月（30日）か年（365日）の選択された方
-            var product = num1 * YearOrMonth;
-            // 上記をかけて、期間（日数）を出す。
-            var dt = new Date();
-            dt.setDate(dt.getDate() + product);
-            // 今日の日付に足して、最終日を割り出し。
-            document.getElementById('finalDate').value = dt.toISOString().split('T')[0];
-            // 最終日を表示
-        }
-    </script>
+	function calculateDays() {
+		var num1 = parseFloat(document.getElementById('number1').value);
+		// 数値入力
+		var YearOrMonth = parseFloat(document.getElementById('YearOrMonth').value);
+		// 月（30日）か年（365日）の選択された方
+		var product = num1 * YearOrMonth;
+		// 上記をかけて、期間（日数）を出す。
+		var dt = new Date();
+		dt.setDate(dt.getDate() + product);
+		// 今日の日付に足して、最終日を割り出し。
+		document.getElementById('finalDate').value = dt.toISOString()
+				.split('T')[0];
+		// 最終日を表示
+	}
+
+	//  function calculate budget() {
+	//  var income = parseFloat(document.getElementById)
+	// }
+</script>
 </body>
 
 </html>
