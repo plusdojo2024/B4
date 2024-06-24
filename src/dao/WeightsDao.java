@@ -14,7 +14,7 @@ public class WeightsDao {
 	public Double select(String user_id) {
 		Connection conn = null;
 		double weight=0.0;
-
+		Double weight_w = 0.0;
 		try {
 			// JDBCドライバを読み込む
 			Class.forName("org.h2.Driver");
@@ -35,7 +35,7 @@ public class WeightsDao {
 
 			//SQLの結果のWEIGHT列のデータを変数weightに代入
 			weight = rs.getDouble("weight");
-
+			weight_w = Double.valueOf(weight);
 
 
 			}
@@ -61,8 +61,10 @@ public class WeightsDao {
 		}
 
 		// 結果を返す
-		return weight;
+		return weight_w;
 	}
+
+
 
 
 

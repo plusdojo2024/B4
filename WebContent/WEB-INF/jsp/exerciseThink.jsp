@@ -135,17 +135,17 @@
             <tr>
                 <th>心血管疾患</th>
                 <td>50％ ${risk}</td>
-                <td>-456万円 ${disease_money}</td>
+                <td>${dlList[0].disease_money}+"万円"</td>
             </tr>
             <tr>
                 <th>糖尿病</th>
                 <td>50％ ${risk}</td>
-                <td>-456万円 ${disease_money}</td>
+                <td>${dlList[1].disease_money}+"万円"</td>
             </tr>
             <tr>
                 <th>高血圧</th>
                 <td>50％ ${risk}</td>
-                <td>-456万円 ${disease_money}</td>
+                <td> ${dlList[2].disease_money}+"万円"</td>
             </tr>
         </table>
     </div>
