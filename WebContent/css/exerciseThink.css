@@ -34,3 +34,10 @@
 	font-size: 1.3rem;
 	border-radius: 0.3rem;
 }
+
+/* グラフの大きさ、位置 */
+.chart-container {
+	width: 80%;
+	height: 80%;
+	margin-bottom: 20px;
+}

@@ -1,6 +1,8 @@
 package model;
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Momentums implements Serializable{
 	private int id;
@@ -22,6 +24,27 @@ public class Momentums implements Serializable{
 		this.momentum = momentum;
 		this.created_at = created_at;
 		this.updated_at = updated_at;
+	}
+
+	   // タイムスタンプを解析するフォーマットを指定
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
+    // LocalDateTimeオブジェクトに変換
+
+	public int getYear() {
+	    LocalDateTime dateTime = LocalDateTime.parse(getUpdated_at(), formatter);
+		return  dateTime.getYear();
+	}
+	public int getMonth() {
+		LocalDateTime dateTime = LocalDateTime.parse(getUpdated_at(), formatter);
+		return dateTime.getMonthValue();
+	}
+	public int getDay() {
+		LocalDateTime dateTime = LocalDateTime.parse(getUpdated_at(), formatter);
+		return dateTime.getDayOfMonth();
+	}
+	public int getTime() {
+		LocalDateTime dateTime = LocalDateTime.parse(getUpdated_at(), formatter);
+		return dateTime.getHour();
 	}
 
 

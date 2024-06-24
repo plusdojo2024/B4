@@ -5,8 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-//import java.time.DayOfWeek;
-//import java.time.LocalDate;
+import java.time.DayOfWeek;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,7 +28,7 @@ public class MomentumsDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT momentum FROM momentums where user_id='?'";
+			String sql = "SELECT momentum FROM momentums where user_id='?' AND created_at = CURRENT_DATE";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -139,112 +139,112 @@ public class MomentumsDao {
 		return momentumsList;
 	}
 
-////
-//	public double calcList(List<AmountUseds> allList){
-//		double sum =0;
-//		LocalDate today = LocalDate.now();
-//		int day = today.getDayOfMonth();
-//		int month = today.getMonthValue();
-//		 int year = today.getYear();
-//		List<AmountUseds> dayList = new ArrayList<AmountUseds>();
-//		for(AmountUseds au:allList) {
-//			if(au.getYear() == year && au.getMonth() ==month && au.getDay() == day) {
-//				dayList.add(au);
-//			}
-//		}
-//		for(AmountUseds au:dayList) {
-//			sum = sum + au.getAmount_used();
-//		}
-//		return sum;
-//	}
 //
-//	public List<double> yearList(List<AmountUseds> allList,int year) {
-//		List<Integer> calcYearList = new ArrayList<Integer>();
-//		List<AmountUseds> yearList = new ArrayList<AmountUseds>();
-//
-//		for(AmountUseds au:allList) {
-//			if(au.getYear() == year) {
-//				yearList.add(au);
-//			}
-//		}
-//
-//		for(int i=0;i<12;i++) {
-//			double sum=0;
-//			for(AmountUseds au:yearList) {
-//				int month = au.getMonth();
-//				if( i+1 == month) {
-//					sum = sum + au.getAmount_used();
-//				}
-//			}
-//			calcYearList.add(sum);
-//		}
-//		// 結果を返す
-//		return calcYearList;
-//		}
-//	public List<Integer> weekList(List<AmountUseds> allList) {
-//		List<Integer> calcWeekList = new ArrayList<Integer>();
-//	// 今日の日付を取得
-//	LocalDate today = LocalDate.now();
-//
-//	// 今日の曜日を取得
-//	DayOfWeek todayDayOfWeek = today.getDayOfWeek();
-//
-//	// 週の最初の日 (月曜日) を計算
-//	LocalDate startOfWeekDate = today.minusDays(todayDayOfWeek.getValue() - DayOfWeek.MONDAY.getValue());
-//
-//	int judgeDay = startOfWeekDate .getDayOfMonth();
-//	int judgeMonth = startOfWeekDate.getMonthValue();
-//	 int judgeYear = startOfWeekDate.getYear();
-//	//LocalDate startOfWeekDate = today.with(DayOfWeek.MONDAY);
-//	//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-//	LocalDate nextDay = startOfWeekDate.plusDays(1);
-//	//String search = startOfWeekDate.format(formatter);
-//	for(int i=0;i<7;i++) {
-//		int sum=0;
-//		for(AmountUseds au:allList) {
-//			if(au.getYear() == judgeYear && au.getMonth() == judgeMonth && au.getDay() == judgeDay) {
-//				sum = sum + au.getAmount_used();
-//			}
-//		}
-//		calcWeekList.add(sum);
-//		judgeDay = nextDay.getDayOfMonth();
-//		judgeMonth = nextDay.getMonthValue();
-//		judgeYear = nextDay.getYear();
-//		nextDay = nextDay.plusDays(1);
-//	}
-//	// 結果を返す
-//	return calcWeekList;
-//}
-//
-//public List<Integer> dayList(List<AmountUseds> allList, LocalDate today) {
-//		// 今日の日付を取得
-//		int day = today.getDayOfMonth();
-//		int month = today.getMonthValue();
-//		int year = today.getYear();
-//
-//		List<Integer> calcDayList = new ArrayList<Integer>();
-//		List<AmountUseds> dayList = new ArrayList<AmountUseds>();
-//
-//		for(AmountUseds au:allList) {
-//			if(au.getYear() == year && au.getMonth() == month && au.getDay() == day) {
-//				dayList.add(au);
-//			}
-//		}
-//
-//		for(int i=0;i<24;i++) {
-//			int sum=0;
-//			for(AmountUseds au:dayList) {
-//				if(i == au.getTime()) {
-//					sum = sum + au.getAmount_used();
-//				}
-//			}
-//			calcDayList.add(sum);
-//		}
-//		// 結果を返す
-//		return calcDayList;
-//	}
-//
-//}
+	public double calcList(List<Momentums> allList){
+		double sum =0;
+		LocalDate today = LocalDate.now();
+		int day = today.getDayOfMonth();
+		int month = today.getMonthValue();
+		 int year = today.getYear();
+		List<Momentums> dayList = new ArrayList<Momentums>();
+		for(Momentums au:allList) {
+			if(au.getYear() == year && au.getMonth() ==month && au.getDay() == day) {
+				dayList.add(au);
+			}
+		}
+		for(Momentums au:dayList) {
+			sum = sum + au.getMomentum();
+		}
+		return sum;
+	}
+
+	public List<Double> yearList(List<Momentums> allList,int year) {
+		List<Double> calcYearList = new ArrayList<Double>();
+		List<Momentums> yearList = new ArrayList<Momentums>();
+
+		for(Momentums au:allList) {
+			if(au.getYear() == year) {
+				yearList.add(au);
+			}
+		}
+
+		for(int i=0;i<12;i++) {
+			double sum=0;
+			for(Momentums au:yearList) {
+				int month = au.getMonth();
+				if( i+1 == month) {
+					sum = sum + au.getMomentum();
+				}
+			}
+			calcYearList.add(sum);
+		}
+		// 結果を返す
+		return calcYearList;
+		}
+	public List<Double> weekList(List<Momentums> allList) {
+		List<Double> calcWeekList = new ArrayList<Double>();
+	// 今日の日付を取得
+	LocalDate today = LocalDate.now();
+
+	// 今日の曜日を取得
+	DayOfWeek todayDayOfWeek = today.getDayOfWeek();
+
+	// 週の最初の日 (月曜日) を計算
+	LocalDate startOfWeekDate = today.minusDays(todayDayOfWeek.getValue() - DayOfWeek.MONDAY.getValue());
+
+	int judgeDay = startOfWeekDate .getDayOfMonth();
+	int judgeMonth = startOfWeekDate.getMonthValue();
+	 int judgeYear = startOfWeekDate.getYear();
+	//LocalDate startOfWeekDate = today.with(DayOfWeek.MONDAY);
+	//DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+	LocalDate nextDay = startOfWeekDate.plusDays(1);
+	//String search = startOfWeekDate.format(formatter);
+	for(int i=0;i<7;i++) {
+		double sum=0;
+		for(Momentums au:allList) {
+			if(au.getYear() == judgeYear && au.getMonth() == judgeMonth && au.getDay() == judgeDay) {
+				sum = sum + au.getMomentum();
+			}
+		}
+		calcWeekList.add(sum);
+		judgeDay = nextDay.getDayOfMonth();
+		judgeMonth = nextDay.getMonthValue();
+		judgeYear = nextDay.getYear();
+		nextDay = nextDay.plusDays(1);
+	}
+	// 結果を返す
+	return calcWeekList;
+}
+
+public List<Double> dayList(List<Momentums> allList, LocalDate today) {
+		// 今日の日付を取得
+		int day = today.getDayOfMonth();
+		int month = today.getMonthValue();
+		int year = today.getYear();
+
+		List<Double> calcDayList = new ArrayList<Double>();
+		List<Momentums> dayList = new ArrayList<Momentums>();
+
+		for(Momentums au:allList) {
+			if(au.getYear() == year && au.getMonth() == month && au.getDay() == day) {
+				dayList.add(au);
+			}
+		}
+
+		for(int i=0;i<24;i++) {
+			double sum=0;
+			for(Momentums au:dayList) {
+				if(i == au.getTime()) {
+					sum = sum + au.getMomentum();
+				}
+			}
+			calcDayList.add(sum);
+		}
+		// 結果を返す
+		return calcDayList;
+	}
+
+
 
 	//運動量を登録
 	public boolean insert(Momentums mt){

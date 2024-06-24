@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 
 <!DOCTYPE html>
@@ -24,7 +25,7 @@
     <form method="post" action="/B4/ExerciseThinkServlet">
     	<p>
 	        <input type="number" name="length" id="number1" placeholder="" value="${weight.length }" class="form">
-	        <select name="form" class="form" id="YearOrMonthOrWeek">
+	        <select name="form" class="form" id="YearOrMonth">
 	        	<option value="365">年</option>
 	            <option value="30">ヵ月</option>
 	            <option value="7">週</option>
@@ -123,9 +124,42 @@
         </select>
     </form>
 
-    <div class="box graph">
-		<canvas id="lineChart" height="450" width="800"></canvas>
-	</div>
+<div class="chart-container">
+    <canvas id="dayChart"></canvas>
+</div>
+ <div class="chart-container">
+	<canvas id="weekChart" class = "chart" ></canvas>
+</div>
+<div class="chart-container">
+	<canvas id="monthChart" class = "chart"></canvas>
+</div>
+
+
+<c:forEach var="e" items="${dayList}" varStatus="status">
+	<form method="POST" action="/B4/ExerciseThinkServlet">
+		<input type="hidden" id="momentDay${status.index}"
+			value="${e.???}"><br>
+		<input  type="hidden" class="day_${status.last}" id = "${status.index}" value = "${status.index}"><br>
+	</form>
+</c:forEach>
+<c:forEach var="e" items="${weekList}" varStatus="status">
+	<form method="POST" action="/B4/ExerciseThinkServlet">
+		<input type="hidden" id="momentWeek${status.index}"
+			value="${e.???}"><br>
+		<input  type="hidden" class="week_${status.last}" id = "${status.index}" value = "${status.index}"><br>
+	</form>
+</c:forEach>
+<c:forEach var="e" items="${yearList}" varStatus="status">
+	<form method="POST" action="/B4/ExerciseThinkServlet">
+		<input type="hidden" id="momentMonth${status.index}"
+			value="${e.???}"><br>
+		<input  type="hidden" class="month_${status.last}" id = "${status.index}" value = "${status.index}"><br>
+	</form>
+</c:forEach>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/B4/js/momentGraph.js"></script>
+
 
 
     <!-- 病気リストを表示 tdの部分を変化させる-->
@@ -133,18 +167,18 @@
     <div class="plan-list three-columns green">
         <table>
             <tr>
-                <th>心血管疾患</th>
-                <td>50％ ${risk}</td>
+                <th>心臓病</th>
+                <td>50 ${risk}+ "％"</td>
                 <td>${dlList[0].disease_money}+"万円"</td>
             </tr>
             <tr>
                 <th>糖尿病</th>
-                <td>50％ ${risk}</td>
+                <td>50 ${risk}+ "％"</td>
                 <td>${dlList[1].disease_money}+"万円"</td>
             </tr>
             <tr>
                 <th>高血圧</th>
-                <td>50％ ${risk}</td>
+                <td>50 ${risk}+ "％"</td>
                 <td> ${dlList[2].disease_money}+"万円"</td>
             </tr>
         </table>
