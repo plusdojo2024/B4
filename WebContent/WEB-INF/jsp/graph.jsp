@@ -105,7 +105,7 @@
 	<form method="POST" action="/B4/StatusServlet">
 		<input type="hidden" id="comPower"
 			value="<%= 総合力入れる%>">
-			</form>
+	</form>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/B4/js/statusGraph.js"></script>
