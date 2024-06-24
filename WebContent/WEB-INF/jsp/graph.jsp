@@ -5,7 +5,6 @@
 	margin-bottom: 20px;
 }
 </style>
-
 <div class="chart-container">
     <canvas id="dayChart"></canvas>
 </div>
