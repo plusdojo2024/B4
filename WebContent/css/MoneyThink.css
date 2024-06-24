@@ -36,3 +36,8 @@
 .red-comment {
 	color: red;
 }
+.chart-container {
+	width: 80%;
+	height: 80%;
+	margin-bottom: 20px;
+}
