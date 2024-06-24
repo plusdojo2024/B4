@@ -43,7 +43,28 @@
 </li>
     </ul>
 </div>
-</body>
+
+<!--/body-->
+    <div class="box1">
+      <h3></h3>
+ログインID: ${JavaBean.id}<br>
+体重: ${JavaBean.id}<br>
+プロフィール写真:<img src="/プロジェクト名/ImageServlet?id=${JavaBean.id}"  > <br>
+
+
+              <button type="submit" class="submit-btn">アップロード</button>
+
+       <div class="password">
+        <a href="#" class="btn-square-soft">ムード</a>
+        <a href="#" class="btn-square-soft">ムード</a>
+        <a href="#" class="btn-square-soft">ムード</a>
+        <a href="#" class="btn-square-soft">ムード</a>
+      </div>
+      </div>
+      </body>
+
+
+
 
 
 <!--点線-->

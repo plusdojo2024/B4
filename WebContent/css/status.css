@@ -71,3 +71,56 @@ li{
 .iro{
   padding: 10px 20px;
 }
+
+body{
+  width:100%;
+  height:2000px;
+}
+
+.box1{
+  width:300px;
+  height:300px;
+  position:absolute;
+  top:20px;
+  right:80px;
+  background-color:#CCFFCC	;
+  color:white;
+  border-radius: 50px;
+}
+
+.password {
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+	margin-bottom:10px;
+ }
+
+ .btn-square-soft {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: #f9a9ae;
+  width: 120px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 5px;
+  text-align: center;
+  overflow: hidden;
+  font-weight: bold;
+  background: linear-gradient(#fed6e3 0%, #ffaaaa 100%);
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
+
+  margin: 10px;
+  width: 200px;
+  height: 50px;
+}
+
+.btn-square-soft:active {
+  /*押したとき*/
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);/*沈むように*/
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.15);
+  background-image: linear-gradient(#fed6e3 0%, #ffbcbc 100%);/*グラデーションを明るく*/
+}
+

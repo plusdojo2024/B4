@@ -29,7 +29,30 @@ public class StatusServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		// ログインページにフォワードする
+
+		String user_id = '1';
+
+
+		//user_statusテーブルからuser_idをもとにしてデータを取得する
+		//このために必要なStatusDAOの中にselect文を実行するメソッドを書く。
+		//(select(user_id)メソッドを作る。
+		//戻ってくるのは、user_statusに関連するデータ一式なので、それらをいれる
+		//JavaBeansをstatus.java内に作る。
+
+
+		//返ってきた、statusモデルをリクエストスコープ「status」に格納する。
+
+
+
+
+
+
+
+
+
+
+
+		// status.jspを表示
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/status.jsp");
 		dispatcher.forward(request, response);
 	}
