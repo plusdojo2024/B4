@@ -22,21 +22,21 @@
 <c:forEach var="e" items="${???}" varStatus="status">
 	<form method="POST" action="/B4/ExerciseThinkServlet">
 		<input type="hidden" id="momentDay${status.index}"
-			value="${e.???}"><br>
+			value="${e}"><br>
 		<input  type="hidden" class="day_${status.last}" id = "${status.index}" value = "${status.index}"><br>
 	</form>
 </c:forEach>
 <c:forEach var="e" items="${???}" varStatus="status">
 	<form method="POST" action="/B4/ExerciseThinkServlet">
 		<input type="hidden" id="momentWeek${status.index}"
-			value="${e.???}"><br>
+			value="${e}"><br>
 		<input  type="hidden" class="week_${status.last}" id = "${status.index}" value = "${status.index}"><br>
 	</form>
 </c:forEach>
 <c:forEach var="e" items="${???}" varStatus="status">
 	<form method="POST" action="/B4/ExerciseThinkServlet">
 		<input type="hidden" id="momentMonth${status.index}"
-			value="${e.???}"><br>
+			value="${e}"><br>
 		<input  type="hidden" class="month_${status.last}" id = "${status.index}" value = "${status.index}"><br>
 	</form>
 </c:forEach>
@@ -68,21 +68,21 @@
 <c:forEach var="e" items="${???}" varStatus="status">
 	<form method="POST" action="/B4/MoneyThinkServlet">
 		<input type="hidden" id="amountDay${status.index}"
-			value="${e.???}"><br>
+			value="${e}"><br>
 		<input  type="hidden" class="day_${status.last}" id = "${status.index}" value = "${status.index}"><br>
 	</form>
 </c:forEach>
 <c:forEach var="e" items="${???}" varStatus="status">
 	<form method="POST" action="/B4/MoneyThinkServlet">
 		<input type="hidden" id="amountWeek${status.index}"
-			value="${e.???}"><br>
+			value="${e}"><br>
 		<input  type="hidden" class="week_${status.last}" id = "${status.index}" value = "${status.index}"><br>
 	</form>
 </c:forEach>
 <c:forEach var="e" items="${???}" varStatus="status">
 	<form method="POST" action="/B4/MoneyThinkServlet">
 		<input type="hidden" id="amountMonth${status.index}"
-			value="${e.???}"><br>
+			value="${e}"><br>
 		<input  type="hidden" class="month_${status.last}" id = "${status.index}" value = "${status.index}"><br>
 	</form>
 </c:forEach>
