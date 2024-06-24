@@ -75,6 +75,60 @@ import model.Tasks;
 			return Tasks;
 		}
 
+		//タスクの時間検索
+		public List<Integer> selectTime(Tasks task) {
+			Connection conn = null;
+			List<Integer> taskTimes = new ArrayList<Integer>();
+
+			try {
+				// JDBCドライバを読み込む
+				Class.forName("org.h2.Driver");
+
+				// データベースに接続する
+				conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B4", "sa", "");
+
+				// SQL文を準備する
+				String sql = "SELECT time FROM TASKS WHERE user_id = ?;";
+				PreparedStatement pStmt = conn.prepareStatement(sql);
+				// SQL文を完成させる
+						if (task.getUser_id() != null) {
+							pStmt.setString(1, task.getUser_id());
+						}
+				// SQL文を実行し、結果表を取得する
+				ResultSet rs = pStmt.executeQuery();
+
+				// 結果表をコレクションにコピーする
+				while (rs.next()) {
+					int time = rs.getInt("time");
+					taskTimes.add(time);
+				}
+			}
+			catch (SQLException e) {
+				e.printStackTrace();
+				taskTimes = null;
+			}
+			catch (ClassNotFoundException e) {
+				e.printStackTrace();
+				taskTimes = null;
+			}
+			finally {
+				// データベースを切断
+				if (conn != null) {
+					try {
+						conn.close();
+					}
+					catch (SQLException e) {
+						e.printStackTrace();
+						taskTimes = null;
+					}
+				}
+			}
+
+			// 結果を返す
+			return taskTimes;
+		}
+
+
 		// タスクを登録し、成功したらtrueを返す
 		public boolean insert(Tasks task) {
 			Connection conn = null;
