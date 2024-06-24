@@ -2,6 +2,8 @@ package servlet;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -117,9 +119,17 @@ public class MoneyThinkServlet extends HttpServlet {
 //これだと、入れられたものを返すだけで、合計を返せていない？
 			//request.setAttribute("AmountUseds",amount_used);
 //ここで、sumを返せれば解決？
-			//AmountUsedsDao dao = new AmountUsedsDao();
-			//int sum = dao.sum;
-			//request.setAttribute("AmountUsedsDao", sum);
+
+			LocalDate today = LocalDate.now();
+			List<AmountUseds> al  =ADao.allList();
+			Integer sum = ADao.calcList(al);
+			List<Integer> yearList = ADao.yearList(al,2024);
+			List<Integer> weekList = ADao.weekList(al);
+			List<Integer> dayList = ADao.dayList(al,today);
+			request.setAttribute("yearList", yearList);
+			request.setAttribute("weekList", weekList);
+			request.setAttribute("dayList", dayList);
+			request.setAttribute("sum", sum);
 
 			//moneyThink.jspを開く
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/moneyThink.jsp");
