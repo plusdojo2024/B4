@@ -2,7 +2,7 @@
   const day = document.getElementById('dayChart').getContext('2d');
   const week = document.getElementById('weekChart').getContext('2d');
   const month = document.getElementById('monthChart').getContext('2d');
-
+  const invest = document.getElementById('investChart').getContext('2d');
   const days = [];
   for (let i = 0; i < 24; i++) {
     days.push(i + '時');
@@ -10,6 +10,10 @@
   const weeks = ['月', '火', '水', '木', '金', '土','日'];
   const monthes = [];
   for (let i = 1; i <= 12; i++) {
+    monthes.push(i + '月');
+  }
+  const age = [];
+    for (let i = 1; i <= 12; i++) {
     monthes.push(i + '月');
   }
   const amountDays =[];
@@ -83,6 +87,26 @@ for (let i = 0; i < endMonthes; i++) {
         datasets: [{
             label: '使用金額',
             data: amountMonthes,
+            borderColor: '#FFB13C',
+            tension: 0.1 // 折れ線のカーブ率を指定
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+          }
+      }
+  });
+
+    const investChart = new Chart(invest, {
+    type: 'line', // グラフの種類を指定
+    data: {
+        labels: days,
+        datasets: [{
+            label: '使用金額',
+            data: amountDays,
             borderColor: '#FFB13C',
             tension: 0.1 // 折れ線のカーブ率を指定
         }]
