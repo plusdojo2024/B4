@@ -126,6 +126,7 @@ public class MoneyThinkServlet extends HttpServlet {
 			List<Integer> yearList = ADao.yearList(al,2024);
 			List<Integer> weekList = ADao.weekList(al);
 			List<Integer> dayList = ADao.dayList(al,today);
+
 			request.setAttribute("yearList", yearList);
 			request.setAttribute("weekList", weekList);
 			request.setAttribute("dayList", dayList);

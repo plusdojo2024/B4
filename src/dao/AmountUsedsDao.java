@@ -11,7 +11,7 @@ import java.util.List;
 
 import model.AmountUseds;
 public class AmountUsedsDao {
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
 		AmountUsedsDao aDao = new AmountUsedsDao();
 		List<AmountUseds> al = aDao.allList();
         for (AmountUseds au : al) {
@@ -31,7 +31,7 @@ public class AmountUsedsDao {
 		System.out.println("day::"+day);
 		System.out.println("calc::"+calc);
 		aDao.insert(new AmountUseds(0,"",0,"",""));
-	}*/
+	}
 
 	public List<AmountUseds> allList() {
 		Connection conn = null;
