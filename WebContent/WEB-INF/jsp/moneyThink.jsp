@@ -162,7 +162,7 @@
 				id="${status.index}" value="${status.index}"><br>
 		</form>
 	</c:forEach>
-	<div class="investment" style="display: inline;">
+	<div class="investment">
 		<!-- display inlineする -->
 		<canvas id="investmentChart"></canvas>
 		<div class="right-text">
@@ -175,118 +175,14 @@
 			<p>投資に回す人と比べると</p>
 			<p class="red-comment">
 				<!--設定金額テーブルの金額＊12＊1.05＊30ー設定金額の元本（設定金額＊12＊30)-->
-				約9,000,000円の損
+				約8.900,000円の損
 			</p>
 		</div>
 	</div>
 </div>
-<script>
-
-//目標金額、期間
-	function calculateDays() {
-		var num1 = parseFloat(document.getElementById('number1').value);
-		// 数値入力
-		var YearOrMonth = parseFloat(document.getElementById('YearOrMonth').value);
-		// 月（30日）か年（365日）の選択された方
-		var product = num1 * YearOrMonth;
-		// 上記をかけて、期間（日数）を出す。
-		var dt = new Date();
-		dt.setDate(dt.getDate() + product);
-		// 今日の日付に足して、最終日を割り出し。
-		document.getElementById('finalDate').value = dt.toISOString()
-				.split('T')[0];
-		// 最終日を表示
-	}
-</script>
-
-<script>
-	//今週の予算
-
-
-	//画面読み込み完了時に実行するJavaScriptを書く
-	//実行するのはcalculate_budget
-
-	  window.onload = function calculateBudget() {
-	  let income = parseFloat(document.getElementById('income')) / 5;// 収入の5分の1（週換算なので）
-	 console.log(income);
-	  let cost = 25000;// 固定費（今回は時間がないため、変動不可）
-	  let targetsavings = 10000;	// 勝手にひかれる分（上と同じく）
-	  let UsedsWeek = ${sum};	//週の使用金額()
-	  console.log(UsedsWeek);
-	let Used = income - cost - targetsavings - UsedsWeek;
-	 console.log(Used);
-	document.getElementById("Used").innerText = Used + '円';
-	}
-
-</script>
-<script>
-	//投資グラフ
-	  const monthlyInvestment = 10000; // 月々の積み立て額 1万円
-	  const annualReturnRate = 0.05; // 年間利回り 5%
-	  const investmentPeriod = 30; // 投資期間 30年間
-	  const monthsPerYear = 12;
-
-
-	  // 各年の投資額を計算
-	  let years = [];
-	  let investmentValues = [];
-
-	  let totalInvestment = 0;
-	  for (let year = 0; year <= investmentPeriod; year++) {
-	      years.push(year);
-	      for (let month = 0; month < monthsPerYear; month++) {
-	          totalInvestment += monthlyInvestment;
-	          totalInvestment *= (1 + annualReturnRate / monthsPerYear);
-	      }
-	      investmentValues.push(totalInvestment);
-	  }
-
-	  // グラフの描画
-	  const ctx = document.getElementById('investmentChart').getContext('2d');
-	  const investmentChart = new Chart(ctx, {
-	      type: 'line',
-	      data: {
-	          labels: years,
-	          datasets: [{
-	              label: "投資額",
-	              data: investmentValues,
-	              borderColor: 'rgba(75, 192, 192, 1)',
-	              backgroundColor: 'rgba(75, 192, 192, 0.2)',
-	              fill: true,
-	              borderWidth: 2,
-	              pointRadius: 3,
-	              pointBackgroundColor: 'rgba(75, 192, 192, 1)'
-	          }]
-	      },
-	      options: {
-	          responsive: true,
-	          scales: {
-	              x: {
-	                  title: {
-	                      display: true,
-	                      text: "年数"
-	                  }
-	              },
-	              y: {
-	                  title: {
-	                      display: true,
-	                      text: "投資額（円）"
-	                  },
-	                  ticks: {
-	                      beginAtZero: true
-	                  }
-	              }
-	          },
-	          plugins: {
-	              title: {
-	                  display: true,
-	                  text: "30年間の積み立て投資額の増加"
-	              }
-	          }
-	      }
-</script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/B4/js/amountGraph.js"></script>
+<script src="js/Moneythink.js"></script>
 </body>
 
 </html>
