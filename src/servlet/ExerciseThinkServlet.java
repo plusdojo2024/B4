@@ -11,7 +11,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import dao.DiseaseListDao;
 import dao.MomentumsDao;
@@ -21,7 +20,8 @@ import model.Dates;
 import model.DiseaseList;
 import model.Momentums;
 import model.TargetWeights;
-import model.Users;
+import model.Weights;
+
 /**
  * Servlet implementation class ExerciseThinkServlet
  */
@@ -43,9 +43,11 @@ public class ExerciseThinkServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		//セッションスコープのデータを取得する
-		HttpSession session = request.getSession();
-		Users user = (Users)session.getAttribute("id");
-		String user_id = user.getUser_id();
+//		request.setAttrubute("yazima_go");
+//		HttpSession session = request.getSession();
+//		Users user = (Users)session.getAttribute("id");
+//		String user_id = user.getUser_id();
+		String user_id ="yazima_go";
 
 		//現在体重を取得する
 		WeightsDao wDao = new WeightsDao();
@@ -55,46 +57,32 @@ public class ExerciseThinkServlet extends HttpServlet {
 		//運動の必要時間
 			//ユーザの目標体重を取得する
 		TargetWeightsDao twDao = new  TargetWeightsDao();
-		List<TargetWeights> twList = twDao.select(user_id);
-	    request.setAttribute("twList", twList);
-//	    double target_weight = twList.get(0).getTarget_weight();
+		double target_weight = (double)twDao.select(user_id);
+
 
 	    //ユーザの目標期間（一日単位）を取得する　exercise_periodは、例、2026-06-21の形で入っている Date→String→Int
-//	    Date exercise_period = twList.get(0).getExercise_period();
-//	    var dt = new Date();
-//        var target_date = exercise_period - dt;
+// 	    Date exercise_period = twList.get(0).getExercise_period();
+// 	    var dt = new Date();
+//         var target_date = exercise_period - dt;
+	    TargetWeightsDao periodDao = new  TargetWeightsDao();
+        double target_period =(double)periodDao.period(user_id);
 
-
-//	    // 目標期間を送る
-//        function calculateDays() {
-//           var num1 = parseFloat(document.getElementById('number1').value);
-//           // 数値入力
-//           var YearOrMonth = parseFloat(document.getElementById('YearOrMonthOrWeek').value);
-//            月（30日）か年（365日）の選択された方
-//           var product = num1 * YearOrMonth;
-//           // 上記をかけて、期間（日数）を出す。
-//           var dt = new Date();
-//           dt.setDate(dt.getDate() + product);
-//           // 今日の日付に足して、最終日を割り出し。
-//           document.getElementById('finalDate').value = dt.toISOString().split('T')[0];
-//           // 最終日を表示
-//       }
   // String をintに変える
 //       int num = Integer.parseInt(str);
-//       int target_period  ;
-//
-//
-//	    //計算
-//		double weight_loss= weight - target_weight ;
-//		double required_calories = weight_loss * 7200;
-//		double end_calories = required_calories + 2400 - 1300;
-//		double required_exercise = end_calories / weight;
-//		double daily_required_exercise = required_exercise / target_period;
-//		double time_by_exercise = daily_required_exercise / 3.5;
-//
-//		//1日に必要な運動量 歩きの必要運動量をリクエストスコープに格納する
-//		request.setAttribute("daily_required_exercise", time_by_exercise);
-//		request.setAttribute("time_by_exercise", time_by_exercise);
+
+
+
+	    //計算
+		double weight_loss= weight - target_weight ;
+		double required_calories = weight_loss * 7200;
+		double end_calories = required_calories + 2400 - 1300;
+		double required_exercise = end_calories / weight;
+		double daily_required_exercise = required_exercise / target_period;
+		double time_by_exercise = daily_required_exercise / 3.5;
+
+		//1日に必要な運動量 歩きの必要運動量をリクエストスコープに格納する
+		request.setAttribute("daily_required_exercise", time_by_exercise);
+		request.setAttribute("time_by_exercise", time_by_exercise);
 
 
 
@@ -104,8 +92,12 @@ public class ExerciseThinkServlet extends HttpServlet {
 		//一日の運動量を取得する
 		MomentumsDao mDao = new MomentumsDao();
 		List<Momentums> mList = mDao.selectAll(user_id);
-		Double sum = mDao.calcList(mList);
 
+//		for(Momentums m: mList) {System.out.println(m.getMomentum());
+//		}
+
+		Double sum = mDao.calcList(mList);
+		request.setAttribute("sum", sum);
 		// 病気リストをリクエストスコープに格納する
 		request.setAttribute("dlList", dl);
 
@@ -148,10 +140,12 @@ public class ExerciseThinkServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		//セッションスコープのデータを取得する
-		HttpSession session = request.getSession();
-		Users user = (Users)session.getAttribute("id");
-		String user_id = user.getUser_id();
+//		//セッションスコープのデータを取得する
+//		HttpSession session = request.getSession();
+//		Users user = (Users)session.getAttribute("id");
+//		String user_id = user.getUser_id();
+
+		String user_id ="yazima_go";
 
 		// リクエストパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
@@ -188,26 +182,61 @@ public class ExerciseThinkServlet extends HttpServlet {
 
 
 		// 現在体重を登録する
-//		Double weight = Double.valueOf(request.getParameter("weight"));
-//		WeightsDao wDao = new WeightsDao();
-//		if (wDao.insert(new Weights(weight))) {	// 登録成功
-//			request.setAttribute("",
-//
-//
-//			//exerciseThink.jspを開く
-//			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/exerciseThink.jsp");
-//		    dispatcher.forward(request, response);
-//
-//
-//		}
-//		else {												// 登録失敗
-//
-//		}
+		Double weight = Double.valueOf(request.getParameter("weight"));
+		WeightsDao wDao = new WeightsDao();
+		if (wDao.insert(new Weights(0,user_id,weight,"" ,""))) {	// 登録成功
+			request.setAttribute("weight",weight);
+
+
+			//exerciseThink.jspを開く
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/exerciseThink.jsp");
+		    dispatcher.forward(request, response);
+
+
+		}
+		else {												// 登録失敗
+
+		}
 
 
 		// 運動経過時間、運動の種類を受け取る
-//		String exercise_name =request.getParameter("exercise_pulldown");
-//		String laptime = request.getParameter("laptime");
+		int exercise_name =Integer.parseInt(request.getParameter("exercise_pulldown"));
+
+		double laptime = Double.parseDouble(request.getParameter("laptime"));
+		// String→double 計算のため
+
+		double time = laptime /1000 / 60 / 60;
+		double momentum = time * exercise_name;
+
+		// 運動量を登録する
+
+		MomentumsDao mDao = new MomentumsDao();
+		if (mDao.insert(new Momentums(0, user_id, momentum,"",""))) {	// 登録成功
+			request.setAttribute("momentum",momentum);
+
+
+			//exerciseThink.jspを開く
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/exerciseThink.jsp");
+		    dispatcher.forward(request, response);
+
+
+		}
+		else {												// 登録失敗
+
+		}
+
+//		// タスク登録または削除を行う
+//		TasksDao tDao = new TasksDao();
+//		if (request.getParameter("submit").equals("マイタスクに追加")) {
+//			int task_id = Integer.parseInt(request.getParameter("task-id"));
+//			int time = Integer.parseInt(request.getParameter("time"));
+//			tDao.insert(new Tasks(0, user_id, task_id, time, false, "", ""));
+//		}
+//		else if (request.getParameter("submit").equals("×")){
+//			int task_id = Integer.parseInt(request.getParameter("task-id"));
+//			tDao.delete(user_id, task_id);
+//		}
+
 //		// グラフ プルダウン
 //		String graph_menu =request.getParameter("graph_menu");
 

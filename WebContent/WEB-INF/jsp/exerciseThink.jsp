@@ -46,13 +46,13 @@
         	<h1>
                 必要時間
                 <span class="hero-exercise">歩き${exercise_name}</span>
-                <span class="hero-time">１５分 ${time_by_exercise}</span>
+                <span class="hero-time">${time_by_exercise} + "分"</span>
             </h1>
         </div>
         <hr>
         <div class="hero-in orange">
         	<h1>一日 3${momentum}Ex 必要</h1>         <!-- データで変化にあとで変える -->
-         	<p>本日の運動量 1${today_exercise}Ex</p>       <!-- データで変化にあとで変える -->
+         	<p>本日の運動量 1${sum}Ex</p>       <!-- データで変化にあとで変える -->
         </div>
     </div>
 
@@ -88,9 +88,9 @@
      <!--行う運動の種類を選択  -->
      <form method="post" action="/B4/ExerciseThinkServlet">
         <select name="exercise_pulldown" class="pulldown form" >
-            <option value="met1">歩き</option>
-            <option value="met2">ランニング</option>
-            <option value="met3">筋トレ</option>
+            <option value="3.5">歩き</option>
+            <option value="7.0">ランニング</option>
+            <option value="5.0">筋トレ</option>
         </select>
 
 

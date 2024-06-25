@@ -28,6 +28,17 @@ public class DiseaseList implements Serializable {
 		this.created_at = created_at;
 		this.updated_at = updated_at;
 	}
+	public DiseaseList(int id, String disease, int disease_money, double standard, String created_at, String updated_at) {
+		super();
+		this.id = id;
+		this.disease = disease;
+		this.disease_money = disease_money;
+		this.standard = standard;
+
+		this.created_at = created_at;
+		this.updated_at = updated_at;
+	}
+
 
 	public int getId() {
 		return id;

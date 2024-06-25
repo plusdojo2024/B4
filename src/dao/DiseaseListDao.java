@@ -103,7 +103,6 @@ public class DiseaseListDao {
 				rs.getString("disease"),
 				rs.getInt("disease_money"),
 				rs.getInt("standard"),
-				rs.getDouble("rank"),
 				rs.getString("created_at"),
 				rs.getString("updated_at")
 				);

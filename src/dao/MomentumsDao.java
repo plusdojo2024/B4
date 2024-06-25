@@ -78,6 +78,14 @@ public class MomentumsDao {
 
 	// user_idを受け取り、全データを持ってきて、リストで返す(グラフ用)
 
+	public static void main (String args[]) {
+		MomentumsDao mDao = new MomentumsDao();
+		List<Momentums> mList= mDao.selectAll("yazima_go");
+		for(Momentums m:mList) {
+			System.out.println(m.getMomentum());
+		}
+	}
+
 	public List<Momentums> selectAll(String user_id) {
 		Connection conn = null;
 		List<Momentums> momentumsList = new ArrayList<Momentums>();
@@ -90,7 +98,7 @@ public class MomentumsDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B4", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT *  FROM momentums where user_id='?'";
+			String sql = "SELECT * FROM momentums where user_id='?'";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
