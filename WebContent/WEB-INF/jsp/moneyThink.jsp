@@ -108,7 +108,7 @@
 		style="text-align: center; height:">
 		<p>
 			支出<input type="text" name="amount_used"
-				style="width: 20rem; height: 2rem;"> <span
+				style="width: 20rem; height: 2rem;" value="20000"> <span
 				class="add-botton"><input type="submit" value="追加"
 				style="width: 4rem"></span>
 		</p>

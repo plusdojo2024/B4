@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -14,11 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.AmountUsedsDao;
 import dao.IncomesDao;
-import dao.TargetSavingDao;
 import model.AmountUseds;
 import model.Incomes;
-import model.Length;
-import model.TargetSavings;
 /**
  * Servlet implementation class MoneyThinkServlet
  */
@@ -47,41 +43,39 @@ public class MoneyThinkServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		//Users user = (Users)session.getAttribute("id");
 		String user_id = "yazima_go";
-		Double target_saving = Double.valueOf(request.getParameter("target_saving")) ;
-		int se = Integer.parseInt(request.getParameter("form"));
+//		Double target_saving = Double.valueOf(request.getParameter("target_saving")) ;
+//		int se = Integer.parseInt(request.getParameter("form"));
 		//IncomesDao IDao = new IncomesDao();
-		LocalDate today = LocalDate.now();
-		LocalDate finalDay = today.plusDays(se);
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		String dateString = finalDay.format(formatter);
+//		LocalDate today = LocalDate.now();
+//		LocalDate finalDay = today.plusDays(se);
+//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+//		String dateString = finalDay.format(formatter);
 		//String saving_period_str = request.getParameter("saving_period");
 		//Date saving_period = Date.valueOf(saving_period_str);
-		String length=request.getParameter("length");
+//		String length=request.getParameter("length");
 		//TargetSavings TS = new TargetSavings()
 		// 登録処理を行う
-		TargetSavingDao TSDao = new TargetSavingDao();
-		if (TSDao.insert(new TargetSavings(0,user_id,target_saving,dateString,true,"",
-				""))) {	// 登録成功
+//		TargetSavingDao TSDao = new TargetSavingDao();
+//		if (TSDao.insert(new TargetSavings(0,user_id,target_saving,dateString,true,"",
+//				""))) {	// 登録成功
 			//リクエストスコープ「current」にtarget_saving,lengthを格納する
 			//モデルを新規に作るそのモデルには、target_savingとlengthを入れることができる
-			Length lg = new Length();
+//			Length lg = new Length();
 			//作ったモデルに実際に上記のデータを入れる
-			lg.setLength(length);
-			lg.setTarget_savings(target_saving);
+//			lg.setLength(length);
+//			lg.setTarget_savings(target_saving);
 			//モデルをリクエストスコープにいれる
 
-			request.setAttribute("current",lg);
+//			request.setAttribute("current",lg);
 
 
 
-			//moneyThink.jspを開く
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/moneyThink.jsp");
-			dispatcher.forward(request, response);
 
 
-		}
-		else {												// 登録失敗
-		}
+
+//		}
+//		else {												// 登録失敗
+//		}
 
 		// リクエストパラメータを取得する
 		//HttpSession session2 = request.getSession();
@@ -103,9 +97,6 @@ public class MoneyThinkServlet extends HttpServlet {
 
 
 
-			//moneyThink.jspを開く
-			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/moneyThink.jsp");
-			dispatcher.forward(request, response);
 
 
 
