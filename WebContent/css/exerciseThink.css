@@ -9,35 +9,39 @@
 
 /* タイマー */
 /* タイマー全体 */
+.timer{
+	margin:0 auto;
+}
+
 #time {
     color: #fff;
-	background-color: #EF9440;
-    font-family: arial, sans-serif;
+	background-color:#FFB13C ;
 	max-width: 35rem;
 	margin: 0.5rem auto 1rem auto;
 	text-align: center;
-	padding:1.3rem 1rem 1.3rem 1rem;
-	border-radius:10px;
+	padding:1.5rem 1rem 1.5rem 1rem;
+	border-radius:15px;
 	border:none;
 	font-weight: bold;
 	font-size: 2rem;
 }
 .time-button{
-	padding: 0.8rem 2rem 0.8rem 2rem;
-	border-radius: 8px;
-	margin-right:2rem;
+	padding: 0.8rem 1rem ;
+	border-radius: 12px;
+	margin-right:1.3rem;
 	color: #fff;
 	background-color: #EF9440;
 	border: none;
 	font-weight: bold;
-	font-size: large;
+	font-size: 1.5rem;
 }
 #start{
-	margin-left:5rem
-	padding:0.8rem 3rem
+	margin-left:11.4rem;
+
+	padding:0.8rem 2.6rem;
 }
 #submit{
-	padding:0.8rem 3rem;
+	padding:0.8rem 2.6rem;
 }
 
 /* フォームの黄緑 */
@@ -49,12 +53,13 @@
 	border: none;
 }
 
+
 .weight{
-	text-align: center;
+	margin:0.8rem auto 2rem auto;
+	border-radius:0.3rem;
 	 border-color: #FFB13C;
 	  outline: none;
 	font-size: 1.3rem;
-	border-radius: 0.3rem;
 }
 
 /* グラフの大きさ、位置 */
@@ -66,4 +71,12 @@
 	width: 80%;
 	height: 80%;
 	margin-bottom: 20px;
+}
+/* 病気リスト*/
+
+.plan-list table{
+	outline-color:red;
+}
+.plan-list table tr{
+	outline-color:red;
 }

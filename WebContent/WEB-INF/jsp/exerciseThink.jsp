@@ -164,7 +164,7 @@
 
 
     <!-- 病気リストを表示 tdの部分を変化させる-->
-    <h1 class="green">病気リスト</h1>
+    <h1 class="green">⚠️ 病気(運動不足)リスト</h1>
     <div class="plan-list three-columns green">
         <table>
             <tr>
