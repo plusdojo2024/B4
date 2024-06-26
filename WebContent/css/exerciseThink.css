@@ -9,13 +9,35 @@
 
 /* タイマー */
 /* タイマー全体 */
-.timer {
+#time {
     color: #fff;
 	background-color: #EF9440;
     font-family: arial, sans-serif;
-	max-width: 600px;
-	margin: 0 auto;
+	max-width: 35rem;
+	margin: 0.5rem auto 1rem auto;
 	text-align: center;
+	padding:1.3rem 1rem 1.3rem 1rem;
+	border-radius:10px;
+	border:none;
+	font-weight: bold;
+	font-size: 2rem;
+}
+.time-button{
+	padding: 0.8rem 2rem 0.8rem 2rem;
+	border-radius: 8px;
+	margin-right:2rem;
+	color: #fff;
+	background-color: #EF9440;
+	border: none;
+	font-weight: bold;
+	font-size: large;
+}
+#start{
+	margin-left:5rem
+	padding:0.8rem 3rem
+}
+#submit{
+	padding:0.8rem 3rem;
 }
 
 /* フォームの黄緑 */
@@ -36,6 +58,10 @@
 }
 
 /* グラフの大きさ、位置 */
+.gragh{
+	margin:0;
+
+}
 .chart-container {
 	width: 80%;
 	height: 80%;

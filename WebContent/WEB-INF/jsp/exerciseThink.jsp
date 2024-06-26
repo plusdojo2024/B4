@@ -9,9 +9,9 @@
 <head>
 <meta charset="UTF-8">
 <title>運動逆算</title>
-<link rel="stylesheet" href="css/common.css">
+ <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/exerciseThink.css">
-
+<!--  <style> input[type="hidden"] { display: none; } </style> -->
 </head>
 
 <body>
@@ -22,9 +22,9 @@
   <main class="wrapper">
 
      <!--目標を入力する  -->
-    <form method="post" action="/B4/ExerciseThinkServlet">
+    <form method="post" action="/B4/ExerciseThinkServlet" >
     	<p>
-	        <input type="number" name="length" id="number1" class="form">
+	        <input type="number" name="target" id="number1" class="form" value="${current.length }">
 	        <select name="form" class="form" id="YearOrMonth">
 	        	<option value="365">年</option>
 	            <option value="30">ヵ月</option>
@@ -32,13 +32,13 @@
 
 	        </select>
 	        <span class="green">後に</span>
-	        <input type="text" name="target_weight" class="form" placeholder="">
-	        <span class="green">kg痩せる</span>
-	        <input type="hidden" id="finaldate" name="weight_period" value="${current.target_weight}">
-				 <input type="submit" value="登録"
-				 Style="background-color: var(- -dark-green); margin-left: 0.5rem; width: 3rem;">
+	        <input type="text" name="target_weight" class="form" placeholder="" value="${current.target_weight}">
+	        <span class="green"> kgに痩せる </span>
+	        <input type="hidden" id="finaldate" name="weight_period" ">
+				 <input type="submit" value="設定"
+				 style="background-color: var(- -dark-green); margin-left: 0.5rem; width: 3rem;">
 		</p>
-    </form>
+	</form>
 
     <!-- 必要運動量や運動結果を表示 hero-->
     <div class="hero">
@@ -69,10 +69,10 @@
                             <input type="text" name="now_weight" value="${weight}" id="kg" class=" weight"  readonly><br> <!--既存の体重 -->
 
                             <label class="popup-text orange" for="change">変更 </label><br>
-                            <input type="text" name="now_weight" id="change"  class=" weight" >
+                            <input type="text" name="target_weight" id="change"  class=" weight" >
                             <span class="orange">kg</span>
 
-                            <button type="submit" name="submit" class="form-button">変更</button>
+                            <input type="submit"value="変更" name="submit" class="form-button">
                         </form>
                         <!-- ポップアップを閉じる -->
                             <label class="popup-close" for="popup">
@@ -99,13 +99,13 @@
         <!-- 計測時間を表示 -->
             <div id="time">00:00.00</div>
             <!-- 開始・一時停止・完了ボタン -->
-            <div>
-                <button type="button" id="start" >開始</button>
-                <button type="button" id="stop"  disabled>一時停止</button>
+            <div class="bottons">
+                <button type="button" id="start" class=time-button>開始</button>
+                <button type="button" id="stop"  disabled class=time-button>一時停止</button>
 
 
-				<button type="button" id="reset"  disabled>リセット</button>
-				<input type="submit" id="submit" disabled value="登録">
+				<button type="button" id="reset"  disabled class=time-button>リセット</button>
+				<input type="submit" name="submit" id="submit" disabled value="登録" class=time-button>
 				<input type="hidden" id="laptime" name="laptime" value="">
             </div>
         </div>
@@ -134,28 +134,29 @@
 	<canvas id="monthChart" class = "chart"></canvas>
 </div>
 
-
+<div style="display:none">
 <c:forEach var="e" items="${dayList}" varStatus="status">
-	<form method="POST" action="/B4/ExerciseThinkServlet">
+	<form method="POST" action="/B4/ExerciseThinkServlet" class = gragh>
 		<input type="hidden" id="momentDay${status.index}"
 			value="${e}"><br>
 		<input  type="hidden" class="day_${status.last}" id = "${status.index}" value = "${status.index}"><br>
 	</form>
 </c:forEach>
 <c:forEach var="e" items="${weekList}" varStatus="status">
-	<form method="POST" action="/B4/ExerciseThinkServlet">
+	<form method="POST" action="/B4/ExerciseThinkServlet" class = gragh>
 		<input type="hidden" id="momentWeek${status.index}"
 			value="${e}"><br>
 		<input  type="hidden" class="week_${status.last}" id = "${status.index}" value = "${status.index}"><br>
 	</form>
 </c:forEach>
 <c:forEach var="e" items="${yearList}" varStatus="status">
-	<form method="POST" action="/B4/ExerciseThinkServlet">
+	<form method="POST" action="/B4/ExerciseThinkServlet" class = gragh>
 		<input type="hidden" id="momentMonth${status.index}"
 			value="${e}"><br>
 		<input  type="hidden" class="month_${status.last}" id = "${status.index}" value = "${status.index}"><br>
 	</form>
 </c:forEach>
+</div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/B4/js/momentGraph.js"></script>
@@ -168,18 +169,18 @@
         <table>
             <tr>
                 <th>心臓病</th>
-                <td>50 ${risk}+ "％"</td>
-                <td>${dlList[0].disease_money}+"万円"</td>
+                <td> ${rank[0]}％</td>
+                <td>${dlList[0].disease_money}万円</td>
             </tr>
             <tr>
                 <th>糖尿病</th>
-                <td>50 ${risk}+ "％"</td>
-                <td>${dlList[1].disease_money}+"万円"</td>
+                <td> ${rank[1]}％</td>
+                <td>${dlList[1].disease_money}万円</td>
             </tr>
             <tr>
                 <th>高血圧</th>
-                <td>50 ${risk}+ "％"</td>
-                <td> ${dlList[2].disease_money}+"万円"</td>
+                <td>${rank[2]}％</td>
+                <td> ${dlList[2].disease_money}万円</td>
             </tr>
         </table>
     </div>

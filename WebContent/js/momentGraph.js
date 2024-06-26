@@ -19,17 +19,17 @@
   const endDays = document.querySelector(".day_true").value;
   const endWeeks = document.querySelector(".week_true").value;
   const endMonthes = document.querySelector(".month_true").value;
-  for (let i = 0; i < endDays; i++) {
+  for (let i = 0; i <= endDays; i++) {
 	const momentDay = document.getElementById("momentDay" + i).value;
 	momentDays.push(momentDay);
 }
 
-for (let i = 0; i < endWeeks; i++) {
+for (let i = 0; i <= endWeeks; i++) {
 	const momentWeek = document.getElementById("momentWeek" + i).value;
 	momentWeeks.push(momentWeek);
 }
 
-for (let i = 0; i < endMonthes; i++) {
+for (let i = 0; i <= endMonthes; i++) {
 	const momentMonth = document.getElementById("momentMonth" + i).value;
 	momentMonthes.push(momentMonth);
 }

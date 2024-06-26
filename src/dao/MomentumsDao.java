@@ -27,7 +27,7 @@ public class MomentumsDao {
 			// データベースに接続する
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B4","sa","");
 			// SQL文を準備する
-			String sql = "SELECT momentum FROM momentums where user_id=? AND created_at = CURRENT_DATE";
+			String sql = "SELECT momentum FROM momentums where user_id=?  AND   LEFT(created_at,10) > (CURRENT_DATE-1);";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる

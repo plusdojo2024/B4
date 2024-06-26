@@ -94,10 +94,10 @@ public class TargetWeightsDao {
 			    pStmt.setDouble(2, tw.getTarget_weight());
 
 			if (tw.getExercise_period() != null && !tw.getExercise_period().equals("")) {
-				pStmt.setDate(3, tw.getExercise_period());
+				pStmt.setString(3, tw.getExercise_period());
 			}
 			else {
-				pStmt.setDate(3, null);
+				pStmt.setString(3, null);
 			}
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
@@ -140,7 +140,7 @@ public class TargetWeightsDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B4", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT datediff(day,current_date,exercise_period)  FROM TARGET_WEIGHTS where user_id=?";
+			String sql = "SELECT datediff(day,current_date,exercise_period) as diff FROM TARGET_WEIGHTS where user_id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -154,7 +154,7 @@ public class TargetWeightsDao {
 			rs.next();
 
 			//SQLの結果のWEIGHT列のデータを変数weightに代入
-			period = rs.getInt("exercise_period");
+			period = rs.getInt("diff");
 
 		}
 		catch (SQLException e) {

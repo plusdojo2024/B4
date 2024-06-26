@@ -12,10 +12,10 @@ import model.DiseaseList;
 
 public class DiseaseListDao {
 
-	//病気名により金額と基準確率をもってくる
-	public List<DiseaseList> select(String disease) {
+	//基準確率をもってくる
+	public List<Double> select() {
 		Connection conn = null;
-		List<DiseaseList> dlList = new ArrayList<DiseaseList>();
+		List<Double> dlList = new ArrayList<Double>();
 
 		try {
 			// JDBCドライバを読み込む
@@ -25,11 +25,10 @@ public class DiseaseListDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B4", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT disease_money,standard FROM disease_list where disease=?";
+			String sql = "SELECT standard FROM disease_list ";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-			// SQL文を完成させる
-			pStmt.setString(1,disease );
+
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
@@ -37,16 +36,12 @@ public class DiseaseListDao {
 			// 結果表をコレクションにコピーする
 			while (rs.next()) {
 
-				//引数が空のコンストラクターを実行
-				DiseaseList record = new DiseaseList();
 
-				//setterでrsのmets,exercise_nameをrecordの
-				//フィールドに入れる
 
-				record.setDisease_money(rs.getInt("disease_money"));
-				record.setStandard(rs.getDouble("standard"));
+				double standard = rs.getDouble("standard");
 
-				dlList.add(record);
+
+				dlList.add(standard);
 			}
 		}
 		catch (SQLException e) {
