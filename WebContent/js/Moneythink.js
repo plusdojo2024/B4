@@ -4,8 +4,8 @@
 
  'use strict'
 
- 	window.onload = function calculateDays() {
-		let num1 = parseFloat(document.getElementById('number1').value);
+ 	 function calculateDays() {
+		let num1 = parseInt(document.getElementById('number1').value);
 		// 数値入力
 		let YearOrMonth = parseFloat(document.getElementById('YearOrMonth').value);
 		// 月（30日）か年（365日）の選択された方
