@@ -16,7 +16,7 @@ import javax.servlet.http.Part;
 
 @WebServlet("/samServlet")
 @MultipartConfig(
-	    location = "C://pleiades//workspace//simpleBC//WebContent//img",
+	    location = "C://pleiades//workspace//B4//WebContent//img",
 	    fileSizeThreshold = 1024 * 1024 * 2, // 2MB
 	    maxFileSize = 1024 * 1024 * 10,      // 10MB
 	    maxRequestSize = 1024 * 1024 * 50    // 50MB
@@ -37,7 +37,7 @@ public class FileUploadServlet extends HttpServlet {
         String fileName = getSubmittedFileName(filePart);
 
         // アップロード先のディレクトリを設定（適宜変更する）
-        String uploadDir = "/pleiades/workspace/meikan2/WebContent/img/";  // 保存先のディレクトリを指定
+        String uploadDir = "/pleiades/workspace/B4/WebContent/img/";  // 保存先のディレクトリを指定
 
         // 保存先のディレクトリが存在しない場合は作成
         File dir = new File(uploadDir);
@@ -47,7 +47,7 @@ public class FileUploadServlet extends HttpServlet {
 
         // ファイルのフルパス
         String filePath = uploadDir + fileName;
-        String fileFullPath = "/simpleBC/img/"+fileName;
+        String fileFullPath = "/B4/img/"+fileName;
         System.out.println(filePath);
         // ファイルを保存
         try (InputStream input = filePart.getInputStream();
