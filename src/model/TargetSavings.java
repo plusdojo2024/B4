@@ -1,18 +1,17 @@
 package model;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 public class TargetSavings implements Serializable{
 	private int id;
 	private String user_id;
 	private double target_saving;
-	private Date saving_period;
+	private String saving_period;
 	private Boolean now;
 	private String created_at;
 	private String updated_at;
 
-	public TargetSavings(int number, String user_id, double target_saving, Date saving_period, Boolean now,
+	public TargetSavings(int number, String user_id, double target_saving, String saving_period, Boolean now,
 			String created_at, String updated_at) {
 		this.id = number;
 		this.user_id = user_id;
@@ -50,10 +49,10 @@ public class TargetSavings implements Serializable{
 	public void setTarget_saving(double target_saving) {
 		this.target_saving = target_saving;
 	}
-	public Date getSaving_period() {
+	public String getSaving_period() {
 		return saving_period;
 	}
-	public void setSaving_period(Date saving_period) {
+	public void setSaving_period(String saving_period) {
 		this.saving_period = saving_period;
 	}
 	public Boolean getNow() {

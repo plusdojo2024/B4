@@ -15,16 +15,17 @@
 	<div class="top">
 		<form action="/B4/MoneyThinkServlet" method="post" class="form">
 			<p>
-				<input type="number" name="length" id="number1" placeholder=""
+				<input type="number" name="length" id="number1" placeholder="3"
 				value="${current.length }">
 				<select name="form" class="green" id="YearOrMonth">
 					<option value="365">年</option>
 					<option value="30">カ月</option>
 				</select>
-				<input type="text" name="target_saving" class="green" placeholder="">
-				<span class="green">円貯める</span>
-				<input type="hidden" id="finaldate" name="saving_period" value="${current.target_saving }">
-				<inputtype="submit"  value="登録" Style="background-color: var(- -dark-green); margin-left: 0.5rem; width: 3rem;">
+				<input type="text" name="target_saving" class="green" placeholder="1,800,000">
+				<span class="green" value="${current.target_saving }">円貯める</span>
+				<input type="hidden" id="finaldate" name="saving_period">
+				<!--  <input type="submit"  value="登録">-->
+				<input type="submit">
 			</p>
 		</form>
 	<div class="hero">
@@ -59,6 +60,7 @@
 				<h1>手取り</h1>
 				<form action="/B4/MoneyThinkServlet" method="post" class="orange">
 					<input type="text" id="income" name="income" value="${income}">円
+					<input type="submit"  value="登録"  class="orange">
 				</form>
 				<hr>
 				<div class="common-list green">

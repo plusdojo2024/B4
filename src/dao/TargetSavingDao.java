@@ -34,10 +34,10 @@ public class TargetSavingDao {
 			pStmt.setDouble(2, ts.getTarget_saving());
 
 			if (ts.getSaving_period() != null && !ts.getSaving_period().equals("")) {
-				pStmt.setDate(3, ts.getSaving_period());
+				pStmt.setString(3, ts.getSaving_period());
 			}
 			else {
-				pStmt.setDate(3, null);
+				pStmt.setString(3, null);
 			}
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
