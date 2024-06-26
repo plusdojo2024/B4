@@ -24,10 +24,10 @@ public class ExercisesDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B4", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT mets,exercise_name FROM exercises where exercise_name='?'";
+			String sql = "SELECT mets,exercise_name FROM exercises where exercise_name=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる

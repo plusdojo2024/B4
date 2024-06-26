@@ -23,7 +23,7 @@ public class WeightsDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B4", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT weight  FROM WEIGHTS where user_id='?' order by created_at limit 1;"; //ユーザごとの最新の体重をもってくる
+			String sql = "SELECT weight  FROM WEIGHTS where user_id=? order by created_at limit 1;"; //ユーザごとの最新の体重をもってくる
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, user_id);
 

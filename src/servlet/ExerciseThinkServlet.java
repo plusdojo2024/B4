@@ -73,17 +73,23 @@ public class ExerciseThinkServlet extends HttpServlet {
 
 
 	    //計算
-		double weight_loss= weight - target_weight ;
+		double weight_loss= -1*(weight - target_weight) ;
 		double required_calories = weight_loss * 7200;
 		double end_calories = required_calories + 2400 - 1300;
 		double required_exercise = end_calories / weight;
-		double daily_required_exercise = required_exercise / target_period;
-		double time_by_exercise = daily_required_exercise / 3.5;
+		Double daily_required_exercise = required_exercise / target_period;
+		Double time_by_exercise = daily_required_exercise / 3.5;
 
 		//1日に必要な運動量 歩きの必要運動量をリクエストスコープに格納する
 		request.setAttribute("daily_required_exercise", time_by_exercise);
 		request.setAttribute("time_by_exercise", time_by_exercise);
 
+ System.out.println(weight);
+ System.out.println(target_weight);
+ System.out.println(weight_loss);
+ System.out.println(required_calories);
+ System.out.println(required_exercise);
+ System.out.println(time_by_exercise);
 
 
 		//病気リストを取得する

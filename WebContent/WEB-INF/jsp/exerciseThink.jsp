@@ -24,7 +24,7 @@
      <!--目標を入力する  -->
     <form method="post" action="/B4/ExerciseThinkServlet">
     	<p>
-	        <input type="number" name="length" id="number1" placeholder="" value="${weight.length }" class="form">
+	        <input type="number" name="length" id="number1" class="form">
 	        <select name="form" class="form" id="YearOrMonth">
 	        	<option value="365">年</option>
 	            <option value="30">ヵ月</option>
@@ -45,13 +45,13 @@
     	<div class="hero-in orange">
         	<h1>
                 必要時間
-                <span class="hero-exercise">歩き${exercise_name}</span>
-                <span class="hero-time">${time_by_exercise} + "分"</span>
+                <span class="hero-exercise">歩き</span>
+                <span class="hero-time">${time_by_exercise} 分</span>
             </h1>
         </div>
         <hr>
         <div class="hero-in orange">
-        	<h1>一日 3${momentum}Ex 必要</h1>         <!-- データで変化にあとで変える -->
+        	<h1>一日 ${daily_required_exercise}Ex 必要</h1>         <!-- データで変化にあとで変える -->
          	<p>本日の運動量 1${sum}Ex</p>       <!-- データで変化にあとで変える -->
         </div>
     </div>
@@ -138,21 +138,21 @@
 <c:forEach var="e" items="${dayList}" varStatus="status">
 	<form method="POST" action="/B4/ExerciseThinkServlet">
 		<input type="hidden" id="momentDay${status.index}"
-			value="${e.???}"><br>
+			value="${e}"><br>
 		<input  type="hidden" class="day_${status.last}" id = "${status.index}" value = "${status.index}"><br>
 	</form>
 </c:forEach>
 <c:forEach var="e" items="${weekList}" varStatus="status">
 	<form method="POST" action="/B4/ExerciseThinkServlet">
 		<input type="hidden" id="momentWeek${status.index}"
-			value="${e.???}"><br>
+			value="${e}"><br>
 		<input  type="hidden" class="week_${status.last}" id = "${status.index}" value = "${status.index}"><br>
 	</form>
 </c:forEach>
 <c:forEach var="e" items="${yearList}" varStatus="status">
 	<form method="POST" action="/B4/ExerciseThinkServlet">
 		<input type="hidden" id="momentMonth${status.index}"
-			value="${e.???}"><br>
+			value="${e}"><br>
 		<input  type="hidden" class="month_${status.last}" id = "${status.index}" value = "${status.index}"><br>
 	</form>
 </c:forEach>

@@ -24,7 +24,7 @@ public class TargetWeightsDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B4", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT target_weight FROM target_weights where user_id='?' order by created_at limit 1";
+			String sql = "SELECT target_weight FROM target_weights where user_id=? order by created_at limit 1";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -140,7 +140,7 @@ public class TargetWeightsDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B4", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT datediff(day,current_date,exercise_period)  FROM TARGET_WEIGHTS where user_id='?'";
+			String sql = "SELECT datediff(day,current_date,exercise_period)  FROM TARGET_WEIGHTS where user_id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる

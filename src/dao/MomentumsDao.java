@@ -25,10 +25,9 @@ public class MomentumsDao {
 			Class.forName("org.h2.Driver");
 
 			// データベースに接続する
-			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/simpleBC", "sa", "");
-
+			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B4","sa","");
 			// SQL文を準備する
-			String sql = "SELECT momentum FROM momentums where user_id='?' AND created_at = CURRENT_DATE";
+			String sql = "SELECT momentum FROM momentums where user_id=? AND created_at = CURRENT_DATE";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -98,7 +97,7 @@ public class MomentumsDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B4", "sa", "");
 
 			// SQL文を準備する
-			String sql = "SELECT * FROM momentums where user_id='?'";
+			String sql = "SELECT * FROM momentums where user_id=?";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// SQL文を完成させる
@@ -271,7 +270,7 @@ public List<Double> dayList(List<Momentums> allList, LocalDate today) {
 
 			// SOL文を完成させる
 				pStmt.setString(1, mt.getUser_id());
-				pStmt.setDouble(1, mt.getMomentum());
+				pStmt.setDouble(2, mt.getMomentum());
 
 			// SQL文を実行する
 			if (pStmt.executeUpdate() == 1) {
