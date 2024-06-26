@@ -20,7 +20,7 @@ public class IncomesDao {
 			conn = DriverManager.getConnection("jdbc:h2:file:C:/pleiades/workspace/data/B4", "sa", "");
 
 			// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-			String sql = "INSERT INTO incomes VALUES (NULL, ?, ?, CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);";
+			String sql = "INSERT INTO incomes VALUES (NULL, ?, ?, '','');";
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			// タスク名が空かどうかの判定

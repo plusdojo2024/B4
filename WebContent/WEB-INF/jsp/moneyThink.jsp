@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/MoneyThink.css">
 </head>
+<form action="/B4/MoneyThinkServlet" method="post">
 	<div class="top">
 		<div class="form">
 			<p>
@@ -181,6 +182,7 @@
 		</div>
 	</div>
 </div>
+</form>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/B4/js/amountGraph.js"></script>
 <script src="js/Moneythink.js"></script>

@@ -25,7 +25,8 @@ public class AmountUseds implements Serializable {
 		this.updated_at = null;
 	}
    // タイムスタンプを解析するフォーマットを指定
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+//    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSSSSS");
     // LocalDateTimeオブジェクトに変換
 
 	public int getYear() {
