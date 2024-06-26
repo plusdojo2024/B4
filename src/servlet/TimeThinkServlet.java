@@ -59,8 +59,8 @@ public class TimeThinkServlet extends HttpServlet {
 		request.setAttribute("address", address);
 
 		//目的検索処理
-		PurposeDao purDao = new PurposeDao();
-		List<String> purpose = purDao.select(user_id);
+		PurposeDao purSerchDao = new PurposeDao();
+		List<String> purpose = purSerchDao.select(user_id);
 		request.setAttribute("purpose", purpose);
 
 		// 時間逆算ページにフォワードする
@@ -117,25 +117,25 @@ public class TimeThinkServlet extends HttpServlet {
 			uDao.updateAddress(new Users(0,user_id,"","", address,0,"", ""));
 		}
 
-		String nowAddress = request.getParameter("now-address");
-		String destination = request.getParameter("destination");
 		//目的更新
 		if (request.getParameter("submit").equals("検索")){
+			String destination = request.getParameter("destination");
+			String arrival = request.getParameter("arrival");
 			PurposeDao purDao = new PurposeDao();
-			purDao.insert(new Purpose(0,user_id,nowAddress,destination,"", ""));
-		}
-
+			purDao.insert(new Purpose(0,user_id,arrival,destination,"", ""));
 		//逆算
 		//目的検索処理
 		PurposeDao pSerchDao = new PurposeDao();
 		List<String> purpose = pSerchDao.select(user_id);
 		request.setAttribute("purpose", purpose);
+
+		String nowAddress = request.getParameter("now-address");
 			api api = new api();
 			int time = api.naviApi(api.latApi(nowAddress),api.latApi(destination));
 			System.out.println("時間" +time);
 
 
-			String arrival = request.getParameter("arrival");
+
 			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 			try {
 				Date arrivalDate = sdf.parse(arrival);
@@ -178,7 +178,7 @@ public class TimeThinkServlet extends HttpServlet {
 				 } catch (ParseException e) {
 	            e.printStackTrace();
 				 }
-
+		}
 	// タスク一覧検索処理を行う
 	TasksDao tSerchDao = new TasksDao();
 	List<Tasks> Tasks = tSerchDao.select(new Tasks(0,user_id,0,"", 0, false, "", ""));

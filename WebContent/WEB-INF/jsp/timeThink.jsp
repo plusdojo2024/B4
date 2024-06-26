@@ -42,8 +42,6 @@
 								<br>
 								<h1 class="green">変更</h1>
 								<input type="text" name="address" placeholder="新しい住所を入力してください" class="address">
-								<input type="text" name="nearest" placeholder="新しい最寄り駅を入力してください" class="address">
-								<input type="text" name="near-time" placeholder="新しい最寄り駅を入力してください" class="address">
 								<input type="submit" name="submit" value="変更">
 							</form>
 

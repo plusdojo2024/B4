@@ -81,44 +81,11 @@ public class PurposeDao {
 			PurposeDao purDao = new PurposeDao();
 			List<String> user = purDao.select(pro.getUser_id());
 
-			if(user.get(0) == "" || user.get(0) == null) {
 				// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-				String sql = "INSERT INTO PURPOSE VALUES (NULL, ?,?,?, CURRENT_TIMESTAMP,CURRENT_TIMESTAMP);";
+				String sql = "UPDATE PURPOSE SET ARRIVAL = ? , destination = ? ,UPDATED_AT  = CURRENT_TIMESTAMP  WHERE user_id = ?;";
 				PreparedStatement pStmt = conn.prepareStatement(sql);
 
 				// SQL文を完成させる
-				if (pro.getUser_id() != null && !pro.getUser_id().equals("")) {
-					pStmt.setString(1, pro.getUser_id());
-				}else {
-					pStmt.setString(1, "（未設定）");
-				}
-				if (pro.getArrival() != null && !pro.getArrival().equals("")) {
-					pStmt.setString(2, pro.getArrival());
-				}else {
-					pStmt.setString(2, "（未設定）");
-				}
-				if (pro.getDestination() != null && !pro.getDestination().equals("")) {
-					pStmt.setString(3, pro.getDestination());
-				}else {
-					pStmt.setString(3, "（未設定）");
-				}
-
-				// SQL文を実行する
-				if (pStmt.executeUpdate() == 1) {
-					result = true;
-				}
-			}else
-			{
-				// SQL文を準備する（AUTO_INCREMENTのNUMBER列にはNULLを指定する）
-				String sql = "UPDATE PURPOSE SET ARRIVAL = ? , destination = ? ,UPDATED_AT  = CURRENT_TIMESTAMP  WHERE user_id = ?;)";
-				PreparedStatement pStmt = conn.prepareStatement(sql);
-
-				// SQL文を完成させる
-				if (pro.getUser_id() != null && !pro.getUser_id().equals("")) {
-					pStmt.setString(3, pro.getUser_id());
-				}else {
-					pStmt.setString(3, "（未設定）");
-				}
 				if (pro.getArrival() != null && !pro.getArrival().equals("")) {
 					pStmt.setString(1, pro.getArrival());
 				}else {
@@ -129,13 +96,15 @@ public class PurposeDao {
 				}else {
 					pStmt.setString(2, "（未設定）");
 				}
+				if (pro.getUser_id() != null && !pro.getUser_id().equals("")) {
+					pStmt.setString(3, pro.getUser_id());
+				}else {
+					pStmt.setString(3, "（未設定）");
+				}
 				// SQL文を実行する
 				if (pStmt.executeUpdate() == 1) {
 					result = true;
 				}
-
-			}
-
 		}
 		catch (SQLException e) {
 			e.printStackTrace();
