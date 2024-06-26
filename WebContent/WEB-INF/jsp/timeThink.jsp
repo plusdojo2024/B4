@@ -19,9 +19,9 @@
 			<div>
 				<!--入力フォーム-->
 				<form action="/B4/TimeThinkServlet" method="post" class="form">
-					<input type="time" name="arrival" class="arrival">
+					<input type="time" name="arrival" class="arrival" value="${purpose[0]}">
 					<span>に</span>
-					<input type="text" name="destination" placeholder="目的地" class="destination">
+					<input type="text" name="destination" value="${purpose[1]}" class="destination">
 					<input type ="submit" name="submit" value="検索">
 					<input type="hidden" name="now-address" value="${address}" readonly>
 				</form>
