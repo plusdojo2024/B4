@@ -21,9 +21,9 @@
 				<form action="/B4/TimeThinkServlet" method="post" class="form">
 					<input type="time" name="arrival" class="arrival">
 					<span>に</span>
-					<input type="text" name="d-nearest" placeholder="目的地の最寄り駅" class="destination">
-					<input type="text" name="d-near-time" placeholder="目的地の最寄り駅" class="destination">
 					<input type="text" name="destination" placeholder="目的地" class="destination">
+					<input type ="submit" name="submit" value="検索">
+					<input type="hidden" name="now-address" value="${address}" readonly>
 				</form>
 
 				<!-- 住所のポップアップ -->
@@ -38,10 +38,6 @@
 							<form action="/B4/TimeThinkServlet" method="post" class="form green">
 								<h1 class="green">現在住所</h1>
 								<input type="text" name="now-address" value="${address}" readonly class="address">
-								<h1 class="green">最寄り駅</h1>
-								<input type="text" name="now-address" value="${address}" readonly class="address">
-								<h1 class="green">最寄りまでの所要時間</h1>
-								<input type="text" name="now-time" value="${address}" readonly class="address">
 								<br>
 								<br>
 								<h1 class="green">変更</h1>
@@ -105,15 +101,15 @@
 					<table>
 						<tr>
 							<th>家を出る時間</th>
-							<td>8:00</td>
+							<td>${goOut}</td>
 						</tr>
 						<tr>
 							<th>起床時間</th>
-							<td>6:50</td>
+							<td>${wakeUp}</td>
 						</tr>
 						<tr>
 							<th>寝る時間</th>
-							<td>23:50</td>
+							<td>${sleep}</td>
 						</tr>
 					</table>
 				</div>
@@ -127,7 +123,7 @@
 
 						<!--ポップアップの中身-->
 						<!--予定タスク-->
-						<div class="common-list orange">
+<!-- 						<div class="common-list orange">
 								<h1>予定タスク</h1>
 								<p>所要時間</p>
 								<table>
@@ -138,7 +134,7 @@
 								</tr>
 							</table>
 						</div>
-						<hr>
+						<hr> -->
 						<!--myタスク-->
 						<div class="common-list orange">
 								<h1>マイタスク</h1>
@@ -147,11 +143,13 @@
 
 								<c:forEach var="t" items="${myTask}" >
 								<form action="/B4/TimeThinkServlet" method="post">
+								<input type="hidden" name="task-id" value="${t.task_id}" readonly>
+								<input type="hidden" name="task" value="${t.task}" readonly>
+								<input type="hidden" name="time" value="${t.time}" readonly>
 								<table class="task-form">
 								<tr>
-									<td><input type="hidden" name="task-id" value="${t.task_id}" readonly class="task-id">
-									<td><input type="text" name="task" value="${t.task}" readonly> </td>
-									<td><input type="text" name="time" value="${t.time}" readonly></td>
+									<th>${t.task} </th>
+									<td>${t.time}</td>
 									<td><input type="submit" name="submit" value="×"></td>
 								</tr>
 								</table>

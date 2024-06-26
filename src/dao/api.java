@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -12,8 +14,10 @@ public class api {
     public static void main(String[] args) {
     	String fromAddress = "愛知県名古屋市東区赤塚町２８";
     	String toAddress = "愛知県名古屋市中区栄3丁目5-12";
+//    	String fromAddress = args[0];
+//    	String toAddress = args[1];
     	api ap = new api();
-    	ap.naviApi(ap.latApi(fromAddress),ap.latApi(toAddress));
+    	System.out.println(ap.naviApi(ap.latApi(fromAddress),ap.latApi(toAddress)));
     }
 	public double[] latApi(String address){
 		double[] latLon = new double[2];
@@ -43,9 +47,9 @@ public class api {
                 JSONArray coordinates = geometry.getJSONArray("coordinates");
                 latLon[0] = coordinates.getDouble(0);
                 latLon[1] = coordinates.getDouble(1);
-                System.out.println("緯度: " + latLon[1] + ", 経度: " + latLon[0]);
+//                System.out.println("緯度: " + latLon[1] + ", 経度: " + latLon[0]);
             } else {
-                System.out.println("住所が見つかりませんでした。");
+//                System.out.println("住所が見つかりませんでした。");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -54,7 +58,10 @@ public class api {
         //経度、緯度の順番で保存
     }
 
-	public void naviApi(double[] from,double[] to) {
+	public int naviApi(double[] from,double[] to) {
+        int travelTime = 0;
+        List<Integer> timeList = new ArrayList<Integer>();
+
 		try {
 	        // APIのエンドポイントとパラメータを設定
 	        String apiUrl = "https://navitime-route-totalnavi.p.rapidapi.com/route_transit" +
@@ -114,21 +121,29 @@ public class api {
 	            int distance = move.getInt("distance");
 
 	            // 結果の表示
-	            System.out.println("Route " + routeNumber + ":");
-	            System.out.println("  Start: " + startName + " (Lat: " + startLat + ", Lon: " + startLon + ")");
-	            System.out.println("  Goal: " + goalName + " (Lat: " + goalLat + ", Lon: " + goalLon + ")");
-	            System.out.println("  Transit Count: " + transitCount);
-	            System.out.println("  Walk Distance: " + walkDistance + " meters");
-	            System.out.println("  Fare: " + fare + " yen");
-	            System.out.println("  From Time: " + fromTime);
-	            System.out.println("  To Time: " + toTime);
-	            System.out.println("  Travel Time: " + time + " minutes");
-	            System.out.println("  Distance: " + distance + " meters");
-	            System.out.println();
+//	            System.out.println("Route " + routeNumber + ":");
+//	            System.out.println("  Start: " + startName + " (Lat: " + startLat + ", Lon: " + startLon + ")");
+//	            System.out.println("  Goal: " + goalName + " (Lat: " + goalLat + ", Lon: " + goalLon + ")");
+//	            System.out.println("  Transit Count: " + transitCount);
+//	            System.out.println("  Walk Distance: " + walkDistance + " meters");
+//	            System.out.println("  Fare: " + fare + " yen");
+//	            System.out.println("  From Time: " + fromTime);
+//	            System.out.println("  To Time: " + toTime);
+//	            System.out.println("  Travel Time: " + time + " minutes");
+//	            System.out.println("  Distance: " + distance + " meters");
+//	            System.out.println();
+
+	            timeList.add(time);
+	            travelTime = timeList.get(0);
 	        }
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+//        確認用
+//        for(int i = 0; i < timeList.size() ; i++) {
+//        	System.out.println(timeList.get(i));
+//        }
+        return travelTime;
 	}
 
 
