@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="css/MoneyThink.css">
 </head>
 	<div class="top">
-		<form action="/B4/MoneyThinkServlet" method="post" class="form">
+		<div class="form">
 			<p>
 				<input type="number" name="length" id="number1" placeholder="3"
 				value="${current.length }">
@@ -27,7 +27,7 @@
 				<!--  <input type="submit"  value="登録">-->
 				<input type="submit">
 			</p>
-		</form>
+		</div>
 	<div class="hero">
 		<div class="orange hero-in">
 			<!--今週の予算-->
@@ -58,10 +58,10 @@
 		<div class="popup-overlay">
 			<div class="popup-window">
 				<h1>手取り</h1>
-				<form action="/B4/MoneyThinkServlet" method="post" class="orange">
+				<div class="orange">
 					<input type="text" id="income" name="income" value="${income}">円
 					<input type="submit"  value="登録"  class="orange">
-				</form>
+				</div>
 				<hr>
 				<div class="common-list green">
 					<div class="total-cost">
@@ -71,7 +71,7 @@
 					</div>
 					<h1>固定費</h1>
 					<p>金額</p>
-					<form action="/B4/MoneyThinkServlet" method="post">
+					<div>
 						<table>
 							<tr>
 								<th>家賃<!-- 用途 --></th>
@@ -84,16 +84,15 @@
 								<td><input type="submit" value="×"></td>
 							</tr>
 						</table>
-					</form>
+					</div>
 
 					<!--入力フォーム-->
-					<form action="/B4/MoneyThinkServlet" method="post"
-						class="form green">
+					<div class="form green">
 						<input type="text" name="money-name" placeholder="用途"> <input
 							type="text" name="money" placeholder="金額"> <span
 							class="add-botton"><input type="submit" name="task-entry"
 							value="追加"></span>
-					</form>
+					</div>
 				</div>
 			<label class="popup-close" for="money-popup">
 			<svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
@@ -104,7 +103,7 @@
 			</div>
 		</div>
 	</div>
-	<form action="/B4/MoneyThinkServlet" method="post" class="form green"
+	<div class="form green"
 		style="text-align: center; height:">
 		<p>
 			支出<input type="text" name="amount_used"
@@ -112,17 +111,17 @@
 				class="add-botton"><input type="submit" value="追加"
 				style="width: 4rem"></span>
 		</p>
-	</form>
-	<form action="/B4/MoneyThinkServlet" method="get" class="green">
+	</div>
+	<div  class="green">
 		<p>使用金額※ページ更新時に変わります。</p>
 		<p class="used-money" id="Used">
 			<!-- ここに使用金額 -->
 		</p>
-	</form>
+	</div>
 </div>
 <hr>
 <div class="bottom">
-	<form action="/B4/MoneyThinkServlet" method="post" class="form green">
+	<div class="form green">
 		<p>
 			使用額<select name="period" class="green">
 				<option value="yearList">月（日数）</option>
@@ -130,7 +129,7 @@
 				<option value="dayList">日（時間）</option>
 			</select>
 		</p>
-	</form>
+	</div>
 	<div class="chart-container">
 		<canvas id="dayChart"></canvas>
 	</div>
@@ -144,25 +143,25 @@
 		<canvas id="investChart" class="chart"></canvas>
 	</div>
 	<c:forEach var="e" items="${dayList}" varStatus="status">
-		<form method="POST" action="/B4/MoneyThinkServlet">
+		<div>
 			<input type="hidden" id="amountDay${status.index}" value="${e}"><br>
 			<input type="hidden" class="day_${status.last}" id="${status.index}"
 				value="${status.index}"><br>
-		</form>
+		</div>
 	</c:forEach>
 	<c:forEach var="e" items="${weekList}" varStatus="status">
-		<form method="POST" action="/B4/MoneyThinkServlet">
+		<div>
 			<input type="hidden" id="amountWeek${status.index}" value="${e}"><br>
 			<input type="hidden" class="week_${status.last}" id="${status.index}"
 				value="${status.index}"><br>
-		</form>
+		</div>
 	</c:forEach>
 	<c:forEach var="e" items="${yearList}" varStatus="status">
-		<form method="POST" action="/B4/MoneyThinkServlet">
+		<div>
 			<input type="hidden" id="amountMonth${status.index}" value="${e}"><br>
 			<input type="hidden" class="month_${status.last}"
 				id="${status.index}" value="${status.index}"><br>
-		</form>
+		</div>
 	</c:forEach>
 	<div class="investment">
 		<!-- display inlineする -->

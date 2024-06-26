@@ -121,7 +121,7 @@ public class MoneyThinkServlet extends HttpServlet {
 
 			LocalDate today2 = LocalDate.now();
 			List<AmountUseds> al  =ADao.allList();
-			Integer sum = ADao.calcList(al);
+			int sum = ADao.calcList(al);
 			List<Integer> yearList = ADao.yearList(al,2024);
 			List<Integer> weekList = ADao.weekList(al);
 			List<Integer> dayList = ADao.dayList(al,today2);
