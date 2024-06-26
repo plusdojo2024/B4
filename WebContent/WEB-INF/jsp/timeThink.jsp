@@ -19,9 +19,9 @@
 			<div>
 				<!--入力フォーム-->
 				<form action="/B4/TimeThinkServlet" method="post" class="form">
-					<input type="time" name="arrival" class="arrival">
+					<input type="time" name="arrival" class="arrival" value="${purpose[0]}">
 					<span>に</span>
-					<input type="text" name="destination" placeholder="目的地" class="destination">
+					<input type="text" name="destination" value="${purpose[1]}" class="destination">
 					<input type ="submit" name="submit" value="検索">
 					<input type="hidden" name="now-address" value="${address}" readonly>
 				</form>
@@ -42,8 +42,6 @@
 								<br>
 								<h1 class="green">変更</h1>
 								<input type="text" name="address" placeholder="新しい住所を入力してください" class="address">
-								<input type="text" name="nearest" placeholder="新しい最寄り駅を入力してください" class="address">
-								<input type="text" name="near-time" placeholder="新しい最寄り駅を入力してください" class="address">
 								<input type="submit" name="submit" value="変更">
 							</form>
 

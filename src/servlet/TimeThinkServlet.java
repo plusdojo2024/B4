@@ -14,10 +14,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.PurposeDao;
 import dao.TaskTypesDao;
 import dao.TasksDao;
 import dao.UsersDao;
 import dao.api;
+import model.Purpose;
 import model.TaskTypes;
 import model.Tasks;
 import model.Users;
@@ -56,6 +58,10 @@ public class TimeThinkServlet extends HttpServlet {
 		String address = uSerchDao.selectAdress(new Users(0,user_id,"","", "",0,"", ""));
 		request.setAttribute("address", address);
 
+		//目的検索処理
+		PurposeDao purSerchDao = new PurposeDao();
+		List<String> purpose = purSerchDao.select(user_id);
+		request.setAttribute("purpose", purpose);
 
 		// 時間逆算ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/timeThink.jsp");
@@ -111,36 +117,25 @@ public class TimeThinkServlet extends HttpServlet {
 			uDao.updateAddress(new Users(0,user_id,"","", address,0,"", ""));
 		}
 
-				// タスク一覧検索処理を行う
-		TasksDao tSerchDao = new TasksDao();
-		List<Tasks> Tasks = tSerchDao.select(new Tasks(0,user_id,0,"", 0, false, "", ""));
-		request.setAttribute("myTask", Tasks);
-
-		//タスク種類 検索処理を行う
-		TaskTypesDao ttSerchDao = new TaskTypesDao();
-		List<TaskTypes> TaskTypes = ttSerchDao.select(new TaskTypes(0,"", "", ""));
-		request.setAttribute("taskTypes", TaskTypes);
-
-		// 住所検索処理を行う
-		UsersDao uSerchDao = new UsersDao();
-		String address = uSerchDao.selectAdress(new Users(0,user_id,"","", "",0,"", ""));
-		request.setAttribute("address", address);
-
-				//検索
+		//目的更新
 		if (request.getParameter("submit").equals("検索")){
-
-			//逆算
-			String nowAddress = request.getParameter("now-address");
 			String destination = request.getParameter("destination");
-//			System.out.println("nowAddress" +nowAddress);
-//			System.out.println("destination" +destination);
+			String arrival = request.getParameter("arrival");
+			PurposeDao purDao = new PurposeDao();
+			purDao.insert(new Purpose(0,user_id,arrival,destination,"", ""));
+		//逆算
+		//目的検索処理
+		PurposeDao pSerchDao = new PurposeDao();
+		List<String> purpose = pSerchDao.select(user_id);
+		request.setAttribute("purpose", purpose);
 
+		String nowAddress = request.getParameter("now-address");
 			api api = new api();
 			int time = api.naviApi(api.latApi(nowAddress),api.latApi(destination));
 			System.out.println("時間" +time);
 
 
-			String arrival = request.getParameter("arrival");
+
 			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 			try {
 				Date arrivalDate = sdf.parse(arrival);
@@ -182,13 +177,33 @@ public class TimeThinkServlet extends HttpServlet {
 
 				 } catch (ParseException e) {
 	            e.printStackTrace();
-	        }
+				 }
 		}
+	// タスク一覧検索処理を行う
+	TasksDao tSerchDao = new TasksDao();
+	List<Tasks> Tasks = tSerchDao.select(new Tasks(0,user_id,0,"", 0, false, "", ""));
+	request.setAttribute("myTask", Tasks);
+
+	//タスク種類 検索処理を行う
+	TaskTypesDao ttSerchDao = new TaskTypesDao();
+	List<TaskTypes> TaskTypes = ttSerchDao.select(new TaskTypes(0,"", "", ""));
+	request.setAttribute("taskTypes", TaskTypes);
+
+	// 住所検索処理を行う
+	UsersDao uSerchDao = new UsersDao();
+	String address = uSerchDao.selectAdress(new Users(0,user_id,"","", "",0,"", ""));
+	request.setAttribute("address", address);
 
 
-			// 時間逆算ページにフォワードする
+
+	// 時間逆算ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/timeThink.jsp");
 		dispatcher.forward(request, response);
-			}
+
+	//リダイレクト
+//	response.sendRedirect("/B4/TimeThinkServlet");
+//	return;
+}
+
 }
 

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 
@@ -12,6 +13,7 @@
 <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/MoneyThink.css">
 </head>
+<form action="/B4/MoneyThinkServlet" method="post">
 	<div class="top">
 		<div class="form">
 			<p>
@@ -34,11 +36,13 @@
 			<div class="orange hero-in">
 				<p>今週の予算</p>
 				<p class="now-money">
+
 					45,678
 					<!-- ここに予算の数値 -->
 					円
 				</p>
 			</div>
+			<div id="income_display">${Incomes}</div>
 <hr>
 		<div class="orange hero-in">
 			<p>現在貯蓄額</p>
@@ -60,7 +64,7 @@
 				<h1>手取り</h1>
 				<div class="orange">
 					<input type="text" id="income" name="income" value="${income}">円
-					<input type="submit"  value="登録"  class="orange">
+					<input type="submit" name="submit"  value="登録"  class="orange">
 				</div>
 				<hr>
 				<div class="common-list green">
@@ -107,15 +111,15 @@
 		style="text-align: center; height:">
 		<p>
 			支出<input type="text" name="amount_used"
-				style="width: 20rem; height: 2rem;" value="20000"> <span
-				class="add-botton"><input type="submit" value="追加"
+				style="width: 20rem; height: 2rem;"> <span
+				class="add-botton"><input type="submit" value="追加" name="submit"
 				style="width: 4rem"></span>
 		</p>
 	</div>
 	<div  class="green">
 		<p>使用金額※ページ更新時に変わります。</p>
-		<p class="used-money" id="Used">
-			<!-- ここに使用金額 -->
+		<p class="used-money">
+			${sum}円
 		</p>
 	</div>
 </div>
@@ -181,6 +185,7 @@
 		</div>
 	</div>
 </div>
+</form>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/B4/js/amountGraph.js"></script>
 <script src="js/Moneythink.js"></script>
