@@ -4,7 +4,7 @@ h1{
   color: #008000;
 }
 
-h2{
+h3{
   font-size:100%;
   color: #FD7E00;
 }
@@ -99,7 +99,7 @@ body{
   display: inline-block;
   position: relative;
   text-decoration: none;
-  color: #f9a9ae;
+  color: #FFFFFF ;
   width: 120px;
   height: 50px;
   line-height: 50px;
@@ -112,7 +112,7 @@ body{
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
 
   margin: 10px;
-  width: 200px;
+  width: 100px;
   height: 50px;
 }
 
@@ -124,3 +124,18 @@ body{
   background-image: linear-gradient(#fed6e3 0%, #ffbcbc 100%);/*グラデーションを明るく*/
 }
 
+.comment{
+	border-style:solid;
+	border-color:green;
+
+}
+
+chart-container {
+	width: 80%;
+	height: 80%;
+	margin-bottom: 20px;
+}
+
+.iro1{
+	color: #ff00ff ;
+}
