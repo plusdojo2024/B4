@@ -1,0 +1,65 @@
+テーブル修正（佐藤）
+6/26
+create table amount_useds (
+id              integer auto_increment(1),
+user_id         varchar (100)  not null ,　
+amount_used     integer ,
+created_at      datetime  default CURRENT_DATE,
+updated_at      datetime  default CURRENT_DATE,
+FOREIGN KEY (user_id) REFERENCES USERS(user_id),
+PRIMARY KEY (id)
+
+);
+
+create table incomes (
+id          integer auto_increment(1),
+user_id     varchar (100) not null 　,
+income      integer ,
+created_at  datetime  default CURRENT_DATE,
+updated_at  datetime  default CURRENT_DATE,
+FOREIGN KEY (user_id) REFERENCES USERS(user_id),
+PRIMARY KEY (id)
+);
+
+INSERT INTO amount_useds VALUES (NULL, 'yazima_go', '400', '2024-06-22 10:15:30', '2024-06-22 10:25:50');
+INSERT INTO amount_useds VALUES (NULL, 'yazima_go', '600', '2024-06-22 11:30:25', '2024-06-22 14:22:15');
+INSERT INTO amount_useds VALUES (NULL, 'yazima_go', '1300', '2024-06-24 11:00:40', '2024-06-24 11:30:35');
+INSERT INTO amount_useds VALUES (NULL, 'yazima_go', '1000', '2024-06-24 14:25:10', '2024-06-24 14:50:45');
+INSERT INTO amount_useds VALUES (NULL, 'yazima_go', '3000', '2024-06-25 09:45:20', '2024-06-25 10:55:25');
+INSERT INTO amount_useds VALUES (NULL, 'yazima_go', '1500', '2024-06-25 13:15:50', '2024-06-25 13:30:35');
+INSERT INTO amount_useds VALUES (NULL, 'yazima_go', '200', '2024-06-26 15:35:30', '2024-06-26 17:45:20');
+INSERT INTO amount_useds VALUES (NULL, 'yazima_go', '750', '2024-06-27 10:20:40', '2024-06-27 14:55:55');
+INSERT INTO amount_useds VALUES (NULL, 'yazima_go', '150', '2024-06-27 12:40:50', '2024-06-27 13:25:45');
+INSERT INTO amount_useds VALUES (NULL, 'yazima_go', '100', '2024-06-27 13:10:30', '2024-06-27 14:35:30');
+
+-- ユーザー yazima_go のデータ
+INSERT INTO incomes VALUES (NULL, 'yazima_go', 200000, '2024-06-20 12:00:00', '2024-06-20 12:00:00');
+
+-- ユーザー alex_2024 のデータ
+INSERT INTO incomes VALUES (NULL, 'alex_2024', 180000, '2024-06-20 12:01:00', '2024-06-20 12:01:00');
+
+-- ユーザー Max-Power のデータ
+INSERT INTO incomes VALUES (NULL, 'Max-Power', 220000, '2024-06-20 12:02:00', '2024-06-20 12:02:00');
+
+-- ユーザー Ruby2023! のデータ
+INSERT INTO incomes VALUES (NULL, 'Ruby2023!', 190000, '2024-06-20 12:03:00', '2024-06-20 12:03:00');
+
+-- ユーザー Cool+Guy のデータ
+INSERT INTO incomes VALUES (NULL, 'Cool+Guy', 210000, '2024-06-20 12:04:00', '2024-06-20 12:04:00');
+
+-- ユーザー Happy_Day のデータ
+INSERT INTO incomes VALUES (NULL, 'Happy_Day', 195000, '2024-06-20 12:05:00', '2024-06-20 12:05:00');
+
+-- ユーザー star.777 のデータ
+INSERT INTO incomes VALUES (NULL, 'star.777', 205000, '2024-06-20 12:06:00', '2024-06-20 12:06:00');
+
+-- ユーザー QueenBee@ のデータ
+INSERT INTO incomes VALUES (NULL, 'QueenBee@', 225000, '2024-06-20 12:07:00', '2024-06-20 12:07:00');
+
+-- ユーザー Mega-Tiger のデータ
+INSERT INTO incomes VALUES (NULL, 'Mega-Tiger', 185000, '2024-06-20 12:08:00', '2024-06-20 12:08:00');
+
+-- ユーザー 42_Shadow のデータ
+INSERT INTO incomes VALUES (NULL, '42_Shadow', 230000, '2024-06-20 12:09:00', '2024-06-20 12:09:00');
+
+

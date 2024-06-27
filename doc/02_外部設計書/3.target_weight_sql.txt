@@ -1,0 +1,70 @@
+これから10件サンプルデータを作成します。
+以下のルールに従い10件のデータを出力してください。
+#ルール
+・日本人のデータ
+・登録日、更新日は「YYYY-MM-DD hh:mm:ss .nnn」の形式で出力してください
+・最新はboolean型なので、通常はT
+・運動目標期間はdate型で、更新日より1年先か、6カ月先、3カ月先にしてください
+
+・ユーザIDは以下の10個を使ってください
+yazima_go
+alex_2024
+Max-Power
+Ruby2023!
+Cool+Guy
+Happy_Day
+star.777
+QueenBee@
+Mega-Tiger
+42_Shadow
+
+#出力内容
+・ID
+・ユーザID
+・目標体重
+・運動目標期間
+・最新
+・作成日時
+・更新日時
+
+#出力形式
+INSERT INTO target_weights VALUES (NULL,
+'ユーザーID','目標体重',
+'運動目標期間','最新',
+'登録日','更新日');
+
+#出力例
+INSERT INTO target_weights VALUES (NULL,
+'yazima_go','65',
+'2026-06-21','T',
+'2024-06-18 09:49:2.038444','2024-06-18 09:49:28.038444');
+
+#このテーブルにあった型にしてください
+create table target_weights (
+id                   integer  auto_increment(1),
+user_id              varchar (100) auto_increment not null,
+target_weight        double ,
+exercise_period      date ,
+now             boolean ,
+created_at           datetime  default CURRENT_TIMESTAMP,
+updated_at           datetime  default CURRENT_TIMESTAMP,
+FOREIGN KEY (user_id) REFERENCES USERS(user_id),
+PRIMARY KEY (id)
+);
+
+INSERT INTO target_weights VALUES (NULL, 'yazima_go', 55, '2024-12-20', 'T', '2024-06-23 09:19:03.174240', '2024-06-23 09:19:03.174240');
+INSERT INTO target_weights VALUES (NULL, 'star.777', 64, '2025-06-23', 'T', '2024-06-23 09:19:03.174178', '2024-06-23 09:19:03.174178');
+INSERT INTO target_weights VALUES (NULL, 'Happy_Day', 60, '2024-12-20', 'T', '2024-06-23 09:19:03.174205', '2024-06-23 09:19:03.174205');
+INSERT INTO target_weights VALUES (NULL, 'alex_2024', 53, '2024-09-21', 'T', '2024-06-23 09:19:03.174214', '2024-06-23 09:19:03.174214');
+INSERT INTO target_weights VALUES (NULL, 'Cool+Guy', 59, '2024-12-20', 'T', '2024-06-23 09:19:03.174221', '2024-06-23 09:19:03.174221');
+INSERT INTO target_weights VALUES (NULL, '42_Shadow', 57, '2024-09-21', 'T', '2024-06-23 09:19:03.174227', '2024-06-23 09:19:03.174227');
+INSERT INTO target_weights VALUES (NULL, 'star.777', 75, '2025-06-23', 'T', '2024-06-23 09:19:03.174234', '2024-06-23 09:19:03.174234');
+INSERT INTO target_weights VALUES (NULL, 'Max-Power', 53, '2024-12-20', 'T', '2024-06-23 09:19:03.174249', '2024-06-23 09:19:03.174249');
+INSERT INTO target_weights VALUES (NULL, 'Cool+Guy', 66, '2025-06-23', 'T', '2024-06-23 09:19:03.174256', '2024-06-23 09:19:03.174256');
+INSERT INTO target_weights VALUES (NULL, 'Mega-Tiger', 79, '2024-12-20', 'T', '2024-06-23 09:19:03.174263', '2024-06-23 09:19:03.174263');
+
+
+
+
+
+

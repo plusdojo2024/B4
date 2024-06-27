@@ -1,0 +1,32 @@
+amount_useds
+これからサンプルデータを作成します。
+以下のルールに従い10個のデータを出力してください。
+#ルール
+・日本人のデータ
+・ユーザーIDはyazima_goの1個で固定してください。
+・登録日、更新日は「YYYY-MM-DD hh:mm:ss .nnn」の形式で出力してください。
+#出力内容
+・ユーザーID
+・使用金額
+・登録日
+・更新日
+
+#出力形式
+INSERT INTO amount_useds VALUES (NULL,
+'ユーザーID','使用金額',
+'登録日','更新日');
+#出力例
+INSERT INTO amount_useds VALUES (NULL,
+'yajima_go','10000','2024-06-18 09:49:2.038444','2024-06-18 09:49:28.038444'); 
+
+INSERT INTO amount_useds VALUES (NULL, 'yazima_go', '400', '2024-06-22 10:15:30.123', '2024-06-22 10:25:50.456');
+INSERT INTO amount_useds VALUES (NULL, 'yazima_go', '600', '2024-06-22 11:30:25.456', '2024-06-22 14:22:15.789');
+INSERT INTO amount_useds VALUES (NULL, 'yazima_go', '1300', '2024-06-24 11:00:40.789', '2024-06-24 11:30:35.987');
+INSERT INTO amount_useds VALUES (NULL, 'yazima_go', '1000', '2024-06-24 14:25:10.234', '2024-06-24 14:50:45.123');
+INSERT INTO amount_useds VALUES (NULL, 'yazima_go', '3000', '2024-06-25 09:45:20.567', '2024-06-25 10:55:25.456');
+INSERT INTO amount_useds VALUES (NULL, 'yazima_go', '1500', '2024-06-25 13:15:50.890', '2024-06-25 13:30:35.678');
+INSERT INTO amount_useds VALUES (NULL, 'yazima_go', '200', '2024-06-26 15:35:30.321', '2024-06-26 17:45:20.234');
+INSERT INTO amount_useds VALUES (NULL, 'yazima_go', '750', '2024-06-27 10:20:40.654', '2024-06-27 14:55:55.987');
+INSERT INTO amount_useds VALUES (NULL, 'yazima_go', '150', '2024-06-27 12:40:50.987', '2024-06-27 13:25:45.321');
+INSERT INTO amount_useds VALUES (NULL, 'yazima_go', '100', '2024-06-27 13:10:30.456', '2024-06-27 14:35:30.567');
+

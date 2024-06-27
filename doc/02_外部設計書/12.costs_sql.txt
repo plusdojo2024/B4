@@ -1,0 +1,67 @@
+costsテーブルサンプル
+以下のルールに従い10つのデータを出力してください。
+#出力内容
+・ユーザーID
+・費用id
+・費用
+・登録日
+・更新日
+#ルール
+・ユーザーIDはyazima_go,alex_2024,Max-Power,Ruby2023!,Cool+Guy,Happy_Day,star.777,QueenBee@,Mega-Tiger,42_Shadowの10個で固定してください。
+・登録日、更新日は「YYYY-MM-DD hh:mm:ss .nnn」の形式で出力してください。
+・日本人のデータで出力してください。
+#出力形式
+INSERT INTO costs VALUES (NULL,
+'ユーザーID','費用id',
+'費用','登録日','更新日');
+#出力例
+
+INSERT INTO costs VALUES (NULL,
+'yazima_go','1',
+'10000','2024-06-18 09:49:2.038444','2024-06-18 09:49:28.038444'
+); 
+
+INSERT INTO costs VALUES (NULL,
+'yazima_go','2',
+'10000','2024-06-18 09:49:20.038','2024-06-18 09:49:28.038'
+);
+INSERT INTO costs VALUES (NULL,
+'alex_2024','2',
+'15000','2024-06-18 10:15:30.123','2024-06-18 10:16:00.123'
+);
+INSERT INTO costs VALUES (NULL,
+'Max-Power','3',
+'20000','2024-06-18 11:00:40.654','2024-06-18 11:01:10.654'
+);
+INSERT INTO costs VALUES (NULL,
+'Ruby2023!','4',
+'25000','2024-06-18 11:30:50.987','2024-06-18 11:31:20.987'
+);
+INSERT INTO costs VALUES (NULL,
+'Cool+Guy','5',
+'30000','2024-06-18 12:00:10.555','2024-06-18 12:00:40.555'
+);
+INSERT INTO costs VALUES (NULL,
+'Happy_Day','6',
+'35000','2024-06-18 12:30:20.222','2024-06-18 12:30:50.222'
+);
+INSERT INTO costs VALUES (NULL,
+'star.777','7',
+'40000','2024-06-18 13:00:30.888','2024-06-18 13:01:00.888'
+);
+INSERT INTO costs VALUES (NULL,
+'QueenBee@','8',
+'45000','2024-06-18 13:30:40.111','2024-06-18 13:31:10.111'
+);
+INSERT INTO costs VALUES (NULL,
+'Mega-Tiger','9',
+'50000','2024-06-18 14:00:50.333','2024-06-18 14:01:20.333'
+);
+INSERT INTO costs VALUES (NULL,
+'42_Shadow','10',
+'55000','2024-06-18 14:30:10.444','2024-06-18 14:30:40.444'
+);
+
+
+
+

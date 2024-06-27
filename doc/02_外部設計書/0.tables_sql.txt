@@ -1,0 +1,345 @@
+/*
+【ドライバ】
+org.h2.Driver
+【JDBC URL】
+jdbc:h2:file:C:/pleiades/workspace/data/B4
+【ユーザー名】
+sa
+【パスワード】
+（なし）
+*/
+
+/* テーブルのデータをすべて表示する */
+SELECT * FROM ;
+
+/*【 テーブルを削除する SQL 文】 */
+DROP TABLE ;
+
+/* テーブルのすべてのデータを削除する */
+DELETE FROM ;
+
+/* トランザクションを開始する */
+BEGIN TRANSACTION;
+
+/* トランザクションを完了(確定)する*/	
+COMMIT;
+
+/* トランザクション開始直前の状態に戻す */
+ROLLBACK;
+
+
+/* 1【users テーブルを作成する SQL 文】*/
+create table users (
+id 　　　　　　      integer  auto_increment(1),
+user_id              varchar (100) not null  　,
+password             varchar (32)  not null    ,
+user_name            varchar (100) not null  　,
+address              varchar (100) ,
+birth_day            integer ,
+created_at           datetime  default CURRENT_TIMESTAMP,
+updated_at           datetime  default CURRENT_TIMESTAMP,
+PRIMARY KEY (id)
+);
+
+/* 2【weightテーブルを作成する SQL 文】*/
+create table weights (
+id                  integer  auto_increment(1)　,
+user_id             varchar (100) not null,
+weight              double ,
+created_at          datetime  default CURRENT_TIMESTAMP,
+updated_at          datetime  default CURRENT_TIMESTAMP,
+FOREIGN KEY (user_id) REFERENCES USERS(user_id),
+PRIMARY KEY (id)
+);
+
+/* 3【target_weights テーブルを作成する SQL 文】*/
+create table target_weights (
+id                   integer  auto_increment(1),
+user_id              varchar (100) not null,
+target_weight        double ,
+exercise_period      date ,
+now             boolean ,
+created_at           datetime  default CURRENT_TIMESTAMP,
+updated_at           datetime  default CURRENT_TIMESTAMP,
+FOREIGN KEY (user_id) REFERENCES USERS(user_id),
+PRIMARY KEY (id)
+);
+
+
+
+/* 4【exercises テーブルを作成する SQL 文】*/
+create table exercises (
+id                      integer auto_increment(1),
+mets                    double  not null default 1,
+exercise_name           varchar (20) not null,
+created_at              datetime   default CURRENT_TIMESTAMP,
+updated_at              datetime     default CURRENT_TIMESTAMP,
+PRIMARY KEY (id)
+);
+
+/* 5【momentums テーブルを作成する SQL 文】*/
+create table momentums (
+id          integer auto_increment(1),
+user_id     varchar (100) not null,
+momentum    double ,
+created_at  datetime  default CURRENT_TIMESTAMP,
+updated_at  datetime  default CURRENT_TIMESTAMP,
+FOREIGN KEY (user_id) REFERENCES USERS(user_id),
+PRIMARY KEY (id)
+
+);
+
+/* 6【disease_list テーブルを作成する SQL 文】*/
+create table disease_list (
+id              integer auto_increment(1),
+disease         varchar  not null default 1,
+disease_money   integer (20) not null,
+standard        double ,
+created_at      datetime  default CURRENT_TIMESTAMP,
+updated_at      datetime  default CURRENT_TIMESTAMP,
+PRIMARY KEY (id)
+);
+
+/* 7【incomes テーブルを作成する SQL 文】*/
+create table incomes (
+id          integer auto_increment(1),
+user_id     varchar (100) not null 　,
+income      integer ,
+created_at  datetime  default CURRENT_TIMESTAMP,
+updated_at  datetime  default CURRENT_TIMESTAMP,
+FOREIGN KEY (user_id) REFERENCES USERS(user_id),
+PRIMARY KEY (id)
+);
+
+/* 7 修正【incomes テーブルを作成する SQL 文】*/
+create table incomes (
+id          integer auto_increment(1),
+user_id     varchar (100) not null 　,
+income      integer ,
+created_at  datetime  default CURRENT_DATE,
+updated_at  datetime  default CURRENT_DATE,
+FOREIGN KEY (user_id) REFERENCES USERS(user_id),
+PRIMARY KEY (id)
+);
+
+/* 8【target_savings テーブルを作成する SQL 文】*/
+create table target_savings (
+id              integer auto_increment(1),
+user_id         varchar (100) not null ,　
+target_saving   double ,
+saving_period   date ,
+now             boolean ,
+created_at      datetime  default CURRENT_TIMESTAMP,
+updated_at      datetime  default CURRENT_TIMESTAMP,
+FOREIGN KEY (user_id) REFERENCES USERS(user_id),
+PRIMARY KEY (id)
+);
+/*訂正 8【target_savings テーブルを作成する SQL 文】*/
+create table target_savings (
+id              integer auto_increment(1),
+user_id         varchar (100) not null ,
+target_saving   integer ,
+period   integer ,
+saving_period   varchar (100) not null,
+created_at      datetime  default CURRENT_TIMESTAMP,
+updated_at      datetime  default CURRENT_TIMESTAMP,
+PRIMARY KEY (id)
+);
+
+/* 9【current_savings テーブルを作成する SQL 文】*/
+create table current_savings (
+id              integer auto_increment(1),
+user_id         varchar (100)  not null, 　
+current_saving  integer ,
+created_at      datetime  default CURRENT_TIMESTAMP,
+updated_at      datetime  default CURRENT_TIMESTAMP,
+FOREIGN KEY (user_id) REFERENCES USERS(user_id),
+PRIMARY KEY (id)
+
+);
+
+/* 10【amount_useds テーブルを作成する SQL 文】*/
+create table amount_useds (
+id              integer auto_increment(1),
+user_id         varchar (100)  not null ,　
+amount_used     integer ,
+created_at      datetime  default CURRENT_TIMESTAMP,
+updated_at      datetime  default CURRENT_TIMESTAMP,
+FOREIGN KEY (user_id) REFERENCES USERS(user_id),
+PRIMARY KEY (id)
+
+);
+/* 10 修正　*/
+create table amount_useds (
+id              integer auto_increment(1),
+user_id         varchar (100)  not null ,　
+amount_used     integer ,
+created_at      datetime  default CURRENT_DATE,
+updated_at      datetime  default CURRENT_DATE,
+FOREIGN KEY (user_id) REFERENCES USERS(user_id),
+PRIMARY KEY (id)
+);
+
+
+/* 11【fixed_types テーブルを作成する SQL 文】*/
+create table fixed_types (
+id          integer auto_increment(1),
+fixed       varchar (100),
+created_at  datetime  default CURRENT_TIMESTAMP,
+updated_at  datetime  default CURRENT_TIMESTAMP,
+PRIMARY KEY (id)
+
+);
+
+/* 12【costs テーブルを作成する SQL 文】*/
+create table costs (
+id          integer auto_increment(1),
+user_id     varchar (100)  not null  　,
+fixed_id    integer ,
+fixed_money integer ,
+created_at  datetime  default CURRENT_TIMESTAMP,
+updated_at  datetime  default CURRENT_TIMESTAMP,
+FOREIGN KEY (user_id) REFERENCES USERS(user_id),
+FOREIGN KEY (fixed_id) REFERENCES fixed_types(id),
+PRIMARY KEY (id)
+
+);
+/* 訂正　12【costs テーブルを作成する SQL 文】*/
+
+create table costs (
+id          integer auto_increment(1),
+user_id     varchar (100)  not null  　,
+fixed_id    varchar (100)  not null  ,
+fixed_money integer ,
+created_at  datetime  default CURRENT_TIMESTAMP,
+updated_at  datetime  default CURRENT_TIMESTAMP,
+PRIMARY KEY (id)
+);
+
+/* 13【task_types テーブルを作成する SQL 文】*/
+create table task_types (
+id          integer auto_increment(1),
+task        varchar (100),
+created_at  datetime  default CURRENT_TIMESTAMP,
+updated_at  datetime  default CURRENT_TIMESTAMP,
+PRIMARY KEY (id)
+);
+
+/* 14【tasks テーブルを作成する SQL 文】*/
+create table tasks (
+id          integer auto_increment(1),
+user_id     varchar (100) not null 　,
+task_id     integer ,
+time        integer ,
+show        boolean ,
+created_at  datetime  default CURRENT_TIMESTAMP,
+updated_at  datetime  default CURRENT_TIMESTAMP,
+FOREIGN KEY (user_id) REFERENCES USERS(user_id),
+FOREIGN KEY (task_id) REFERENCES task_types(id),
+PRIMARY KEY (id)
+
+);
+
+
+
+/* 15【task_results テーブルを作成する SQL 文】*/
+create table task_result (
+id          integer auto_increment(1),
+user_id     varchar (100)  not null  　,
+task_id     integer ,
+execution   integer ,
+created_at  datetime  default CURRENT_TIMESTAMP,
+updated_at  datetime  default CURRENT_TIMESTAMP,
+FOREIGN KEY (user_id) REFERENCES USERS(user_id),
+FOREIGN KEY (task_id) REFERENCES task_types(id),
+PRIMARY KEY (id)
+
+);
+
+/* 16【results テーブルを作成する SQL 文】*/
+create table results (
+id                  integer auto_increment(1),
+user_id             varchar (100)  not null,
+time_results        integer ,
+budget_results      integer ,
+exercise_results    integer ,
+created_at          datetime  default CURRENT_TIMESTAMP,
+updated_at          datetime  default CURRENT_TIMESTAMP,
+FOREIGN KEY (user_id) REFERENCES USERS(user_id),
+PRIMARY KEY (id)
+
+);
+
+/* 17【status テーブルを作成する SQL 文】*/
+create table status (
+id          integer auto_increment(1),
+user_id     varchar (100)  not null ,
+ability     varchar (100),
+value       integer ,
+now         boolean ,
+created_at  datetime  default CURRENT_TIMESTAMP,
+updated_at  datetime  default CURRENT_TIMESTAMP,
+FOREIGN KEY (user_id) REFERENCES USERS(user_id),
+PRIMARY KEY (id)
+
+);
+
+/* 18【special_abilities テーブルを作成する SQL 文】*/
+create table special_abilities (
+id          integer auto_increment(1),
+ability     varchar (100) not null,
+color       integer ,
+judge_max   integer ,
+created_at  datetime  default CURRENT_TIMESTAMP,
+updated_at  datetime  default CURRENT_TIMESTAMP,
+PRIMARY KEY (id)
+
+);
+
+/* 19【possessions テーブルを作成する SQL 文】*/
+create table possessions (
+id          integer auto_increment(1),
+user_id     varchar (100) not null 　,
+ability_id  integer ,
+created_at  datetime  default CURRENT_TIMESTAMP,
+updated_at  datetime  default CURRENT_TIMESTAMP,
+FOREIGN KEY (user_id) REFERENCES USERS(user_id),
+FOREIGN KEY (ability_id) REFERENCES special_abilities(id),
+PRIMARY KEY (id)
+
+);
+
+/* 20【access テーブルを作成する SQL 文】*/
+create table access (
+id          integer auto_increment(1),
+user_id varchar (100)  not null 　,
+created_at datetime  default CURRENT_TIMESTAMP,
+updated_at datetime  default CURRENT_TIMESTAMP,
+FOREIGN KEY (user_id) REFERENCES USERS(user_id),
+PRIMARY KEY (id)
+
+);
+/* 修正　21【purpose テーブルを作成する SQL 文】*/
+create table purpose (
+id          integer auto_increment(1),
+user_id     varchar (100) not null,
+arrival        varchar (10) ,
+destination     varchar (100) ,
+created_at  datetime  default CURRENT_TIMESTAMP,
+updated_at  datetime  default CURRENT_TIMESTAMP,
+FOREIGN KEY (user_id) REFERENCES USERS(user_id),
+PRIMARY KEY (id)
+);
+
+/*外部結合*/
+/* 
+s.sale_id,s.user_id,u.user_name,s.item_id
+FROM
+SALES as s
+LEFT JOIN
+USERS as u
+ON
+s.user_id = u.id;
+*/
+
+/*  運動　*/

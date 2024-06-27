@@ -1,0 +1,70 @@
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 150, '2023-03-15 14:21:38.912462');
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 250, '2023-07-18 10:43:21.912462');
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 350, '2023-11-23 09:12:56'.912462);
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 450, '2023-05-05 08:45:12.912462');
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 550, '2023-09-27 20:34:50.912462');
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 650, '2023-12-01 06:27:38.912462');
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 750, '2024-02-14 13:52:41.912462');
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 850, '2023-04-11 17:11:03.912462');
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 950, '2023-06-30 19:24:22.912462');
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 1050, '2023-08-05 21:56:17.912462');
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 1150, '2023-10-19 22:38:29.912462');
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 1250, '2024-01-12 07:59:54.912462');
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 1350, '2023-02-22 10:23:45.912462');
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 1450, '2023-11-17 12:46:11.912462');
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 1550, '2023-09-03 05:34:29.912462');
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 1650, '2023-04-27 14:58:20.912462');
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 1750, '2024-03-01 16:35:49.912462');
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 1850, '2023-06-11 04:17:33.912462');
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 1950, '2024-05-20 09:46:51.912462');
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 2050, '2023-12-30 15:39:10.912462');
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 1650, '2024-06-21 14:58:20.912462');
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 1750, '2024-06-21 16:35:49.912462');
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 1850, '2024-06-21 04:17:33.912462');
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 1950, '2024-06-19 09:46:51.912462');
+INSERT INTO amount_useds (user_id, amount_used, updated_at) VALUES ('user1', 2050, '2024-06-20 15:39:10.912462');
+
+create table target_savings (
+id              integer auto_increment(1),
+user_id         varchar (100) not null ,
+target_saving   integer ,
+period   integer ,
+saving_period   varchar (100) not null,
+created_at      datetime  default CURRENT_TIMESTAMP,
+updated_at      datetime  default CURRENT_TIMESTAMP,
+PRIMARY KEY (id)
+);
+
+
+create table costs (
+id          integer auto_increment(1),
+user_id     varchar (100)  not null  　,
+fixed_id    varchar (100)  not null  ,
+fixed_money integer ,
+created_at  datetime  default CURRENT_TIMESTAMP,
+updated_at  datetime  default CURRENT_TIMESTAMP,
+PRIMARY KEY (id)
+);
+
+INSERT INTO costs VALUES (NULL,
+'yazima_go','家賃',
+'50000','2024-06-18 09:49:20.038','2024-06-18 09:49:28.038'
+);
+INSERT INTO costs VALUES (NULL,
+'yazima_go','水道代',
+'2000','2024-06-18 10:15:30.123','2024-06-18 10:16:00.123'
+);
+INSERT INTO costs VALUES (NULL,
+'yazima_go','電気代',
+'5000','2024-06-18 11:00:40.654','2024-06-18 11:01:10.654'
+);
+INSERT INTO costs VALUES (NULL,
+'yazima_go','ガス代',
+'3000','2024-06-18 11:30:50.987','2024-06-18 11:31:20.987'
+);
+INSERT INTO costs VALUES (NULL,
+'yazima_go','ネトフリ代',
+'1490','2024-06-18 12:00:10.555','2024-06-18 12:00:40.555'
+);
+
+

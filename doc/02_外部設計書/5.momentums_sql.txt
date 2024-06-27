@@ -1,0 +1,116 @@
+これからサンプルデータを作成します。
+以下のルールに従い10個のデータを出力してください。
+
+#ルール
+・登録日、更新日は「YYYY-MM-DD hh:mm.nnn」の形式で出力してください。
+・登録日、更新日は2024年の4月の10日間のデータを表してください
+・運動量=メッツ*時間で計算されたもので、double型
+・メッツは3.5,5.0,7.5,2.5をランダムで使用
+・時間は0.1,0.2,0.3,0.4,0.5,0.6,0,7,0,8,0.9,1.0,0.75 , 1.5をランダムで使用
+#ユーザー名
+・yazima_go
+
+
+#出力内容
+・ユーザID
+・運動量
+・登録日
+・更新日
+
+#出力形式
+INSERT INTO momentums VALUES (NULL,'ユーザID','運動量','登録日','更新日');
+
+#出力例
+INSERT INTO momentums VALUES (NULL,'yazima_go','3.5','2024-06-18 09:49:2.038444','2024-06-18 09:49:28.038444');
+
+#ルール
+・運動量=メッツ*時間で計算されたもので、double型
+・メッツは3.5,5.0,7.5,2.5を使用をして、時間は0.1,0.2,0.3運動量を算出してください
+・10件サンプルを作ってください
+
+メッツ: 3.5, 時間: 0.5 → 運動量: 1.75メッツ時
+メッツ: 7.0, 時間: 0.5 → 運動量: 3.5メッツ時
+メッツ: 5.0, 時間: 0.5 → 運動量: 2.5メッツ時
+メッツ: 7.0, 時間: 1.0 → 運動量: 7.0メッツ時
+メッツ: 3.5, 時間: 1.0 → 運動量: 3.5メッツ時
+メッツ: 5.0, 時間: 1.0 → 運動量: 5.0メッツ時
+メッツ: 7.0, 時間: 0.75 → 運動量: 5.25メッツ時
+メッツ: 3.5, 時間: 0.75 → 運動量: 2.625メッツ時
+メッツ: 5.0, 時間: 0.75 → 運動量: 3.75メッツ時
+メッツ: 2.5, 時間: 1.5 → 運動量: 3.75メッツ時
+/*1月*/
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '1.75', '2024-01-01 10:12:45.123', '2024-01-01 10:12:59.456747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '3.0', '2024-01-02 11:22:33.789', '2024-01-02 11:22:55.678747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '5.625', '2024-01-03 14:18:22.234', '2024-01-03 14:18:45.789747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '0.75', '2024-01-04 09:35:10.456', '2024-01-04 09:35:23.567747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '6.0', '2024-01-05 16:45:15.678', '2024-01-05 16:45:30.789747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '2.5', '2024-01-06 07:50:25.123', '2024-01-06 07:50:45.234747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '8.25', '2024-01-07 13:22:35.456', '2024-01-07 13:22:59.567747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '1.875', '2024-01-08 08:10:05.789', '2024-01-08 08:10:23.678747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '5.625', '2024-01-09 15:35:45.234', '2024-01-09 15:35:59.345747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '7.5', '2024-01-10 17:48:55.678', '2024-01-10 17:49:12.789747');
+
+/*2月*/
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '1.75', '2024-02-01 10:12:45.123', '2024-02-01 10:12:59.456747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '3.0', '2024-02-02 11:22:33.789', '2024-02-02 11:22:55.678747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '5.625', '2024-02-03 14:18:22.234', '2024-02-03 14:18:45.789747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '0.75', '2024-02-04 09:35:10.456', '2024-02-04 09:35:23.567747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '6.0', '2024-02-05 16:45:15.678', '2024-02-05 16:45:30.789747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '2.5', '2024-02-06 07:50:25.123', '2024-02-06 07:50:45.234747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '8.25', '2024-02-07 13:22:35.456', '2024-02-07 13:22:59.567747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '1.875', '2024-02-08 08:10:05.789', '2024-02-08 08:10:23.678747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '5.625', '2024-02-09 15:35:45.234', '2024-02-09 15:35:59.345747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '7.5', '2024-02-10 17:48:55.678', '2024-02-10 17:49:12.789747');
+
+/*3月*/
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '2.625', '2024-03-01 09:15:30.123', '2024-03-01 09:15:45.789747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '4.5', '2024-03-02 14:23:45.456', '2024-03-02 14:24:12.234747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '8.25', '2024-03-03 07:30:12.345', '2024-03-03 07:30:59.456747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '1.125', '2024-03-04 11:45:20.678', '2024-03-04 11:46:01.123747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '5.625', '2024-03-05 10:10:05.789', '2024-03-05 10:10:45.234747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '6.0', '2024-03-06 08:05:30.234', '2024-03-06 08:06:12.345747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '0.875', '2024-03-07 15:55:55.789', '2024-03-07 15:56:23.678747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '2.625', '2024-03-08 06:25:43.456', '2024-03-08 06:26:05.234747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '3.75', '2024-03-09 12:40:12.123', '2024-03-09 12:40:45.678747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '11.25', '2024-03-10 13:20:50.345', '2024-03-10 13:21:34.456747');
+
+/*4月*/
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '0.35', '2024-04-01 09:15:30.123', '2024-04-01 09:15:45.789747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '3.75', '2024-04-02 14:23:45.456', '2024-04-02 14:24:12.234747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '7.875', '2024-04-03 07:30:12.345', '2024-04-03 07:30:59.456747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '1.5', '2024-04-04 11:45:20.678', '2024-04-04 11:46:01.123747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '6.0', '2024-04-05 10:10:05.789', '2024-04-05 10:10:45.234747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '5.25', '2024-04-06 08:05:30.234', '2024-04-06 08:06:12.345747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '2.625', '2024-04-07 15:55:55.789', '2024-04-07 15:56:23.678747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '0.875', '2024-04-08 06:25:43.456', '2024-04-08 06:26:05.234747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '1.875', '2024-04-09 12:40:12.123', '2024-04-09 12:40:45.678747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '6.25', '2024-04-10 13:20:50.345', '2024-04-10 13:21:34.456747');
+
+/*5月*/
+INSERT INTO momentums VALUES (NULL,'yazima_go','5.0','2024-05-10 00:00:00.000000','2024-05-10 00:00:00.000000');
+INSERT INTO momentums VALUES (NULL,'yazima_go','3.5','2024-05-07 00:00:00.000000','2024-05-07 00:00:00.000000');
+INSERT INTO momentums VALUES (NULL,'yazima_go','7.5','2024-05-07 00:00:00.000000','2024-05-07 00:00:00.000000');
+INSERT INTO momentums VALUES (NULL,'yazima_go','3.5','2024-05-05 00:00:00.000000','2024-05-05 00:00:00.000000');
+INSERT INTO momentums VALUES (NULL,'yazima_go','2.5','2024-05-07 00:00:00.000000','2024-05-07 00:00:00.000000');
+INSERT INTO momentums VALUES (NULL,'yazima_go','2.5','2024-05-09 00:00:00.000000','2024-05-09 00:00:00.000000');
+INSERT INTO momentums VALUES (NULL,'yazima_go','5.0','2024-05-09 00:00:00.000000','2024-05-09 00:00:00.000000');
+INSERT INTO momentums VALUES (NULL,'yazima_go','2.5','2024-05-03 00:00:00.000000','2024-05-03 00:00:00.000000');
+INSERT INTO momentums VALUES (NULL,'yazima_go','3.5','2024-05-08 00:00:00.000000','2024-05-08 00:00:00.000000');
+INSERT INTO momentums VALUES (NULL,'yazima_go','7.5','2024-05-07 00:00:00.000000','2024-05-07 00:00:00.000000');
+
+/*6月*/
+INSERT INTO momentums VALUES (NULL,'yazima_go','1.75','2024-06-15 10:39:21.628042','2024-06-15 10:39:28.628042');
+INSERT INTO momentums VALUES (NULL,'yazima_go','3.5','2024-06-16 10:39:21.628042','2024-06-16 10:39:28.628042');
+INSERT INTO momentums VALUES (NULL,'yazima_go','2.5','2024-06-17 10:39:21.628042','2024-06-17 10:39:28.628042');
+INSERT INTO momentums VALUES (NULL,'yazima_go','7.0','2024-06-18 10:39:21.628042','2024-06-18 10:39:28.628042');
+INSERT INTO momentums VALUES (NULL,'yazima_go','3.5','2024-06-19 10:39:21.628042','2024-06-19 10:39:28.628042');
+INSERT INTO momentums VALUES (NULL,'yazima_go','5.0','2024-06-20 10:39:21.628042','2024-06-20 10:39:28.628042');
+INSERT INTO momentums VALUES (NULL,'yazima_go','5.25','2024-06-21 10:39:21.628042','2024-06-21 10:39:28.628042');
+INSERT INTO momentums VALUES (NULL,'yazima_go','2.625','2024-06-22 10:39:21.628042','2024-06-22 10:39:28.628042');
+INSERT INTO momentums VALUES (NULL,'yazima_go','3.75','2024-06-23 10:39:21.628042','2024-06-23 10:39:28.628042');
+INSERT INTO momentums VALUES (NULL,'yazima_go','3.75','2024-06-24 10:39:21.628042','2024-06-24 10:39:28.628042');
+
+/*本日*/
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '1.5', '2024-06-27 07:00:00.000', '2024-06-27 07:00:45.000747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '3.0', '2024-06-27 08:00:00.000', '2024-06-27 08:00:45.000747');
+INSERT INTO momentums VALUES (NULL, 'yazima_go', '4.5', '2024-06-27 09:00:00.000', '2024-06-27 09:00:45.000747');

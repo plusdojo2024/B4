@@ -1,0 +1,4 @@
+insert into weights values(null,'yazima_go',50,current_timestamp,current_timestamp);
+
+
+SELECT weight  FROM WEIGHTS where user_id='yazima_go' order by created_at limit 1;

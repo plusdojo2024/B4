@@ -1,0 +1,38 @@
+これからサンプルデータを作成します。
+以下のルールに従い10個のデータを出力してください。
+
+#ルール
+・登録日は、2024-06-18 09:49:2.038444
+・更新日は、2024-06-18 09:49:2.038444
+・指定したユーザー名１つにつき１つのデータを作成してください。
+・現在体重はdouble型
+
+#ユーザー名
+・yazima_go
+・alex_2024
+・Max-Power
+・Ruby2023!
+・Cool+Guy
+・Happy_Day
+・star.777
+・QueenBee@
+・Mega-Tiger
+・42_Shadow
+
+
+#出力内容
+・ユーザID
+・現在体重
+・登録日
+・更新日
+
+
+
+#出力形式
+INSERT INTO task_types VALUES (NULL,'ユーザID','現在体重','登録日','更新日');
+
+#出力例
+NSERT INTO task_types VALUES (NULL,'朝食','2024-06-18 09:49:2.038444','2024-06-18 09:49:28.038444');
+
+
+insert into weights values(null,'yazima_go',60,current_timestamp,current_timestamp);
