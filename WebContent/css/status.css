@@ -1,4 +1,8 @@
 @charset "UTF-8";
+html{
+	 	font-size:20px;
+	width:100%;
+}
 h1{
   font-size:100%;
   color: #008000;
@@ -9,13 +13,13 @@ h3{
   color: #FD7E00;
 }
 
-ul{
+/* ul{
   padding-left:0;
 }
-
-li{
+ */
+/* li{
   list-style:none;
-}
+} */
 
 .txt {
   margin-top: 1em;
@@ -38,9 +42,9 @@ li{
   height: 100px;
   background-color: #000;
 }
-.display-flex {
+/* .display-flex {
   display: flex;
-}
+} */
 
 .child {
   float: left;
@@ -56,10 +60,12 @@ li{
 
 .orenzi {
   color: white;/*文字色*/
-  padding: 0.5em;/*文字周りの余白*/
+  font-weight:bold;
+  font-size:0.8rem;
+  padding: 0.3rem 0.4rem 0.3rem 0.4rem;/*文字周りの余白*/
   display: inline-block;/*おまじない*/
   line-height: 1.3;/*行高*/
-  background: #EF9440;/*背景色*/
+  background: #FFB13C;/*背景色*/
   vertical-align: middle;
   border-radius: 25px;/*左側の角を丸く*/
 }
@@ -72,27 +78,46 @@ li{
   padding: 10px 20px;
 }
 
-body{
-  width:100%;
-  height:2000px;
+.user-status{
+	display:flex;
+	width:100%;
+	  justify-content: space-between;
+	  height:15rem;
 }
-
+.group{
+  width:40%;
+}
+.group table{
+ 	width:95%;
+ 	height:90%;
+ 	margin-top:0.6rem;
+}
 .box1{
-  width:300px;
-  height:300px;
-  position:absolute;
+  width:60%;
+    height:100%;
+/*   position:absolute;
   top:20px;
-  right:80px;
+  right:80px; */
   background-color:#CCFFCC	;
-  color:white;
-  border-radius: 50px;
+  color:#57A66D;
+  border-radius: 30px;
+	font-size:0.9rem;
 }
 
+.upd{
+	width:95%;
+}
+.update{
+font-size:0.55rem;
+margin-left:0.3rem;
+}
 .password {
   display: flex;
+  height:50%;
   justify-content: flex-end;
   position: relative;
 	margin-bottom:10px;
+	flex-wrap: wrap;
  }
 
  .btn-square-soft {
@@ -100,20 +125,18 @@ body{
   position: relative;
   text-decoration: none;
   color: #FFFFFF ;
-  width: 120px;
-  height: 50px;
+  width: 40%;
+  height: 2.5rem;
   line-height: 50px;
   border-radius: 5px;
   text-align: center;
   overflow: hidden;
+  font-size:15px;
   font-weight: bold;
   background: linear-gradient(#fed6e3 0%, #ffaaaa 100%);
   text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.66);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.28);
-
   margin: 10px;
-  width: 100px;
-  height: 50px;
 }
 
 .btn-square-soft:active {
@@ -138,4 +161,8 @@ chart-container {
 
 .iro1{
 	color: #ff00ff ;
+}
+
+.com{
+	text-align:left;
 }

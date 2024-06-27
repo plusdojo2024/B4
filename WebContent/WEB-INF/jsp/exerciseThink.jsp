@@ -8,6 +8,7 @@
 
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>運動逆算</title>
  <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/exerciseThink.css">
@@ -21,20 +22,21 @@
 
   <main class="wrapper">
 
+<div class="body">
      <!--目標を入力する  -->
-    <form method="post" action="/B4/ExerciseThinkServlet" >
+    <form method="post" action="/B4/ExerciseThinkServlet"  class="form green">
     	<p>
-	        <input type="number" name="target" id="number1" class="form" value="${current.length }">
+	        <input type="number" name="target" id="number1" value="${current.length }">
 	        <select name="form" class="form" id="YearOrMonth">
 	        	<option value="365">年</option>
 	            <option value="30">ヵ月</option>
 	            <option value="7">週</option>
-
 	        </select>
 	        <span class="green">後に</span>
+	        <br>
 	        <input type="text" name="target_weight" class="form" placeholder="" value="${current.target_weight}">
 	        <span class="green"> kgに痩せる </span>
-	        <input type="hidden" id="finaldate" name="weight_period" ">
+	        <input type="hidden" id="finaldate" name="weight_period" >
 				 <input type="submit" value="設定"
 				 style="background-color: var(- -dark-green); margin-left: 0.5rem; width: 3rem;">
 		</p>
@@ -76,11 +78,11 @@
                         </form>
                         <!-- ポップアップを閉じる -->
                             <label class="popup-close" for="popup">
-                                <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
-                                    <line x1="0" y1="0" x2="18" y2="18" stroke="white" stroke-width="3"></line>
-                                    <line x1="0" y1="18" x2="18" y2="0" stroke="white" stroke-width="3"></line>
-                                </svg>
-                            </label>
+							<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+								<line x1="0" y1="0" x2="20" y2="20" stroke="white" stroke-width="6"></line>
+								<line x1="0" y1="20" x2="20" y2="0" stroke="white" stroke-width="6"></line>
+								</svg>
+							</label>
                     </div>
                 </div>
     </div>
@@ -111,9 +113,9 @@
         </div>
     </form>
 
-
+</div>
     <hr>
-
+<div class="body">
     <!-- 運動量結果のグラフを表示 -->
     <h1 class="green">運動量</h1>
     <form method="post" action="/B4/ExerciseThinkServlet">
@@ -164,8 +166,8 @@
 
 
     <!-- 病気リストを表示 tdの部分を変化させる-->
-    <h1 class="green">⚠️ 病気(運動不足)リスト</h1>
-    <div class="plan-list three-columns green">
+    <h1 class="warning-comment">⚠️ 病気(運動不足)リスト</h1>
+    <div class="plan-list three-columns">
         <table>
             <tr>
                 <th>心臓病</th>
@@ -183,6 +185,7 @@
                 <td> ${dlList[2].disease_money}万円</td>
             </tr>
         </table>
+    </div>
     </div>
 
   </main>

@@ -63,6 +63,13 @@ public class TimeThinkServlet extends HttpServlet {
 		List<String> purpose = purSerchDao.select(user_id);
 		request.setAttribute("purpose", purpose);
 
+		String goOutTime = "00:00";
+		request.setAttribute("goOut", goOutTime);
+		String wakeUpTime = "00:00";
+		request.setAttribute("wakeUp", wakeUpTime);
+		String sleepTime = "00:00";
+		request.setAttribute("sleep", sleepTime);
+
 		// 時間逆算ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/timeThink.jsp");
 		dispatcher.forward(request, response);
@@ -117,28 +124,41 @@ public class TimeThinkServlet extends HttpServlet {
 			uDao.updateAddress(new Users(0,user_id,"","", address,0,"", ""));
 		}
 
+		PurposeDao purSerchDao = new PurposeDao();
+		List<String> purpose = purSerchDao.select(user_id);
+		request.setAttribute("purpose", purpose);
+		String goOutTime = "00:00";
+		request.setAttribute("goOut", goOutTime);
+		String wakeUpTime = "00:00";
+		request.setAttribute("wakeUp", wakeUpTime);
+		String sleepTime = "00:00";
+		request.setAttribute("sleep", sleepTime);
+
+
 		//目的更新
 		if (request.getParameter("submit").equals("検索")){
 			String destination = request.getParameter("destination");
 			String arrival = request.getParameter("arrival");
 			PurposeDao purDao = new PurposeDao();
 			purDao.insert(new Purpose(0,user_id,arrival,destination,"", ""));
+		}
+
 		//逆算
 		//目的検索処理
 		PurposeDao pSerchDao = new PurposeDao();
-		List<String> purpose = pSerchDao.select(user_id);
-		request.setAttribute("purpose", purpose);
+		List<String> purposeList = pSerchDao.select(user_id);
+		request.setAttribute("purpose", purposeList);
 
 		String nowAddress = request.getParameter("now-address");
 			api api = new api();
-			int time = api.naviApi(api.latApi(nowAddress),api.latApi(destination));
+			int time = api.naviApi(api.latApi(nowAddress),api.latApi(purposeList.get(1)));
 			System.out.println("時間" +time);
 
 
 
 			SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 			try {
-				Date arrivalDate = sdf.parse(arrival);
+				Date arrivalDate = sdf.parse(purposeList.get(0));
 				Calendar arrivalCale = Calendar.getInstance();
 				arrivalCale.setTime(arrivalDate);
 				System.out.println("到着時間"+sdf.format(arrivalCale.getTime()));
@@ -168,17 +188,16 @@ public class TimeThinkServlet extends HttpServlet {
 				sleep.add(Calendar.MINUTE, -(60*7));
 				System.out.println("睡眠時間" +sleep.getTime());
 
-				String goOutTime = sdf.format(goOut.getTime());
+				goOutTime = sdf.format(goOut.getTime());
 				request.setAttribute("goOut", goOutTime);
-				String wakeUpTime = sdf.format(wakeUp.getTime());
+				wakeUpTime = sdf.format(wakeUp.getTime());
 				request.setAttribute("wakeUp", wakeUpTime);
-				String sleepTime = sdf.format(sleep.getTime());
+				sleepTime = sdf.format(sleep.getTime());
 				request.setAttribute("sleep", sleepTime);
 
 				 } catch (ParseException e) {
 	            e.printStackTrace();
 				 }
-		}
 	// タスク一覧検索処理を行う
 	TasksDao tSerchDao = new TasksDao();
 	List<Tasks> Tasks = tSerchDao.select(new Tasks(0,user_id,0,"", 0, false, "", ""));

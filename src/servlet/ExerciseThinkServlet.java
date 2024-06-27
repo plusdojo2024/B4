@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -102,27 +101,27 @@ public class ExerciseThinkServlet extends HttpServlet {
 //		for(Momentums m: mList) {System.out.println(m.getMomentum());
 //		}
 
-		Double sum = mDao.calcList(mList);
-		sum = ((double)Math.round(sum * 10))/10;
-		request.setAttribute("sum", sum);
+//		Double sum = mDao.calcList(mList);
+//		sum = ((double)Math.round(sum * 10))/10;
+//		request.setAttribute("sum", sum);
 		// 病気リストをリクエストスコープに格納する
-		request.setAttribute("dlList", dl);
-		DiseaseListDao dDao = new DiseaseListDao();
-		List<Double> dis = dDao.select();
-
-		List<Double> rank=new ArrayList<Double>();
-		for(int i=0;i<dis.size();i++) {
-			double standard = dis.get(i);
-
-				double lack_exercise = (3.3 - sum) / 3.3;
-				double increased_risk = standard * lack_exercise;
-				double risk = (standard	+ increased_risk) * 100;
-				risk = ((double)Math.round(risk * 10))/10;
-			rank.add(risk);
-		}
+//		request.setAttribute("dlList", dl);
+//		DiseaseListDao dDao = new DiseaseListDao();
+//		List<Double> dis = dDao.select();
+//
+//		List<Double> rank=new ArrayList<Double>();
+//		for(int i=0;i<dis.size();i++) {
+//			double standard = dis.get(i);
+//
+//				double lack_exercise = (3.3 - sum) / 3.3;
+//				double increased_risk = standard * lack_exercise;
+//				double risk = (standard	+ increased_risk) * 100;
+//				risk = ((double)Math.round(risk * 10))/10;
+//			rank.add(risk);
+//		}
 
  		// 病気リストの確率をリクエストスコープに格納する
- 		request.setAttribute("rank", rank);
+// 		request.setAttribute("rank", rank);
 
 		//グラフ
  		LocalDate today = LocalDate.now();
@@ -134,7 +133,7 @@ public class ExerciseThinkServlet extends HttpServlet {
 		request.setAttribute("yearList", yearList);
 		request.setAttribute("weekList", weekList);
 		request.setAttribute("dayList", dayList);
-		request.setAttribute("sum", sum);
+//		request.setAttribute("sum", sum);
 
 
 

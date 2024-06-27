@@ -4,6 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+			<meta name="viewport" content="width=device-width,initial-scale=1.0">
 		<title>時間逆算</title>
 		<link rel="stylesheet" href="css/common.css">
 		<link rel="stylesheet" href="css/timeThink.css">
@@ -16,12 +17,13 @@
 
 		<main>
 			<!--上半分-->
-			<div>
+			<div class="body">
 				<!--入力フォーム-->
-				<form action="/B4/TimeThinkServlet" method="post" class="form">
-					<input type="time" name="arrival" class="arrival" value="${purpose[0]}">
-					<span>に</span>
+				<form action="/B4/TimeThinkServlet" method="post" class="form green">
 					<input type="text" name="destination" value="${purpose[1]}" class="destination">
+					<br>
+					<input type="time" name="arrival" class="arrival" value="${purpose[0]}">
+					<span>に到着</span>
 					<input type ="submit" name="submit" value="検索">
 					<input type="hidden" name="now-address" value="${address}" readonly>
 				</form>
@@ -47,9 +49,9 @@
 
 							<!--ポップアップ閉じる-->
 							<label class="popup-close" for="address-popup">
-								<svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
-									<line x1="0" y1="0" x2="18" y2="18" stroke="white" stroke-width="3"></line>
-									<line x1="0" y1="18" x2="18" y2="0" stroke="white" stroke-width="3"></line>
+							<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+								<line x1="0" y1="0" x2="20" y2="20" stroke="white" stroke-width="6"></line>
+								<line x1="0" y1="20" x2="20" y2="0" stroke="white" stroke-width="6"></line>
 								</svg>
 							</label>
 						</div>
@@ -92,7 +94,7 @@
 			</div>
 			<hr>
 			<!--下半分-->
-			<div>
+			<div  class="body">
 				<!--スケジュール-->
 				<h1  class="green">スケジュール</h1>
 				<div class="plan-list two-columns">
@@ -137,8 +139,6 @@
 						<div class="common-list orange">
 								<h1>マイタスク</h1>
 								<p>所要時間</p>
-
-
 								<c:forEach var="t" items="${myTask}" >
 								<form action="/B4/TimeThinkServlet" method="post">
 								<input type="hidden" name="task-id" value="${t.task_id}" readonly>
@@ -160,13 +160,15 @@
 								<form action="/B4/TimeThinkServlet" method="post" class="form orange">
 	 							<select name="task-id">
 									<c:forEach var="tt" items="${taskTypes}" >
-										<option value="${tt.id}">${tt.id} , ${tt.task}</option>
+										<option value="${tt.id}">${tt.task}</option>
 									</c:forEach>
 								</select>
 									<span>
 									<input type="text" name="time" placeholder="所要時間" class="time">
 									分</span>
+									<div class="mytask">
 									<input type="submit" name="submit" value="マイタスクに追加">
+									</div>
 								</form>
 
 								<form action="/B4/TimeThinkServlet" method="post" class="form orange">
@@ -177,10 +179,10 @@
 
 						<!--ポップアップ閉じる-->
 						<label class="popup-close" for="task-popup">
-							<svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
-								<line x1="0" y1="0" x2="18" y2="18" stroke="white" stroke-width="3"></line>
-								<line x1="0" y1="18" x2="18" y2="0" stroke="white" stroke-width="3"></line>
-							</svg>
+							<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+								<line x1="0" y1="0" x2="20" y2="20" stroke="white" stroke-width="6"></line>
+								<line x1="0" y1="20" x2="20" y2="0" stroke="white" stroke-width="6"></line>
+								</svg>
 						</label>
 					</div>
 					</div>
@@ -188,10 +190,12 @@
 
 
 				<!--コメント-->
-				<h1 class="green">コメント</h1>
-				<div class="comment">
-					<p>今回の遅刻で、<span>1000円</span>給料が減少</p>
-					<p>更にこれを続けると、<span>10000円</span>の減少が・・・</p>
+				<h1 class="warning-comment">コメント</h1>
+				<div class="comment warning">
+					<p class="com">今回の遅刻で、</p>
+					<p><span  class="red">1000円</span>給料が減少</p>
+					<p class="com">更にこれを続けると、</p>
+					<p><span  class="red">10000円</span>の減少が・・・</p>
 				</div>
 			</div>
 		</main>

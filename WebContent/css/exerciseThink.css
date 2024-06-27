@@ -44,16 +44,6 @@
 	padding:0.8rem 2.6rem;
 }
 
-/* フォームの黄緑 */
-.form {
-	margin: 1rem 0 1rem 0;
-	padding: 0.3rem;
-	border-radius: 0.3rem;
-	background-color: var(--light-green);
-	border: none;
-}
-
-
 .weight{
 	margin:0.8rem auto 2rem auto;
 	border-radius:0.3rem;

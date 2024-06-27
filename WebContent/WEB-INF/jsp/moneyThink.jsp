@@ -6,30 +6,33 @@
 <html>
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<title>予算逆算 | ずぼら塾</title>
-<link rel="stylesheet" href="css/common.css">
-<link rel="stylesheet" href="css/MoneyThink.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<title>予算逆算 | ずぼら塾</title>
+	<link rel="stylesheet" href="css/common.css">
+	<link rel="stylesheet" href="css/MoneyThink.css">
 </head>
-<form action="/B4/MoneyThinkServlet" method="post">
-	<div class="top">
-		<div class="form">
-			<p>
+<body>
+
+<main>
+<div class="body">
+		<form action="/B4/MoneyThinkServlet" method="post" class="form green target YearOrMonth">
 				<input type="number" name="length" id="number1" placeholder="3"
-				value="${current.length }">
+				value="${current.length }" class="length">
 				<select name="form" class="green" id="YearOrMonth">
 					<option value="365">年</option>
 					<option value="30">カ月</option>
 				</select>
-				<input type="text" name="target_saving" class="green" placeholder="1,800,000">
-				<span class="green" value="${current.target_saving }">円貯める</span>
+				<span>までに</span><br>
+				<input type="text" name="target_saving" class="green target-save" placeholder="1,800,000">
+				円貯める
+<%-- 				<input class="green" value="${current.target_saving }"> --%>
 				<input type="hidden" id="finaldate" name="saving_period">
 				<!--  <input type="submit"  value="登録">-->
-				<input type="submit">
-			</p>
-		</div>
+				<input type="submit" name="submit" value="登録">
+		</form>
+
 	<div class="hero">
 		<div class="orange hero-in">
 			<!--今週の予算-->
@@ -43,7 +46,8 @@
 				</p>
 			</div>
 			<div id="income_display">${Incomes}</div>
-<hr>
+	</div>
+	<hr>
 		<div class="orange hero-in">
 			<p>現在貯蓄額</p>
 			<div class="next-money-set">
@@ -54,28 +58,32 @@
 					</p>
 			</div>
 		</div>
-		</div>
 	</div>
+
 	<div class="popup-all">
-		<input type="checkbox" id="money-popup" class="popup"> <label
-			class="popup-open" for="money-popup">＜詳細</label>
+		<input type="checkbox" id="money-popup" class="popup">
+		 <label class="popup-open" for="money-popup">＜詳細</label>
 		<div class="popup-overlay">
+
 			<div class="popup-window">
-				<h1>手取り</h1>
+				<h1 class="green">手取り</h1>
 				<div class="orange">
 					<input type="text" id="income" name="income" value="${income}">円
 					<input type="submit" name="submit"  value="登録"  class="orange">
 				</div>
-				<hr>
+
+	<hr>
+
 				<div class="common-list green">
-					<div class="total-cost">
+					<h1 class="total-cost">
 						固定費合計 100,000
 						<!-- ここに固定費の合計を記入 -->
 						円
-					</div>
+					</h1>
 					<h1>固定費</h1>
 					<p>金額</p>
 					<div>
+					<form action="/B4/MoneyThinkServlet" method="post">
 						<table>
 							<tr>
 								<th>家賃<!-- 用途 --></th>
@@ -88,52 +96,55 @@
 								<td><input type="submit" value="×"></td>
 							</tr>
 						</table>
-					</div>
-
-					<!--入力フォーム-->
-					<div class="form green">
-						<input type="text" name="money-name" placeholder="用途"> <input
-							type="text" name="money" placeholder="金額"> <span
-							class="add-botton"><input type="submit" name="task-entry"
-							value="追加"></span>
+						</form>
 					</div>
 				</div>
+
+					<!--入力フォーム-->
+					<form action="/B4/MoneyThinkServlet" method="post" class="form green">
+						<input type="text" name="money-name" placeholder="用途">
+						<input type="text" name="money" placeholder="金額">
+						 <span class="add-botton"><input type="submit" name="task-entry" value="追加">
+						 </span>
+					</form>
+				</div>
+
 			<label class="popup-close" for="money-popup">
-			<svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
-                <line x1="0" y1="0" x2="18" y2="18" stroke="white" stroke-width="3"></line>
-                <line x1="0" y1="18" x2="18" y2="0" stroke="white" stroke-width="3"></line>
-            </svg>
+				<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+				<line x1="0" y1="0" x2="20" y2="20" stroke="white" stroke-width="6"></line>
+				<line x1="0" y1="20" x2="20" y2="0" stroke="white" stroke-width="6"></line>
+				</svg>
 			</label>
-			</div>
 		</div>
 	</div>
-	<div class="form green"
-		style="text-align: center; height:">
-		<p>
-			支出<input type="text" name="amount_used"
-				style="width: 20rem; height: 2rem;"> <span
-				class="add-botton"><input type="submit" value="追加" name="submit"
-				style="width: 4rem"></span>
-		</p>
-	</div>
+
+	<form action="/B4/MoneyThinkServlet" method="post" class="form green">
+		<h1>支出</h1>
+		<input type="text" name="amount_used" style="width: 20rem; height: 2rem;">
+		<span class="add-botton">
+			<input type="submit" value="追加" name="submit" style="width: 4rem">
+		</span>
+	</form>
 	<div  class="green">
-		<p>使用金額※ページ更新時に変わります。</p>
+		<h1>使用金額<span class="mini">※ページ更新時に変わります。</span></h1>
 		<p class="used-money">
 			${sum}円
 		</p>
 	</div>
 </div>
+
 <hr>
-<div class="bottom">
-	<div class="form green">
-		<p>
-			使用額<select name="period" class="green">
+
+<div class="body">
+	<form action="/B4/MoneyThinkServlet" method="post" class="form green use">
+			使用額
+			<select name="period" class="green">
 				<option value="yearList">月（日数）</option>
 				<option value="weekList" id="weekList">週（曜日）</option>
 				<option value="dayList">日（時間）</option>
 			</select>
-		</p>
-	</div>
+	</form>
+
 	<div class="chart-container">
 		<canvas id="dayChart"></canvas>
 	</div>
@@ -146,30 +157,36 @@
 	<div class="chart-container">
 		<canvas id="investChart" class="chart"></canvas>
 	</div>
-	<c:forEach var="e" items="${dayList}" varStatus="status">
-		<div>
-			<input type="hidden" id="amountDay${status.index}" value="${e}"><br>
-			<input type="hidden" class="day_${status.last}" id="${status.index}"
-				value="${status.index}"><br>
-		</div>
-	</c:forEach>
-	<c:forEach var="e" items="${weekList}" varStatus="status">
-		<div>
-			<input type="hidden" id="amountWeek${status.index}" value="${e}"><br>
-			<input type="hidden" class="week_${status.last}" id="${status.index}"
-				value="${status.index}"><br>
-		</div>
-	</c:forEach>
-	<c:forEach var="e" items="${yearList}" varStatus="status">
-		<div>
-			<input type="hidden" id="amountMonth${status.index}" value="${e}"><br>
-			<input type="hidden" class="month_${status.last}"
-				id="${status.index}" value="${status.index}"><br>
-		</div>
-	</c:forEach>
+
+	<div class="table">
+		<c:forEach var="e" items="${dayList}" varStatus="status">
+			<div>
+				<input type="hidden" id="amountDay${status.index}" value="${e}"><br>
+				<input type="hidden" class="day_${status.last}" id="${status.index}"
+					value="${status.index}"><br>
+			</div>
+		</c:forEach>
+		<c:forEach var="e" items="${weekList}" varStatus="status">
+			<div>
+				<input type="hidden" id="amountWeek${status.index}" value="${e}"><br>
+				<input type="hidden" class="week_${status.last}" id="${status.index}"
+					value="${status.index}"><br>
+			</div>
+		</c:forEach>
+		<c:forEach var="e" items="${yearList}" varStatus="status">
+			<div>
+				<input type="hidden" id="amountMonth${status.index}" value="${e}"><br>
+				<input type="hidden" class="month_${status.last}"
+					id="${status.index}" value="${status.index}"><br>
+			</div>
+		</c:forEach>
+	</div>
+
 	<div class="investment">
 		<!-- display inlineする -->
+		<div class="inChart">
 		<canvas id="investmentChart"></canvas>
+		</div>
 		<div class="right-text">
 			<p>
 				30年後までに
@@ -185,7 +202,9 @@
 		</div>
 	</div>
 </div>
-</form>
+
+
+</main>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="/B4/js/amountGraph.js"></script>
 <script src="js/Moneythink.js"></script>
