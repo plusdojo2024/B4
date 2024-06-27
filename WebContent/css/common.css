@@ -197,7 +197,7 @@ option{
 }
 
 .popup-text:not(:last-of-type) {
-	margin-bottom: 1em
+	margin-bottom: 1em;
 }
 /*ポップアップ閉じるボタン*/
 .popup-close {
@@ -314,6 +314,15 @@ option{
 	font-weight:900;
 }
 
+.task-form th{
+	font-weight: bold;
+}
+.task-form td input{
+font-weight: bold;
+font-size:1.2rem;
+margin-right:0.2rem;
+}
+
 /*色によって変更*/
 .common-list.orange table tr{
 	background-color: var(--orange);
@@ -335,6 +344,9 @@ option{
 	font-weight: bold;
 	font-size:1.2rem;
 	margin: 0.5rem;
+}
+.bold{
+	font-weight:bold;
 }
 
 .warning-comment{

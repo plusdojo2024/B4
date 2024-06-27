@@ -69,14 +69,7 @@
 	text-align: left;
 }
 
-.task-form th{
-	font-weight: bold;
-}
-.task-form td input{
-font-weight: bold;
-font-size:1.2rem;
-margin-right:0.2rem;
-}
+
 .mytask{
 	text-align:right;
 	margin-bottom:1rem;

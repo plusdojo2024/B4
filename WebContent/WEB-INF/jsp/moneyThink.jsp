@@ -84,7 +84,7 @@
 					<p>金額</p>
 					<div>
 					<form action="/B4/MoneyThinkServlet" method="post">
-						<table>
+						<table class="task-form">
 							<tr>
 								<th>家賃<!-- 用途 --></th>
 								<td>70,000</td>
@@ -103,7 +103,7 @@
 					<!--入力フォーム-->
 					<form action="/B4/MoneyThinkServlet" method="post" class="form green">
 						<input type="text" name="money-name" placeholder="用途">
-						<input type="text" name="money" placeholder="金額">
+						<input type="text" name="money" placeholder="金額" >
 						 <span class="add-botton"><input type="submit" name="task-entry" value="追加">
 						 </span>
 					</form>
@@ -120,7 +120,7 @@
 
 	<form action="/B4/MoneyThinkServlet" method="post" class="form green">
 		<h1>支出</h1>
-		<input type="text" name="amount_used">
+		<input type="text" name="amount_used" class="amount_used">
 		<span class="add-botton">
 			<input type="submit" value="追加" name="submit" style="width: 4rem">
 		</span>
@@ -188,16 +188,13 @@
 		<canvas id="investmentChart"></canvas>
 		</div>
 		<div class="right-text">
-			<p>
-				30年後までに
+			<p>30年後までに貯金しないと</p>
 				<!-- 月に引かれる金＊12＊30 -->
-				3,600,000円
-			</p>
-			<p>貯金しないと貯金出来て、</p>
+				<p><span class="bold">3,600,000円</span>　貯金出来て、</p>
 			<p>投資に回す人と比べると</p>
 			<p class="red-comment">
 				<!--設定金額テーブルの金額＊12＊1.05＊30ー設定金額の元本（設定金額＊12＊30)-->
-				約8.900,000円の損
+				約<span class="red">8.900,000円</span>の損
 			</p>
 		</div>
 	</div>
