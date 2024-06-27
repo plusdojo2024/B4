@@ -3,10 +3,19 @@
  *{
 	outline:1px dashed #0000ff;
 }
+
 .form input[type=number]{
 	font-size:1rem;
+		margin: 0;
 	padding: 0.3rem 0.4rem;
 	border-radius: 0.3rem;
+}
+.form input[type=text]{
+	margin:0;
+	margin-top:0.7rem;
+}
+.form input[type=submit]{
+	margin:0;
 }
 .YearOrMonth select{
   font-size:1rem;
@@ -21,6 +30,9 @@ option{
 }
 .target-save{
 	width:40%;
+}
+.hero{
+	margin-bottom:0.5rem;
 }
 
 /*hero*/
@@ -38,6 +50,12 @@ option{
 	gap: 3rem;
 	margin-top: -0.3rem;
 }
+
+/*ポップアップ内*/
+#income{
+	width:50%;
+}
+
 .used-money{
 	text-align: center;
 }

@@ -66,12 +66,12 @@
 		<div class="popup-overlay">
 
 			<div class="popup-window">
-				<h1 class="green">手取り</h1>
-				<div class="orange">
-					<input type="text" id="income" name="income" value="${income}">円
-					<input type="submit" name="submit"  value="登録"  class="orange">
-				</div>
-
+			<form class="form green">
+				<h1>手取り</h1>
+					<input type="text" id="income" name="income" value="${income} ">
+					<span>円</span>
+					<input type="submit" name="submit"  value="登録" >
+			</form>
 	<hr>
 
 				<div class="common-list green">
@@ -120,7 +120,7 @@
 
 	<form action="/B4/MoneyThinkServlet" method="post" class="form green">
 		<h1>支出</h1>
-		<input type="text" name="amount_used" style="width: 20rem; height: 2rem;">
+		<input type="text" name="amount_used">
 		<span class="add-botton">
 			<input type="submit" value="追加" name="submit" style="width: 4rem">
 		</span>
