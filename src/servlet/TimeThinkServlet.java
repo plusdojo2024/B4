@@ -185,7 +185,7 @@ public class TimeThinkServlet extends HttpServlet {
 
 				Calendar sleep =  Calendar.getInstance();
 				sleep.setTime(wakeUp.getTime());
-				sleep.add(Calendar.MINUTE, -(60*7));
+				sleep.add(Calendar.MINUTE, -(60*8));
 				System.out.println("睡眠時間" +sleep.getTime());
 
 				goOutTime = sdf.format(goOut.getTime());

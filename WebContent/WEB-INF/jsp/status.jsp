@@ -18,27 +18,27 @@
 	    <tr class = "status">
 <!-- 	    <div class="display-flex"> -->
 	    <th class="orenzi">継続力</th>
-	      <td class="iro1">${status.keizoku_rank} ${status.keizoku}</td>
+	      <td class="iro1">S80</td>
 		</tr>
 		<tr class = "status">
 	      <th class="orenzi">修正力</th>
-	          <td class="iro">${status.shusei_rank } ${status.shusei}</td>
+	          <td class="iro"  style="color:red;">A70</td>
 		</tr>
 		<tr class = "status">
 	      <th class="orenzi">時間管理</th>
-	          <td class="iro">${status.jikan_rank } ${status.jikan}</td>
+	          <td class="iro"  style="color:orange;">B60</td>
 		</tr>
 		<tr class = "status">
 	      <th class="orenzi">貯金</th>
-	          <td class="iro">${status.chokin_rank } ${status.chokin}</td>
+	          <td class="iro"  style="color:green;">C60</td>
 		</tr>
 		<tr class = "status">
 	      <th class="orenzi">体力</th>
-	          <td class="iro">${status.tairyoku_rank } ${status.tairyoku}</td>
+	          <td class="iro"  style="color:blue;">D50</td>
 		</tr>
 		<tr class = "status">
 	      <th class="orenzi">貢献力</th>
-	          <td class="iro">${status.kouken_rank } ${status.kouken}</td>
+	          <td class="iro"  style="color:purple;">E30</td>
 		</tr>
 	 </table>
 	</div>
@@ -68,6 +68,8 @@
 
 
 <!--点線-->
+<br>
+<br>
 <div class="wrapper">
   <p class="txt txt01">
 

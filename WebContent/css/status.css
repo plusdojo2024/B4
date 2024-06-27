@@ -68,6 +68,7 @@ h3{
   background: #FFB13C;/*背景色*/
   vertical-align: middle;
   border-radius: 25px;/*左側の角を丸く*/
+  width:3.2rem;
 }
 
 .display-flex{
