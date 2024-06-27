@@ -5,13 +5,13 @@ import java.io.Serializable;
 public class Costs implements Serializable{
 	private int id;
 	private String user_id;
-	private int fixed_id;
+	private String fixed_id;
 	private int fixed_money;
 	private String created_at;
 	private String updated_at;
 
 
-	public Costs(int number,String user_id, int fixed_id, int fixed_money,
+	public Costs(int number,String user_id, String fixed_id, int fixed_money,
 			String created_at, String updated_at) {
 		this.id = number;
 		this.user_id = user_id;
@@ -19,14 +19,6 @@ public class Costs implements Serializable{
 		this.fixed_money = fixed_money;
 		this.created_at = created_at;
 		this.updated_at = updated_at;
-	}
-	public Costs() {
-		this.id = 0;
-		this.user_id = "";
-		this.fixed_id = 0;
-		this.fixed_money = 0;
-		this.created_at = null;
-		this.updated_at = null;
 	}
 	public int getId() {
 		return id;
@@ -40,10 +32,10 @@ public class Costs implements Serializable{
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
-	public int getFixed_id() {
+	public String getFixed_id() {
 		return fixed_id;
 	}
-	public void setFixed_id(int fixed_id) {
+	public void setFixed_id(String fixed_id) {
 		this.fixed_id = fixed_id;
 	}
 	public int getFixed_money() {

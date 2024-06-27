@@ -5,19 +5,25 @@ import java.io.Serializable;
 public class TargetSavings implements Serializable{
 	private int id;
 	private String user_id;
-	private double target_saving;
+	private int target_saving;
+	private int period;
+	public int getPeriod() {
+		return period;
+	}
+	public void setPeriod(int period) {
+		this.period = period;
+	}
 	private String saving_period;
-	private Boolean now;
 	private String created_at;
 	private String updated_at;
 
-	public TargetSavings(int number, String user_id, double target_saving, String saving_period, Boolean now,
+	public TargetSavings(int number, String user_id, int target_saving, int period,String saving_period,
 			String created_at, String updated_at) {
 		this.id = number;
 		this.user_id = user_id;
 		this.target_saving = target_saving;
+		this.period = period;
 		this.saving_period = saving_period;
-		this.now = now;
 		this.created_at = created_at;
 		this.updated_at = updated_at;
 	}
@@ -26,7 +32,6 @@ public class TargetSavings implements Serializable{
 		this.user_id = "";
 		this.target_saving = 0;
 		this.saving_period = null;
-		this.now = false;
 		this.created_at = null;
 		this.updated_at = null;
 	}
@@ -43,10 +48,10 @@ public class TargetSavings implements Serializable{
 	public void setUser_id(String user_id) {
 		this.user_id = user_id;
 	}
-	public double getTarget_saving() {
+	public int getTarget_saving() {
 		return target_saving;
 	}
-	public void setTarget_saving(double target_saving) {
+	public void setTarget_saving(int target_saving) {
 		this.target_saving = target_saving;
 	}
 	public String getSaving_period() {
@@ -54,12 +59,6 @@ public class TargetSavings implements Serializable{
 	}
 	public void setSaving_period(String saving_period) {
 		this.saving_period = saving_period;
-	}
-	public Boolean getNow() {
-		return now;
-	}
-	public void setNow(Boolean now) {
-		this.now = now;
 	}
 	public String getCreated_at() {
 		return created_at;
